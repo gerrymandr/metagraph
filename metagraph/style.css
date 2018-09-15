@@ -62,6 +62,10 @@ body {
 
 /* main */
 
+main {
+  margin-bottom: 2rem;
+}
+
 main > p {
   max-width: 900px;
   margin-left: auto;
@@ -124,7 +128,14 @@ figcaption {
 .center {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+}
+
+.metagraph-tooltip {
+  background-color: #555;
+  padding: 5px 5px 0px 5px;
+  margin: 0px;
 }
 
 /* header */
@@ -136,7 +147,7 @@ header {
   margin-bottom: 2rem;
 }
 
-header > p {
+header > summary {
   border-top: 1px solid #5a6366;
   border-bottom: 1px solid #5a6366;
   padding: 0.8rem 1vw;
@@ -198,7 +209,7 @@ footer > p {
 /* navigation */
 
 nav {
-  margin: 2rem 0;
+  margin: 0;
   display: grid;
   grid-template-columns: minmax(1fr, 250px);
   grid-gap: 1rem;
