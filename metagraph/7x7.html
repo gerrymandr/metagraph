@@ -55,7 +55,7 @@
       exchanging their labels yields a legal districting plan. If so, it moves to that plan. If not, it tries again.
     </p>
 
-    <div id="randomwalk" style="display: block; margin: auto; text-align:center"></div>
+    <div id="randomwalk" class="chart"></div>
 
     <p>
       We are doing a <strong>random walk</strong> on the metagraph. Each plan is a node in the metagraph and is
@@ -63,7 +63,7 @@
       nodes. Every second, the walk takes a random step to one of the neighbors of the current plan. This algorithm is
       remarkable for three important reasons. The first is its simplicity -- the demo above is running live off of
       about 50 lines of JavaScript, in your browser, right now. The second is the effectiveness and speed. While it
-      would take a long time to enumerate <strong>all</strong> of the legal districting plans, we can definitely
+      would take a long time to enumerate <em>all</em> of the legal districting plans, we can definitely
       enumerate a huge chunk of them very quickly. The third is its adaptability for optimization, which we'll discuss
       a little later.
     </p>
@@ -84,10 +84,10 @@
       bar is to the left of most of the mass of the histogram, it means that the nearby sample found a lot of plans
       that gave more seats to the <span class="purple">Purple</span> Party than yours. If the <span class="blue">Blue</span>
       bar is to the right of most of the mass, it means that the sampler found a lot of plans which give more seats to
-      the<span class="orange">Orange</span> Party than yours.
+      the <span class="orange">Orange</span> Party than yours.
     </p>
 
-    <div id="gridspace" style="width:100%; text-align:left"></div>
+    <div id="gridspace" class="chart three-columns"></div>
 
     <p>
       If you leave your distribution of voters alone and click the Sample button multiple times, the histogram will
@@ -100,7 +100,7 @@
 
     <p>
       We promised earlier to talk about MCMC for optimization, and just as it can be a powerful tool for analyzing
-      districting plans, it can also be used to <strong>draw</strong> the plans. What if we had some distribution of
+      districting plans, it can also be used to <em>draw</em> the plans. What if we had some distribution of
       <span class="purple">Purple</span> and<span class="orange">Orange</span> voters, and
       what we really want to do is find a plan which maximizes the number of seats that the <span class="purple">Purple</span>
       party wins? On a small example like this, it's probably not too hard to do by hand, although you might end up
@@ -114,7 +114,7 @@
       its walk from that best-so-far plan, and at the end it draws the best one it found.
     </p>
 
-    <div id="optspace" style="display: block; margin: auto; text-align:center"></div>
+    <div id="optspace" class="chart center"></div>
 
     <p>
       The idea behind this is that plans which disproportionately favor one particular party tend to be near each other
@@ -125,7 +125,7 @@
 
     <p>
       You'll notice that this does really well, but not always perfectly. For example, if you make the top three rows
-      all<span class="orange">Orange</span> and the bottom four all <span class="purple">Purple</span>,
+      all <span class="orange">Orange</span> and the bottom four all <span class="purple">Purple</span>,
       if you try a few times, the algorithm will probably find a plan that lets the <span class="purple">Purple</span>
       Party win six seats, but almost certainly not one with seven <span class="purple">Purple</span>
       districts. This is for two reasons -- first, that there is only one plan which has seven <span class="purple">Purple</span>-favoring
