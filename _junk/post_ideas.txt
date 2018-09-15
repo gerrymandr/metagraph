@@ -1,8 +1,0 @@
-cute theorems:
-banach-mazur games
-language is regular iff gen func is rational
-hex equiv to brouwer fp
-fibonacci sequences span 2d space
-
-personal: 
-cooking for thanksgiving
