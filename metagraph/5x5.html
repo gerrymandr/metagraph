@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Welcome to Gridlandia!</title>
+  <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <a href="./index.html" class="previous">&laquo; Go back to the 4x4 metagraph</a>
+  </nav>
+
+  <header>
+    <h1> Welcome to Gridlandia!</h1>
+    <img width="200" src="imgs/blankgrid5.png?raw=true">
+  </header>
+
+  <main>
+    <p>
+      Gridlandia incorporated nine additional cells, for a total of 25. Since the population has increased, we'd now
+      like to draw <strong>five</strong> districts. The same rules apply: each district must be contiguous and of the
+      same size. There
+      are 4006 districting plans which satisfy these criteria, and we can construct the metagraph in the same way, with
+      a node for each plan and an edge between plans that can be transformed into each other by swapping cells in
+      adjacent districts. We can write these all down, but this is too many to show all at once as a metagraph.
+      Instead, we'll show a local picture of the metagraph where you can see a districting plan and all of the other
+      plans which can be formed by swapping one or two pairs of cells.
+    </p>
+
+    <p>
+      Click on a plan in the local metagraph to recenter at its neighborhood. Alternatively, use the panel on the
+      left to build a districting plan and jump directly to it. Click the squares on the left to change the color of
+      the square and see which party wins a majority of seats.
+    </p>
+
+
+    <div id="chart1" class="chart"></div>
+
+    <p>
+      Since there are 4006 possible districting plans, it's hard to get a good sense of whether the distribution of
+      votes allows for a lot of <span class="orange">Orange</span>-favoring plans or <span class="purple">Purple</span>-favoring
+      plans. A local neighborhood of the metagraph may consist entirely of plans which give the <span class="purple">Purple</span>
+      Party the majority of seats, even though most other plans actually favor the <span class="orange">Orange</span>
+      Party.
+    </p>
+
+    <p>
+      Instead of trying to draw the whole metagraph, we can compute some <strong>statistics</strong> about all of the
+      plans with respect to the distribution of votes and also for the distribution of votes with respect to all of the
+      plans. Here, you can build a plan using the panel on the left, or click to navigate through the metagraph in the
+      previous section. The current plan will be displayed next to the navigator panel. Next to that, you can click the
+      square to change the distribution of the voters, just as before. Finally, there are two histograms.
+    </p>
+
+    <p>
+      The first histogram shows how many distributions of voters with the same number of <span class="orange">Orange</span>
+      and <span class="purple">Purple</span> squares as the distribution you picked result in a certain
+      number
+      of seats for the <span class="purple">Purple</span> Party in your selected plan. The number of
+      <span class="purple">Purple</span> seats in your selected distribution is indicated by the <span class="green">Green</span>
+      bar.
+    </p>
+
+    <p>
+      The second histogram shows how many <span class="purple">Purple</span> seats your distribution
+      gives over all 4006 possible districting plans. The number of <span class="purple">Purple</span> seats
+      in your selected plan is indicated by the <span class="blue">Blue</span> bar.
+    </p>
+
+    <div id="chart2" class="chart"></div>
+
+    <p>
+      How should we interpret this?
+    </p>
+
+    <p>
+      Let's start with the first histogram. This histogram shows the number of distributions which award the <span
+        class="purple">Purple</span>
+      Party a certain number of seats in your plan. We can use this to compare the outcome under your distribution to
+      all of the other outcomes. If the <span class="blue">Blue</span> bar is to the left of most of the
+      mass in the histogram, it means that your arrangement of voters has fewer <span class="purple">Purple</span>
+      seats than if we had chosen a random arrangement of the same voters for the same districting plan. Conversely, if
+      the <span class="blue">Blue</span> bar is to the right of most of the mass in the histogram, then
+      your arrangement of voters awards <em>more</em> seats than average to the <span class="purple">Purple</span>
+      Party, fixing your districting plan. These may suggest that your plan was carefully selected to favor one of the
+      parties.
+    </p>
+
+    <p>
+      The second histogram tells the same story, but in reverse. If the <span class="green">Green</span>
+      bar is to the left of most of the mass of the histogram, it means that, fixing your <strong>arrangement of voters</strong>,
+      among
+      all possible ways to draw the districts, your plan gives fewer than the average number of seats to the <span
+        class="purple">Purple</span> Party, and if the <span class="green">Green</span> bar is to
+      the right of most of the mass in the histogram, then your plan has <strong>more</strong> <span class="purple">Purple</span>
+      seats than the average plan. This histogram shows how difficult it is to find plans which favor a particular
+      party. If you try putting ten <span class="purple">Purple</span>
+      voters on the grid in a very spread out way, there are very few plans in which the <span class="purple">Purple</span>
+      Party wins three seats. If you cluster them closer together, then there are far more ways to draw plans which
+      give three seats to the <span class="purple">Purple</span> Party.
+    </p>
+
+    <p>
+      Next, we'll look at the 7x7 grid, which has too many valid districting plans for us to actually write down, so
+      we'll have to develop some more sophisticated methods to do these kinds of statistical comparisons.
+    </p>
+  </main>
+
+  <nav>
+    <a href="./index.html" class="previous">&laquo; Go back to the 4x4 metagraph</a>
+    <a href="./7x7" class="next"> Check out
+      sampling on the 7x7 grid &raquo;</a>
+  </nav>
+
+  <footer>
+    <p>
+      This page developed from a project at the
+      <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
+      Summer 2018 and is joint with
+      Seth Drew, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
+      Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
+        project</a> served as inspiration.
+    </p>
+    <p>
+      Version 1.0
+    </p>
+    <p>
+      August 13, 2018
+    </p>
+  </footer>
+
+  <script src="loc_d3v3.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="src-meta5/header.js"></script>
+  <script src="src-meta5/distbox.js"></script>
+  <script src="src-meta5/grid.js"></script>
+  <script src="src-meta5/graph.js"></script>
+  <script src="src-meta5/histograms.js"></script>
+  <script src="src-meta5/init.js"></script>
+
+</body>
+
+</html>

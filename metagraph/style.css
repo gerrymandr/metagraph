@@ -2,12 +2,50 @@
   box-sizing: border-box;
 }
 
+.orange,
+.blue,
+.green,
+.purple {
+  font-weight: 600;
+}
+
+.blue {
+  color: #66abff;
+}
+
+.purple {
+  color: #857ab8;
+}
+
+.green {
+  color: #99cc9a;
+}
+
+.orange {
+  color: #fca336;
+}
+
+strong {
+  font-weight: normal;
+  font-style: italic;
+}
+
 .previous,
 .next {
   font-weight: 600;
   padding: 0.8rem 1rem;
   text-decoration: none;
   background-color: #f0f0f8;
+}
+
+.next {
+  justify-self: flex-end;
+  grid-column: 2 / 3;
+}
+
+.previous {
+  justify-self: flex-start;
+  grid-column: 1 / 2;
 }
 
 a {
@@ -36,17 +74,19 @@ body {
   line-height: 2rem;
   font-weight: 400;
   color: #111;
-  margin: 0 2vw;
+  margin: 0;
   padding: 0;
 }
 
 figure {
-  margin: 1.5rem 0;
-  padding: 0;
+  margin: 1.5rem auto;
+  padding: 0 1vw;
   display: flex;
   flex-direction: column;
+  max-width: 900px;
   justify-content: space-around;
   align-items: center;
+  font-size: 1rem;
 }
 
 figure > div {
@@ -60,9 +100,31 @@ figure img {
   margin: 1rem;
 }
 
-main {
+main > p {
   max-width: 900px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1vw;
+}
+
+.chart {
+  margin: 1rem 0;
+  width: 100%;
+  text-align: left;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background: #eaf3f6;
+  border-top: 1px solid #5a6366;
+  border-bottom: 1px solid #5a6366;
+}
+
+.three-columns {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.two-columns {
+  grid-template-columns: 1fr 1fr;
 }
 
 header {
@@ -103,24 +165,24 @@ footer {
   align-items: flex-end;
   justify-content: start;
   border-top: 1px solid slategrey;
-  padding: 0;
-  line-height: 1.2rem;
+  padding: 0.8rem 1vw;
+
   font-size: 1rem;
   color: #666;
-}
-
-main {
-  margin-bottom: 2rem;
+  background: #eaf3f6;
 }
 
 footer > p {
-  margin: 0.8rem 0;
-  text-align: right;
+  margin: 0.2rem 0;
   max-width: 400px;
+
+  text-align: right;
+  line-height: 1.5;
 }
 
 nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  margin: 1rem 0 0 0;
+  display: grid;
+  grid-auto-columns: minmax(1fr, 250px);
+  grid-gap: 1rem;
 }

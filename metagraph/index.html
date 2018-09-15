@@ -14,7 +14,7 @@
     <p>
       This project uses interactive widgets and visualizations to explore some of the mathematical tools used to
       analyze the legislative redistricting process, particularly the detection of gerrymandering. We use the toy
-      examples of grd4, 5x5, and 7x7 grids to develop and demonstrate these techniques. We present the
+      examples of 4x4, 5x5, and 7x7 grids to develop and demonstrate these techniques. We present the
       construction of the <em>metagraph</em> on the 4x4 grid, the <em>statistical techniques</em> to determine
       whether a plan is an electoral outlier on the 5x5 grid, and <em>Markov chain Monte Carlo</em> methods for
       sampling on the 7x7 grid.
@@ -33,7 +33,7 @@
 
     <figure>
       <figcaption>Here is one:</figcaption>
-      <img width="150" src="imgs/fillgrid.png?raw=true">
+      <img src="imgs/fillgrid.png?raw=true">
     </figure>
 
     <p>
@@ -81,39 +81,39 @@
       all
       nodes in that symmetry class in the graph on the left as well as all of the neighbors of all of those plans.</p>
 
-    <div id="chart1" style="width:100%; text-align:left"></div>
+    <div id="chart1" class="chart two-columns"></div>
 
     <p>
       Now let's think about elections in Gridlandia. Gridlandia has plurality elections and two political parties, the
-      <strong style="color:#857ab8">Purple</strong> Party and the <strong style="color:#fca336">Orange</strong>
+      <span class="purple">Purple</span> Party and the <span class="orange">Orange</span>
       Party. For simplicity, we'll start by assuming that everyone in the same cell votes the same way -- either for
       the
-      <strong style="color:#857ab8">Purple</strong> candidate or the <strong style="color:#fca336">Orange</strong>
+      <span class="purple">Purple</span> candidate or the <span class="orange">Orange</span>
       candidate. Within each district, the candidate which gets the most votes wins the election, and ties are not
       resolved. Below, click a cell once to change its color. On the left, the nodes in the metagraph will change color
       to indicate which party wins a legislative majority under the corresponding plan. A node will remain grey if the
-      number of <strong style="color:#857ab8">Purple</strong>- and <strong style="color:#fca336">Orange</strong>-favoring
+      number of <span class="purple">Purple</span>- and <span class="orange">Orange</span>-favoring
       districts is equal.</p>
 
-    <div id="chart2" style="width:100%; text-align:left"></div>
+    <div id="chart2" class="chart two-columns"></div>
 
     <p>
       Let's make things a little more realistic. Instead of each cell voting entirely for one party, there are some
-      <strong style="color:#857ab8"> Purple </strong> and some <strong style="color:#fca336"> Orange </strong>
+      <span class="purple">Purple</span> and some <span class="orange">Orange</span>
       supporters in each cell -- a total of ten in each square. The same electoral rules apply, but now we can think
-      about a <em>distribution</em> of votes in each cell. Left click on a square to increase the percentage of <strong
-        style="color:#fca336">
-        Orange </strong>
-      voters, or right click it to decrease the percentage of <strong style="color:#fca336">Orange</strong> voters.</p>
+      about a <em>distribution</em> of votes in each cell. Left click on a square to increase the percentage of
+      <span class="orange">Orange</span>
+      voters, or right click it to decrease the percentage of <span class="orange">Orange</span> voters.</p>
 
     <p>
-      What happens when the <strong style="color:#fca336">Orange</strong> party has a slight majority in most of the
-      cells but a few are 90 or 100 percent <strong style="color:#857ab8">Purple</strong>? Under which configurations
+      What happens when the <span class="orange">Orange</span> party has a slight majority in most of the
+      cells but a few are 90 or 100 percent <span class="purple">Purple</span>? Under which configurations
       can the minority party still win three out of four districts? Are there any distributions of voters that cause
-      there to be a <strong style="color:#857ab8">Purple</strong> colored metagraph node surrounded entirely by <strong
-        style="color:#fca336"> Orange </strong> colored nodes?</p>
+      there to be a <span class="purple">Purple</span> colored metagraph node surrounded entirely by <span class="orange">Orange</span>
+      colored nodes?
+    </p>
 
-    <div id="chart3" style="width:100%; text-align:left"></div>
+    <div id="chart3" class="chart two-columns"></div>
 
     <p>
       If we're interested in studying redistricting in the real-world, we'll need techniques which work on cases which
@@ -124,7 +124,7 @@
   </main>
 
   <nav>
-    <a href="./metagrid-2" class="next"> Check out
+    <a href="./5x5" class="next"> Check out
       statistical techniques on the 5x5 grid &raquo;</a>
   </nav>
 
@@ -145,7 +145,6 @@
     </p>
   </footer>
 
-
   <script src="loc_d3v3.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
@@ -156,9 +155,7 @@
   <script src="src-meta4/ising1-4.js"></script>
   <script src="src-meta4/ising2-4.js"></script>
   <script src="src-meta4/ising1-4-p.js"></script>
-
   <script src="src-meta4/ising2-4-p.js"></script>
-
 </body>
 
 </html>
