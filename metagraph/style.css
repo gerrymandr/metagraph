@@ -112,9 +112,9 @@ figcaption {
   display: grid;
   justify-items: center;
   align-items: center;
-  /*  background: #eaf3f6;
+  background: #eaf3f6;
   border-top: 1px solid #cad3d6;
-  border-bottom: 1px solid #cad3d6;*/
+  border-bottom: 1px solid #cad3d6;
 }
 
 .three-columns {
@@ -133,7 +133,7 @@ figcaption {
 }
 
 .metagraph-tooltip {
-  background-color: #555;
+  background: #555;
   padding: 5px 5px 0px 5px;
   margin: 0px;
 }
@@ -231,7 +231,7 @@ nav {
   font-weight: 600;
   padding: 0.8rem 1rem;
   text-decoration: none;
-  background-color: #f0f0f8;
+  background: #f0f0f8;
 }
 
 .next {
