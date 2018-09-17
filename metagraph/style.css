@@ -112,9 +112,9 @@ figcaption {
   display: grid;
   justify-items: center;
   align-items: center;
-  background: #eaf3f6;
+  /*  background: #eaf3f6;
   border-top: 1px solid #cad3d6;
-  border-bottom: 1px solid #cad3d6;
+  border-bottom: 1px solid #cad3d6;*/
 }
 
 .three-columns {
@@ -144,14 +144,14 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0;
 }
 
 header > summary {
   border-top: 1px solid #5a6366;
   border-bottom: 1px solid #5a6366;
   padding: 0.8rem 1vw;
-  line-height: 1.2rem;
+  line-height: 1.2;
   font-size: 1rem;
   max-width: 600px;
   margin: auto;
@@ -160,11 +160,22 @@ header > summary {
 
 header > h1 {
   text-align: center;
+}
+
+h1 {
   line-height: 1.2;
+  margin: 0;
 }
 
 header > img {
   margin-bottom: 2rem;
+}
+
+.author {
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  margin: 1rem;
 }
 
 /* footer */
