@@ -76,12 +76,16 @@
         A 90 degree rotation makes these two plans equivalent.
       </figcaption>
     </figure>
+    
+    <p>If we do collapse the metagraph in this way (in mathematical terms, if we quotient by the action 
+      of the dihedral group <em>D</em><sub>4</sub>) we are left with only 22 nodes, and we will call that 
+      smaller object a <em>reduced metagraph</em>.</p>
 
     <h3>All the ways to district Gridlandia</h3>
     <p>
-      Below, you can interact with this
+      Below, you can interact with these
       mathematical object. On the left you can manipulate the full metagraph of Gridlandia. 
-      On the right you see a smaller metagraph where plans which are symmetric are merged into the same node, and two
+      On the right you see the reduced metagraph where plans which are related by symmetry are merged into the same node, and two
       nodes are linked by an edge if any two of their representatives are adjacent in the full metagraph. Mouse over a
       node in
       the left-hand graph to see the corresponding plan and highlight all of the other nodes corresponding to
@@ -90,44 +94,54 @@
       all
       nodes in that symmetry class from the larger graph, plus their neighbors.</p>
     <div id="chart1" class="chart center"></div>
+    
+    <p> Nodes in the full metagraph are sized according to their degree, or number of neighbors.  Nodes  in the 
+      reduced metagraph are sized according to the number of representatives in that symmetry class.</p>
 
     <h3>Elections in Gridlandia</h3>
     <p>
       Now let's think about voting in Gridlandia. Gridlandia has plurality elections and two political parties, the
       <span class="purple">Purple</span> Party and the <span class="orange">Orange</span>
-      Party. For simplicity, we'll start by assuming that everyone in the same cell votes the same way&mdash;either for
+      Party. For simplicity, we'll start by assuming that everyone in the same grid square votes the same way&mdash;either for
       the
       <span class="purple">Purple</span> candidate or the <span class="orange">Orange</span>
-      candidate. Within each district, the candidate which gets the most votes wins the election, and ties are not
-      resolved. Below, click a cell once to change its color. On the left, the nodes in the metagraph will change color
-      to indicate which party wins a legislative majority under the corresponding plan. A node will remain grey if the
+      candidate. Within each district, the candidate which gets the most votes wins the election, and ties are left
+      ambiguous&mdash;nobody wins. Below, you can click each grid unit to toggle its vote between the parties. 
+      On the left, the nodes in the metagraph will change color
+      to indicate which party wins a legislative majority under the corresponding plan. A node will remain gray if 
+      it has the same 
       number of <span class="purple">Purple</span>- and <span class="orange">Orange</span>-favoring
-      districts is equal.</p>
+      districts.</p>
 
     <div id="chart2" class="chart center"></div>
 
     <p>
-      Let's make things a little more realistic. Instead of each cell voting entirely for one party, there are some
+      Let's make things a little more complicated. Instead of each unit voting entirely for one party, we will give
+      it a balance of 
       <span class="purple">Purple</span> and some <span class="orange">Orange</span>
-      supporters in each cell&mdash;a total of ten in each square. The same electoral rules apply, but now we can think
-      about a <em>distribution</em> of votes in each cell. Left click on a square to increase the percentage of
-      <span class="orange">Orange</span>
-      voters, or right click it to decrease the percentage of <span class="orange">Orange</span> voters.</p>
+      supporters&mdash;a total of ten in each square. The same electoral rules apply, but now we can think
+      about a <em>distribution</em> of votes in each cell. Left- or right-click on each unit to adjust the 
+    balance of Orange and Purple supporters.</p>
 
     <p>
-      What happens when the <span class="orange">Orange</span> party has a slight majority in most of the
-      cells but a few are 90 or 100 percent <span class="purple">Purple</span>? Under which configurations
-      can the minority party still win three out of four districts? Are there any distributions of voters that cause
-      there to be a <span class="purple">Purple</span> colored metagraph node surrounded entirely by <span class="orange">Orange</span>
-      colored nodes?
+      Play around with this!
+      <ul>
+        <li>What happens when the <span class="orange">Orange</span> party has a slight majority in most of the
+      cells but a few are 90 or 100 percent <span class="purple">Purple</span>? 
+          <li>Under which configurations
+      can the minority party still win three out of four districts? 
+            <li>Can you find a distribution of voters that creates 
+      a <span class="purple">Purple</span>-colored metagraph node surrounded entirely by <span class="orange">Orange</span>
+       nodes?
+    </ul>
     </p>
 
     <div id="chart3" class="chart center"></div>
 
     <p>
-      If we're interested in studying redistricting in the real-world, we'll need techniques which work on cases which
-      are more complex than a 4x4 grid. We will develop some of these techniques using the 5x5 grid, which has a much
-      larger set of valid districting plans.
+      If we're interested in studying redistricting in the real world, we'll need techniques that work on much, much 
+      more complicated graphs. We will develop some of these techniques using the 5x5 grid, which has a much
+      larger universe of valid districting plans.
     </p>
 
   </main>
