@@ -10,13 +10,13 @@
 <body>
   <header>
     <h1> Welcome to Gridlandia!</h1>
-    <span class="author">an interactive introduction to the math of redistricting</span>
+    <p class="subtitle">an interactive introduction to the math of redistricting</p>
     <img width="200" src="imgs/blankgrid.png?raw=true" alt="A 4-by-4 grid">
     <summary>
       This project uses interactive widgets and visualizations to explore some of the mathematical tools used to
       analyze the mathematics of electoral redistricting, especially the question of
       <em>detecting gerrymanders</em>. We use very small
-      examples---4x4, 5x5, and 7x7 grids---to develop and demonstrate some analytical techniques. We begin
+      examples&mdash;4x4, 5x5, and 7x7 grids&mdash;to develop and demonstrate some analytical techniques. We begin
       with the
       construction of a <em>"metagraph"</em> on the 4x4 grid, build up to the <em>statistical techniques</em> to
       determine
@@ -99,7 +99,7 @@
     <p>
       Now let's think about voting in Gridlandia. Gridlandia has plurality elections and two political parties, the
       <span class="purple">Purple</span> Party and the <span class="orange">Orange</span>
-      Party. For simplicity, we'll start by assuming that everyone in the same cell votes the same way -- either for
+      Party. For simplicity, we'll start by assuming that everyone in the same cell votes the same way&mdash;either for
       the
       <span class="purple">Purple</span> candidate or the <span class="orange">Orange</span>
       candidate. Within each district, the candidate which gets the most votes wins the election, and ties are not
@@ -113,7 +113,7 @@
     <p>
       Let's make things a little more realistic. Instead of each cell voting entirely for one party, there are some
       <span class="purple">Purple</span> and some <span class="orange">Orange</span>
-      supporters in each cell -- a total of ten in each square. The same electoral rules apply, but now we can think
+      supporters in each cell&mdash;a total of ten in each square. The same electoral rules apply, but now we can think
       about a <em>distribution</em> of votes in each cell. Left click on a square to increase the percentage of
       <span class="orange">Orange</span>
       voters, or right click it to decrease the percentage of <span class="orange">Orange</span> voters.</p>
@@ -143,19 +143,23 @@
 
   <footer>
     <p>
-      This interactive was principally developed by <a href="http://zachschutzman.com/">Zachary Schutzman</a>
-      at the <a href="http://gerrydata.org">Voting Rights Data Institute</a> in
-      Summer 2018 and is based on joint work with
+      Created by <a href="http://zachschutzman.com/">Zachary Schutzman</a>.
+    </p>
+    <p>
+      This page developed from a project at the
+      <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
+      Summer 2018 and is joint with
       Seth Drew, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
       Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
         project</a> served as inspiration.
     </p>
     <p>
-      <a href="https://github.com/gerrymandr/gridlandia">
+      <a href="https://github.com/gerrymandr/metagraph">
         <img class="github" src="./GitHub-Mark-64px.png" alt="View the source on GitHub">
       </a>
     </p>
   </footer>
+
 
   <script src="loc_d3v3.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
