@@ -70,8 +70,7 @@ main > p,
 main > h2,
 main > h3 {
   max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 1rem auto;
   padding: 0 2vw;
 }
 
@@ -146,7 +145,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1.5rem 0;
 }
 
 header > summary {
@@ -156,7 +154,7 @@ header > summary {
   line-height: 1.2;
   font-size: 1rem;
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto 2rem auto;
   color: #444;
 }
 
@@ -166,10 +164,11 @@ header > h1 {
 
 h1 {
   line-height: 1.2;
-  margin: 0;
+  margin: 1.5rem 0 1rem 0;
 }
 
 header > img {
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -177,7 +176,7 @@ header > img {
   font-weight: bold;
   letter-spacing: 0.1rem;
   font-size: 1rem;
-  margin: 1rem;
+  margin: 0 0 0 0;
 }
 
 /* footer */
