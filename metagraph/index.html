@@ -10,26 +10,28 @@
 <body>
   <header>
     <h1> Welcome to Gridlandia!</h1>
-    <span class="author">by <a href="http://zachschutzman.com/">Zachary Schutzman</a></span>
+    <span class="author">an interactive introduction to the math of redistricting</span>
     <img width="200" src="imgs/blankgrid.png?raw=true" alt="A 4-by-4 grid">
     <summary>
       This project uses interactive widgets and visualizations to explore some of the mathematical tools used to
-      analyze the legislative redistricting process, particularly the detection of gerrymandering. We use the toy
-      examples of 4x4, 5x5, and 7x7 grids to develop and demonstrate these techniques. We present the
-      construction of the <em>metagraph</em> on the 4x4 grid, the <em>statistical techniques</em> to determine
-      whether a plan is an electoral outlier on the 5x5 grid, and <em>Markov chain Monte Carlo</em> methods for
-      sampling on the 7x7 grid.
+      analyze the mathematics of electoral redistricting, especially the question of 
+      <em>detecting gerrymanders</em>. We use very small 
+      examples---4x4, 5x5, and 7x7 grids---to develop and demonstrate some analytical techniques. We begin
+      with the
+      construction of a <em>"metagraph"</em> on the 4x4 grid, build up to the <em>statistical techniques</em> to determine
+      whether a plan is an partisan outlier on the 5x5 grid, and conclude with a demo of basic <em>Markov chain Monte Carlo</em> methods for
+      understanding the universe of possible districting plans on the 7x7 grid.
     </summary>
   </header>
 
   <main>
     <p>
-      Gridlandia is trying to draw legislative districts for its upcoming elections. The rules are that there must be
-      four districts, they must be contiguous, and they must all be of the same size. Since Gridlandia is laid out
-      neatly
-      in a four-by-four grid, it's not too hard to write all of the allowed districting plans down. There are only
-      117 of
-      them.
+      The nation of Gridlandia is trying to draw voting districts for its upcoming elections. The rules are that there must be
+      four districts and each district must be made up of four contiguous units. (Basically, each district
+      looks like a tetris piece.)
+      Since Gridlandia is laid out neatly
+      in a four-by-four grid, it's not too hard to write all of the allowed districting plans down. 
+      There turn out to be only 117 of them.
     </p>
 
     <figure>
@@ -38,10 +40,12 @@
     </figure>
 
     <p>
-      We can impose a <em>graph</em> structure on the collection of all of these plans, where each node is a plan and
-      two
-      plans
-      are connected if one can be transformed into the other by swapping a pair of cells in adjacent districts.
+      We can impose a <em>graph</em> or <em> network</em> structure to organize 
+      the collection of all of those 117 districting options.
+      We'll let each valid plan be represented by a node in this network, and we'll
+      connect two nodes with an edge if the plans they represent
+      are related by a simple <em>swap move</em>, exchanging the district assignments
+      of two cells from adjacent districts.
     </p>
     <figure>
       <div>
@@ -50,17 +54,20 @@
         <img src="imgs/swapgrid.png?raw=true">
       </div>
       <figcaption>
-        We can transfom the plan on the left into the plan on the right by swapping these two cells.
+        We can transfom the plan on the left into the plan on the right by swapping the
+        colors of two cells, shown in gray in the middle image.
       </figcaption>
     </figure>
 
     <p>
-      We call this structure the <strong>metagraph of districting plans</strong>. Below, you can interact with this
-      mathematical object. The graph on the left is the complete metagraph. Since Gridlandia is so symmetric, it
+      We call this structure the <strong>metagraph of districting plans</strong>. 
+      ("Metagraph" because it is a graph whose nodes represent ways of partitioning another graph.)
+      Below, you can interact with this
+      mathematical object. On the left you can manipulate the full metagraph of Gridlandia. Since Gridlandia is so symmetric, it
       might
-      be useful to consider two districting plans to be <em>the same</em> if one can be transformed into the other by
-      rotating or
-      flipping the plan. For example,
+      be useful to consider two districting plans to be <em>the same</em> if they are equivalent
+      after a rigid motion like a rotation or a flip.
+      For example,
     </p>
 
     <figure>
@@ -69,23 +76,23 @@
         <img src="imgs/rotgrid.png?raw=true">
       </div>
       <figcaption>
-        We can transfom the plan on the left into the plan on the right by rotating 90 degrees.
+        A 90 degree rotation makes these two plans equivalent.
       </figcaption>
     </figure>
 
     <p>
-      The graph on the right is the metagraph where plans which are symmetric are merged into the same node, and two
-      nodes are linked if any two of their two constituent nodes are linked in the full metagraph. Mouse over a node in
-      the graph on the left to see the corresponding plan and highlight all of the other nodes corresponding to
+      On the right you see a smaller metagraph where plans which are symmetric are merged into the same node, and two
+      nodes are linked by an edge if any two of their representatives are adjacent in the full metagraph. Mouse over a node in
+      the left-hand graph to see the corresponding plan and highlight all of the other nodes corresponding to
       symmetric
-      plans. Click a node to highlight all of its neighbors. Clicking a node in the graph on the right will highlight
+      plans. Click a node to highlight all of its neighbors. Clicking a node in the right-hand graph will highlight
       all
-      nodes in that symmetry class in the graph on the left as well as all of the neighbors of all of those plans.</p>
-
+      nodes in that symmetry class from the larger graph, plus their neighbors.</p>
     <div id="chart1" class="chart center"></div>
 
+    <h3>Elections in Gridlandia</h3>
     <p>
-      Now let's think about elections in Gridlandia. Gridlandia has plurality elections and two political parties, the
+      Now let's think about voting in Gridlandia. Gridlandia has plurality elections and two political parties, the
       <span class="purple">Purple</span> Party and the <span class="orange">Orange</span>
       Party. For simplicity, we'll start by assuming that everyone in the same cell votes the same way -- either for
       the
@@ -131,9 +138,9 @@
 
   <footer>
     <p>
-      This page developed from a project at the
-      <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
-      Summer 2018 and is joint with
+      This interactive was principally developed by <a href="http://zachschutzman.com/">Zachary Schutzman</a>
+      at the <a href="http://gerrydata.org">Voting Rights Data Institute</a> in 
+      Summer 2018 and is based on joint work with
       Seth Drew, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
       Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
         project</a> served as inspiration.
