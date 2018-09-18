@@ -14,22 +14,24 @@
     <img width="200" src="imgs/blankgrid.png?raw=true" alt="A 4-by-4 grid">
     <summary>
       This project uses interactive widgets and visualizations to explore some of the mathematical tools used to
-      analyze the legislative redistricting process, particularly the detection of gerrymandering. We use the toy
-      examples of 4x4, 5x5, and 7x7 grids to develop and demonstrate these techniques. We present the
-      construction of the <em>metagraph</em> on the 4x4 grid, the <em>statistical techniques</em> to determine
-      whether a plan is an electoral outlier on the 5x5 grid, and <em>Markov chain Monte Carlo</em> methods for
-      sampling on the 7x7 grid.
+      analyze the mathematics of electoral redistricting, especially the question of 
+      <em>detecting gerrymanders</em>. We use very small 
+      examples---4x4, 5x5, and 7x7 grids---to develop and demonstrate some analytical techniques. We begin
+      with the
+      construction of a <em>"metagraph"</em> on the 4x4 grid, build up to the <em>statistical techniques</em> to determine
+      whether a plan is an partisan outlier on the 5x5 grid, and conclude with a demo of basic <em>Markov chain Monte Carlo</em> methods for
+      understanding the universe of possible districting plans on the 7x7 grid.
     </summary>
   </header>
 
   <main>
     <p>
-      Gridlandia is trying to draw legislative districts for its upcoming elections. The rules are that there must be
-      four districts, they must be contiguous, and they must all be of the same size. Since Gridlandia is laid out
-      neatly
-      in a four-by-four grid, it's not too hard to write all of the allowed districting plans down. There are only
-      117 of
-      them.
+      The nation of Gridlandia is trying to draw voting districts for its upcoming elections. The rules are that there must be
+      four districts and each district must be made up of four contiguous units. (Basically, each district
+      looks like a tetris piece.)
+      Since Gridlandia is laid out neatly
+      in a four-by-four grid, it's not too hard to write all of the allowed districting plans down. 
+      There turn out to be only 117 of them.
     </p>
 
     <figure>
@@ -38,10 +40,12 @@
     </figure>
 
     <p>
-      We can impose a <em>graph</em> structure on the collection of all of these plans, where each node is a plan and
-      two
-      plans
-      are connected if one can be transformed into the other by swapping a pair of cells in adjacent districts.
+      We can impose a <em>graph</em> or <em> network</em> structure to organize 
+      the collection of all of those 117 districting options.
+      We'll let each valid plan be represented by a node in this network, and we'll
+      connect two nodes with an edge if the plans they represent
+      are related by a simple <em>swap move</em>, exchaning the district assignments
+      of two cells in adjacent districts.
     </p>
     <figure>
       <div>
@@ -50,13 +54,14 @@
         <img src="imgs/swapgrid.png?raw=true">
       </div>
       <figcaption>
-        We can transfom the plan on the left into the plan on the right by swapping these two cells.
+        We can transfom the plan on the left into the plan on the right by swapping the
+        colors of two cells, shown in gray in the middle image.
       </figcaption>
     </figure>
 
     <p>
       We call this structure the <strong>metagraph of districting plans</strong>. Below, you can interact with this
-      mathematical object. The graph on the left is the complete metagraph. Since Gridlandia is so symmetric, it
+      mathematical object. The graph on the left is the full metagraph of Gridlandia. Since Gridlandia is so symmetric, it
       might
       be useful to consider two districting plans to be <em>the same</em> if one can be transformed into the other by
       rotating or
