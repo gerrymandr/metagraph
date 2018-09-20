@@ -27,7 +27,7 @@
       four districts and each district must be made up of four contiguous units. (Basically, each district
       looks like a tetris piece.)
       Since Gridlandia is laid out neatly
-      in a four-by-four grid, it's not too hard to write all of the allowed districting plans down.
+      in a four-by-four grid, it's not too hard to write down all of the valid plans.
       There turn out to be only 117 of them.
     </p>
 
@@ -84,16 +84,16 @@
     <h3>All the ways to district Gridlandia</h3>
     <p>
       Below, you can interact with these
-      mathematical object. On the left you can manipulate the full metagraph of Gridlandia.
+      mathematical objects&mdash; if your screen is big enough, they are side-by-side. 
+      On the left you can manipulate the full metagraph of Gridlandia.
       On the right you see the reduced metagraph where plans which are related by symmetry are merged into the same
       node, and two
       nodes are linked by an edge if any two of their representatives are adjacent in the full metagraph. Mouse over a
       node in
       the left-hand graph to see the corresponding plan and highlight all of the other nodes corresponding to
-      symmetric
-      plans. Click a node to highlight all of its neighbors. Clicking a node in the right-hand graph will highlight
-      all
-      nodes in that symmetry class from the larger graph, plus their neighbors.</p>
+      symmetrically equivalent plans. 
+      Click a node to highlight all of its neighbors. Clicking a node in the right-hand graph will highlight
+      all nodes in that symmetry class from the larger graph, plus their neighbors.</p>
     <div id="chart1" class="chart center"></div>
 
     <p> Nodes in the full metagraph are sized according to their degree, or number of neighbors. Nodes in the
@@ -103,11 +103,11 @@
     <p>
       Now let's think about voting in Gridlandia. Gridlandia has plurality elections and two political parties, the
       <span class="purple">Purple</span> Party and the <span class="orange">Orange</span>
-      Party. For simplicity, we'll start by assuming that everyone in the same grid square votes the same
+      Party. For simplicity, we'll start by assuming that everyone in the same grid unit votes the same
       way&mdash;either for
       the
       <span class="purple">Purple</span> candidate or the <span class="orange">Orange</span>
-      candidate. Within each district, the candidate which gets the most votes wins the election, and ties are left
+      candidate. Within each district, the party with the most votes wins the election, and ties are left
       ambiguous&mdash;nobody wins. Below, you can click each grid unit to toggle its vote between the parties.
       On the left, the nodes in the metagraph will change color
       to indicate which party wins a legislative majority under the corresponding plan. A node will remain gray if
@@ -121,19 +121,20 @@
       Let's make things a little more complicated. Instead of each unit voting entirely for one party, we will give
       it a balance of
       <span class="purple">Purple</span> and some <span class="orange">Orange</span>
-      supporters&mdash;a total of ten in each square. The same electoral rules apply, but now we can think
-      about a <em>distribution</em> of votes in each cell. Left- or right-click on each unit to adjust the
-      balance of Orange and Purple supporters.</p>
+      supporters, in 10% increments. The same electoral rules apply.
+      Left- or right-click on each unit to adjust the
+      balance of <span class="orange">Orange</span> and <span class="purple">Purple</span> supporters.</p>
 
     <p>
       Play around with this!
+    </p><p>
 
       - What happens when the <span class="orange">Orange</span> party has a slight majority in most of the
-      cells but a few are 90 or 100 percent <span class="purple">Purple</span>?
-
+      cells but a few are heavily <span class="purple">Purple</span>?
+ </p><p>
       - Can you find a distribution of voters where one party has less than half of the votes but
       still wins three out of four districts?
-
+ </p><p>
       - Can you find a distribution of voters that creates
       a <span class="purple">Purple</span>-colored metagraph node surrounded entirely by <span class="orange">Orange</span>
       nodes?
@@ -164,7 +165,7 @@
       This page was created by <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a> based on work at the
       <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
       and is being edited and maintained by MGGG. The project includes joint work with
-      Seth Drew, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
+      <a href="http://sethdrew.com/">Seth Drew</a>, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
       Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
         project</a> served as inspiration.
     </p>
