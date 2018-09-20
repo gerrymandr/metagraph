@@ -30,26 +30,29 @@
       plans within two steps.  
     </p>
 
+    <h3>A local view of the metagraph</h3>
     <p>
-      Click on a plan in the local metagraph to recenter at its neighborhood. Alternatively, use the panel on the
-      left to build a districting plan from scratch and jump directly to it. 
-      Click the units on the left to toggle the vote between the two parties and see the winning side change in the 
-      metagraph.
+      Click on a plan in the local metagraph (at right) to put it in the center and study its 2-neighborhood. 
+      (Note: we're not showing the connections between the neighbors, but only how they relate to the center node.)
+      Alternatively, use the panel on the
+      left to build a districting plan from scratch, one district at a time, and jump directly to it. 
+      Click the units in the "Current Distribution" to toggle the vote between the two parties, and watch 
+      the winning side change in the metagraph.
     </p>
 
 
     <div id="chart1" class="chart three-columns"></div>
 
+    <h3>Statistics over the metagraph</h3>
     <p>
-      Since there are 4006 possible districting plans, it's hard to get a good sense of whether the distribution of
-      votes allows for a lot of <span class="orange">Orange</span>-favoring plans or <span class="purple">Purple</span>-favoring
-      plans. A local neighborhood of the metagraph may consist entirely of plans which give the <span class="purple">Purple</span>
-      Party the majority of seats, even though most other plans actually favor the <span class="orange">Orange</span>
-      Party.
+      Since there are 4006 possible districting plans, it's hard to use such a zoomed-in view to get a good sense of 
+      the universe of possibilities.
+      We might happen to be in an area of the metagraph where many plans give the <span class="purple">Purple</span>
+      Party the majority of seats, even though globally the <span class="orange">Orange</span> Party does far better.
     </p>
 
     <p>
-      Instead of trying to draw the whole metagraph, we can compute some <strong>statistics</strong> about all of the
+      Instead of trying to visualize the whole metagraph, we can compute some <strong>statistics</strong> about all of the
       plans with respect to the distribution of votes and also for the distribution of votes with respect to all of the
       plans. Here, you can build a plan using the panel on the left, or click to navigate through the metagraph in the
       previous section. The current plan will be displayed next to the navigator panel. Next to that, you can click the
