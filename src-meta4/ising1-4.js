@@ -79,7 +79,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       return Math.round(2 * d.deg) - 1;
     })
     .attr("name", function(d) {
-      return d.name;
+      return d.id;
     })
 
     .style("stroke-width", 0)

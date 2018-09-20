@@ -80,7 +80,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       return d.Type;
     })
     .attr("name", function(d) {
-      return d.name;
+      return d.id;
     })
     .attr("html_rep", function(d) {
       return d.html_rep;
