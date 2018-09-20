@@ -30,7 +30,7 @@
       Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous districts of 5 units each.
       (Gridlandia has grown!)
       There
-      are 4006 districting plans $D$ that satisfy these criteria, and we can construct the metagraph in the same way as
+      are 4006 districting plans $\mathcal D$ that satisfy these criteria, and we can construct the metagraph in the same way as
       <a href="./4x4.html">before</a>&mdash;with
       a node for each plan and an edge between plans that can be transformed into each other by one step (swapping two
       cells in
@@ -44,7 +44,8 @@
       Click on a plan in the local metagraph (at right) to put it in the center and study its 2-neighborhood.
       (Note: we're not showing the connections between the neighbors, but only how they relate to the center node.)
       Alternatively, use the panel on the
-      left to build a districting plan from scratch, one district at a time, and jump directly to it.
+      left to build a districting plan $\mathcal D$ 
+      from scratch, one district at a time, and jump directly to it.
       You can change the vote distribution $\Delta$ by
       clicking the units to toggle the vote between the two parties, and watch
       the winning side change in the metagraph.
@@ -53,11 +54,17 @@
 
     <div id="chart1" class="chart three-columns"></div>
 
+    <p>Try exploring:  create a distribution $\Delta$ that's about half and half split between the parties, start with 
+      any initial plan $\mathcal D$, and try clicking your way around the metagraph and looking for areas
+      that favor one party or the other.
+    </p>
     <h3>Statistics over the metagraph</h3>
     <p>
       Since there are 4006 possible districting plans, it's hard to use such a zoomed-in view to get a good sense of
-      the universe of possibilities.
-      We might happen to be in an area of the metagraph where many plans give the <span class="purple">Purple</span>
+      the universe of possibilities.  Furthermore, there are $2^{25}=33,554,432$ possible voting distributions,
+      even before we allow units to split their votes, since each of the 25 units can go for either party.
+      For a particular vote distribution $\Delta$,
+      we might happen to be in an area of the metagraph where many plans give the <span class="purple">Purple</span>
       Party the majority of seats, even though globally the <span class="orange">Orange</span> Party does better
       far more of the time.
     </p>
@@ -72,12 +79,13 @@
     </p>
 
     <p>
-      The first histogram shows how many distributions of voters with the same number of <span class="orange">Orange</span>
-      and <span class="purple">Purple</span> squares as the distribution you picked result in a certain
-      number
-      of seats for the <span class="purple">Purple</span> Party in your selected plan. The number of
-      <span class="purple">Purple</span> seats in your selected distribution is indicated by the <span class="green">Green</span>
-      bar.
+      The first histogram fixes your districting plan but varies the vote distribution over all the possibilities
+      with the same proportion of voters for each party.  (For instance, if your $\Delta$ has 9 
+      <span class="orange">Orange</span> units, then it is compared against the ${25 \choose 9}=2,042,975$ distributions
+      that are also 36% <span class="orange">Orange</span>.
+      The number of
+      <span class="purple">Purple</span> seats for your $(\mathcal D,\Delta)$  
+      is indicated by the <span class="green">Green</span> bar.
     </p>
 
     <p>
@@ -88,6 +96,7 @@
 
     <div id="chart2" class="chart three-columns"></div>
 
+    <h3>Interpretation</h3>
     <p>
       How should we interpret this?
     </p>
