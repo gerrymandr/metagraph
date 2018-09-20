@@ -193,14 +193,15 @@ footer {
   border-top: 1px solid #cad3d6;
   padding: 0.8rem 1vw;
 
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #444;
   background: #eaf3f6;
 }
 
-/* Dark blue footer:
+/* Dark blue:
 
 footer {
+  border-top: 1px solid #111;
   color: #0099cd;
   background: #012;
 }
@@ -212,6 +213,7 @@ footer a {
 footer a:visited {
   color: #eeeeff;
 }
+
 */
 
 footer > p {
