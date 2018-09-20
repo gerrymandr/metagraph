@@ -10,7 +10,9 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
     crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-    crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters: [
+      {left: '$', right: '$', display: false}
+    ]});"></script>
 </head>
 
 <body>
@@ -28,7 +30,7 @@
       Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous districts of 5 units each.
       (Gridlandia has grown!)
       There
-      are 4006 districting plans which satisfy these criteria, and we can construct the metagraph in the same way as
+      are 4006 districting plans $D$ that satisfy these criteria, and we can construct the metagraph in the same way as
       <a href="./4x4.html">before</a>&mdash;with
       a node for each plan and an edge between plans that can be transformed into each other by one step (swapping two
       cells in
@@ -43,7 +45,8 @@
       (Note: we're not showing the connections between the neighbors, but only how they relate to the center node.)
       Alternatively, use the panel on the
       left to build a districting plan from scratch, one district at a time, and jump directly to it.
-      Click the units in the "Current Distribution" to toggle the vote between the two parties, and watch
+      You can change the vote distribution $\Delta$ by
+      clicking the units to toggle the vote between the two parties, and watch
       the winning side change in the metagraph.
     </p>
 
@@ -55,16 +58,17 @@
       Since there are 4006 possible districting plans, it's hard to use such a zoomed-in view to get a good sense of
       the universe of possibilities.
       We might happen to be in an area of the metagraph where many plans give the <span class="purple">Purple</span>
-      Party the majority of seats, even though globally the <span class="orange">Orange</span> Party does far better.
+      Party the majority of seats, even though globally the <span class="orange">Orange</span> Party does better
+      far more of the time.
     </p>
 
     <p>
-      Instead of trying to visualize the whole metagraph, we can compute some <strong>statistics</strong> about all of
-      the
-      plans with respect to the distribution of votes and also for the distribution of votes with respect to all of the
-      plans. Here, you can build a plan using the panel on the left, or click to navigate through the metagraph in the
-      previous section. The current plan will be displayed next to the navigator panel. Next to that, you can click the
-      square to change the distribution of the voters, just as before. Finally, there are two histograms.
+      Instead of trying to visualize the whole metagraph, we can compute some <strong>statistics</strong> about all
+      possible $\mathcal D$ with respect to a fixed distribution of votes $\Delta$
+      and also for all possible distributions of votes $\Delta$ with respect to a fixed plan $\mathcal D$.
+      Below, you can build a plan using the panel on the left, or scroll back up to pick a plan from the last figure.
+      The selected plan will be displayed next to the navigator panel. You can click and toggle $\Delta$ as
+      before. Finally, there are two histograms.
     </p>
 
     <p>
