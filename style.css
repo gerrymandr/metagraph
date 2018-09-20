@@ -120,6 +120,16 @@ figcaption {
   border-bottom: 1px solid #cad3d6;
   overflow: auto;
 }
+/* Dark blue:
+  
+.chart {
+  border-top: 1px solid #111;
+  background: #012;
+  border-bottom: 1px solid #111;
+  color: white;
+  
+}
+*/
 
 .three-columns {
   grid-template-columns: 1fr 1fr 1fr;
