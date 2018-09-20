@@ -140,6 +140,7 @@ figcaption {
   background: #555;
   padding: 5px 5px 0px 5px;
   margin: 0px;
+  display: none;
 }
 
 /* header */
@@ -226,30 +227,49 @@ footer > p {
 nav {
   margin: 0;
   display: grid;
-  grid-template-columns: minmax(1fr, 250px);
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
 }
 
-.previous,
-.next {
+.nav-link,
+.current-page {
   font-weight: 600;
   padding: 0.8rem 1rem;
   text-decoration: none;
   background: #f0f0f8;
+  margin: 0 0 1rem 0;
 }
 
-.next {
-  justify-self: flex-end;
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.current,
+.next,
+.previous {
+  display: flex;
+  flex-direction: column;
+}
+
+.current {
+  color: #5a6366;
+  font-weight: normal;
+  font-style: italic;
+  align-items: center;
+  /* justify-self: center; */
   grid-column: 2 / 3;
 }
 
-.previous {
-  justify-self: flex-start;
-  grid-column: 1 / 2;
+.next {
+  /* justify-self: flex-end; */
+  grid-column: 3 / 4;
+  align-items: flex-end;
+  justify-content: space-evenly;
 }
 
-.script-container {
-  width: 0;
-  height: 0;
-  overflow: hidden;
+.previous {
+  /* justify-self: flex-start; */
+  align-items: flex-start;
+  grid-column: 1 / 2;
 }
