@@ -118,6 +118,7 @@ figcaption {
   background: #eaf3f6;
   border-top: 1px solid #cad3d6;
   border-bottom: 1px solid #cad3d6;
+  overflow: auto;
 }
 
 .three-columns {
@@ -245,4 +246,10 @@ nav {
 .previous {
   justify-self: flex-start;
   grid-column: 1 / 2;
+}
+
+.script-container {
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
