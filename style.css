@@ -265,7 +265,6 @@ h4 {
   /* justify-self: flex-end; */
   grid-column: 3 / 4;
   align-items: flex-end;
-  justify-content: space-evenly;
 }
 
 .previous {
