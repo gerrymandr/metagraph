@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>5x5 | Metagraph</title>
+  <title>Metagraph 5x5</title>
   <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
@@ -19,41 +19,48 @@
   </nav>-->
 
   <header>
-    <h1> Welcome to Gridlandia!</h1>
+    <h1>Redistricting a 5x5 Grid</h1>
     <img width="200" src="imgs/blankgrid5.png?raw=true" alt="A 5-by-5 grid">
   </header>
 
   <main>
     <p>
-      Gridlandia incorporated nine additional cells, for a total of 25. Since the population has increased, we'd now
-      like to draw <strong>five</strong> districts. The same rules apply: each district must be contiguous and of the
-      same size. There
-      are 4006 districting plans which satisfy these criteria, and we can construct the metagraph in the same way, with
-      a node for each plan and an edge between plans that can be transformed into each other by swapping cells in
-      adjacent districts. We can write these all down, but this is too many to show all at once as a metagraph.
+      Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous districts of 5 units each.
+      (Gridlandia has grown!)
+      There
+      are 4006 districting plans which satisfy these criteria, and we can construct the metagraph in the same way as
+      <a href="./4x4.html">before</a>&mdash;with
+      a node for each plan and an edge between plans that can be transformed into each other by one step (swapping two
+      cells in
+      adjacent districts). We can write these all down, but the full visualization is hard to work with.
       Instead, we'll show a local picture of the metagraph where you can see a districting plan and all of the other
-      plans which can be formed by swapping one or two pairs of cells.
+      plans within two steps.
     </p>
 
+    <h3>A local view of the metagraph</h3>
     <p>
-      Click on a plan in the local metagraph to recenter at its neighborhood. Alternatively, use the panel on the
-      left to build a districting plan and jump directly to it. Click the squares on the left to change the color of
-      the square and see which party wins a majority of seats.
+      Click on a plan in the local metagraph (at right) to put it in the center and study its 2-neighborhood.
+      (Note: we're not showing the connections between the neighbors, but only how they relate to the center node.)
+      Alternatively, use the panel on the
+      left to build a districting plan from scratch, one district at a time, and jump directly to it.
+      Click the units in the "Current Distribution" to toggle the vote between the two parties, and watch
+      the winning side change in the metagraph.
     </p>
 
 
     <div id="chart1" class="chart three-columns"></div>
 
+    <h3>Statistics over the metagraph</h3>
     <p>
-      Since there are 4006 possible districting plans, it's hard to get a good sense of whether the distribution of
-      votes allows for a lot of <span class="orange">Orange</span>-favoring plans or <span class="purple">Purple</span>-favoring
-      plans. A local neighborhood of the metagraph may consist entirely of plans which give the <span class="purple">Purple</span>
-      Party the majority of seats, even though most other plans actually favor the <span class="orange">Orange</span>
-      Party.
+      Since there are 4006 possible districting plans, it's hard to use such a zoomed-in view to get a good sense of
+      the universe of possibilities.
+      We might happen to be in an area of the metagraph where many plans give the <span class="purple">Purple</span>
+      Party the majority of seats, even though globally the <span class="orange">Orange</span> Party does far better.
     </p>
 
     <p>
-      Instead of trying to draw the whole metagraph, we can compute some <strong>statistics</strong> about all of the
+      Instead of trying to visualize the whole metagraph, we can compute some <strong>statistics</strong> about all of
+      the
       plans with respect to the distribution of votes and also for the distribution of votes with respect to all of the
       plans. Here, you can build a plan using the panel on the left, or click to navigate through the metagraph in the
       previous section. The current plan will be displayed next to the navigator panel. Next to that, you can click the
