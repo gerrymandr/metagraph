@@ -59,6 +59,11 @@ body {
   margin: 0;
   padding: 0;
 }
+/* Dark blue theme: 
+text {
+  fill: white;
+}
+*/
 
 /* main */
 
@@ -120,14 +125,13 @@ figcaption {
   border-bottom: 1px solid #cad3d6;
   overflow: auto;
 }
-/* Dark blue:
-  
+/* Dark blue: 
+
 .chart {
   border-top: 1px solid #111;
   background: #012;
   border-bottom: 1px solid #111;
   color: white;
-  
 }
 */
 
