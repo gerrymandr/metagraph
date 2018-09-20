@@ -76,7 +76,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       return d.html_rep;
     })
     .attr("name", function(d) {
-      return d.name;
+      return d.id;
     })
 
     .attr("r", function(d) {
