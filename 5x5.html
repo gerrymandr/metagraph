@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Welcome to Gridlandia!</title>
+  <title>Metagraph 5x5</title>
   <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,26 +13,28 @@
   </nav>-->
 
   <header>
-    <h1> Welcome to Gridlandia!</h1>
+    <h1>Redistricting a 5x5 Grid</h1>
     <img width="200" src="imgs/blankgrid5.png?raw=true" alt="A 5-by-5 grid">
   </header>
 
   <main>
     <p>
-      Gridlandia incorporated nine additional cells, for a total of 25. Since the population has increased, we'd now
-      like to draw <strong>five</strong> districts. The same rules apply: each district must be contiguous and of the
-      same size. There
-      are 4006 districting plans which satisfy these criteria, and we can construct the metagraph in the same way, with
-      a node for each plan and an edge between plans that can be transformed into each other by swapping cells in
-      adjacent districts. We can write these all down, but this is too many to show all at once as a metagraph.
+      Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous districts of 5 units each.
+      (Gridlandia has grown!) 
+      There
+      are 4006 districting plans which satisfy these criteria, and we can construct the metagraph in the same way as
+      <a href="./4x4.html">before</a>&mdash;with
+      a node for each plan and an edge between plans that can be transformed into each other by one step (swapping two cells in
+      adjacent districts). We can write these all down, but the full visualization is hard to work with.
       Instead, we'll show a local picture of the metagraph where you can see a districting plan and all of the other
-      plans which can be formed by swapping one or two pairs of cells.
+      plans within two steps.  
     </p>
 
     <p>
       Click on a plan in the local metagraph to recenter at its neighborhood. Alternatively, use the panel on the
-      left to build a districting plan and jump directly to it. Click the squares on the left to change the color of
-      the square and see which party wins a majority of seats.
+      left to build a districting plan from scratch and jump directly to it. 
+      Click the units on the left to toggle the vote between the two parties and see the winning side change in the 
+      metagraph.
     </p>
 
 
