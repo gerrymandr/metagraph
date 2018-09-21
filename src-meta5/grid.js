@@ -227,7 +227,7 @@ _.times(square5sColumn, function(n) {
 function do_update2(r){
         if (d3.event != null && r != -1){
             var t = parseInt(d3.select(r).attr("party"));
-            var tid = d3v3.select(r).attr("id");
+            var tid = d3.select(r).attr("id");
 
         grd3.selectAll('rect').each(function(d){
             if (d3.select(this).attr("id") == d3.select(r).attr("id")){
@@ -249,78 +249,78 @@ function do_update2(r){
 
 
     grd3.selectAll('rect').each(function(d){
-        //console.log(d3v3.select(this).attr("party"));
-        if (d3v3.select(this).attr("party") == 0) 
-          d3v3.select(this).style("fill", simp_fill[1]);
-        if (d3v3.select(this).attr("party") == 1) {
-          d3v3.select(this).style("fill", simp_fill[2]);
-          d3v3.select(this).style("fill-opacity",opacity_red);
+        //console.log(d3.select(this).attr("party"));
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).style("fill", simp_fill[1]);
+        if (d3.select(this).attr("party") == 1) {
+          d3.select(this).style("fill", simp_fill[2]);
+          d3.select(this).style("fill-opacity",opacity_red);
         }
-        if (d3v3.select(this).attr("party") == -1) {
-          d3v3.select(this).style("fill", simp_fill[0]);
-          d3v3.select(this).style("fill-opacity",opacity_blk);
+        if (d3.select(this).attr("party") == -1) {
+          d3.select(this).style("fill", simp_fill[0]);
+          d3.select(this).style("fill-opacity",opacity_blk);
       }
 
     });
     grd3.selectAll('text').each(function(d){
-        if (d3v3.select(this).attr("id") == tid){
-            d3v3.select(this).attr("party", t+2);
-            if (d3v3.select(this).attr("party") >= 2){
-              d3v3.select(this).attr("party",-1);
+        if (d3.select(this).attr("id") == tid){
+            d3.select(this).attr("party", t+2);
+            if (d3.select(this).attr("party") >= 2){
+              d3.select(this).attr("party",-1);
             }
         }
 
-        //console.log(d3v3.select(this).attr("party"));
-        if (d3v3.select(this).attr("party") == 0) 
-          d3v3.select(this).style("fill", simp_fill[1]);
-        if (d3v3.select(this).attr("party") == 0) 
-          d3v3.select(this).text(simp_char[1]);       
-        if (d3v3.select(this).attr("party") == 1) 
-          d3v3.select(this).style("fill", simp_fill[2]);
-        if (d3v3.select(this).attr("party") == 1) 
-          d3v3.select(this).text(simp_char[2]); 
-        if (d3v3.select(this).attr("party") == -1) 
-          d3v3.select(this).style("fill", simp_fill[0]);
-        if (d3v3.select(this).attr("party") == -1) 
-          d3v3.select(this).text(simp_char[0]); 
+        //console.log(d3.select(this).attr("party"));
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).style("fill", simp_fill[1]);
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).text(simp_char[1]);       
+        if (d3.select(this).attr("party") == 1) 
+          d3.select(this).style("fill", simp_fill[2]);
+        if (d3.select(this).attr("party") == 1) 
+          d3.select(this).text(simp_char[2]); 
+        if (d3.select(this).attr("party") == -1) 
+          d3.select(this).style("fill", simp_fill[0]);
+        if (d3.select(this).attr("party") == -1) 
+          d3.select(this).text(simp_char[0]); 
 
     });
 
     grd4.selectAll('rect').each(function(d){
-        //console.log(d3v3.select(this).attr("party"));
-        if (d3v3.select(this).attr("party") == 0) 
-          d3v3.select(this).style("fill", simp_fill[1]);
-        if (d3v3.select(this).attr("party") == 1) {
-          d3v3.select(this).style("fill", simp_fill[2]);
-          d3v3.select(this).style("fill-opacity",opacity_red);
+        //console.log(d3.select(this).attr("party"));
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).style("fill", simp_fill[1]);
+        if (d3.select(this).attr("party") == 1) {
+          d3.select(this).style("fill", simp_fill[2]);
+          d3.select(this).style("fill-opacity",opacity_red);
         }
-        if (d3v3.select(this).attr("party") == -1) {
-          d3v3.select(this).style("fill", simp_fill[0]);
-          d3v3.select(this).style("fill-opacity",opacity_blk);
+        if (d3.select(this).attr("party") == -1) {
+          d3.select(this).style("fill", simp_fill[0]);
+          d3.select(this).style("fill-opacity",opacity_blk);
       }
 
     });
     grd4.selectAll('text').each(function(d){
-        if (d3v3.select(this).attr("id") == tid){
-            d3v3.select(this).attr("party", t+2);
-            if (d3v3.select(this).attr("party") >= 2){
-              d3v3.select(this).attr("party",-1);
+        if (d3.select(this).attr("id") == tid){
+            d3.select(this).attr("party", t+2);
+            if (d3.select(this).attr("party") >= 2){
+              d3.select(this).attr("party",-1);
             }
         }
 
-        //console.log(d3v3.select(this).attr("party"));
-        if (d3v3.select(this).attr("party") == 0) 
-          d3v3.select(this).style("fill", simp_fill[1]);
-        if (d3v3.select(this).attr("party") == 0) 
-          d3v3.select(this).text(simp_char[1]);       
-        if (d3v3.select(this).attr("party") == 1) 
-          d3v3.select(this).style("fill", simp_fill[2]);
-        if (d3v3.select(this).attr("party") == 1) 
-          d3v3.select(this).text(simp_char[2]); 
-        if (d3v3.select(this).attr("party") == -1) 
-          d3v3.select(this).style("fill", simp_fill[0]);
-        if (d3v3.select(this).attr("party") == -1) 
-          d3v3.select(this).text(simp_char[0]); 
+        //console.log(d3.select(this).attr("party"));
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).style("fill", simp_fill[1]);
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).text(simp_char[1]);       
+        if (d3.select(this).attr("party") == 1) 
+          d3.select(this).style("fill", simp_fill[2]);
+        if (d3.select(this).attr("party") == 1) 
+          d3.select(this).text(simp_char[2]); 
+        if (d3.select(this).attr("party") == -1) 
+          d3.select(this).style("fill", simp_fill[0]);
+        if (d3.select(this).attr("party") == -1) 
+          d3.select(this).text(simp_char[0]); 
 
     });
 
