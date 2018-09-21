@@ -170,8 +170,8 @@ function mk_gr2(fn, num) {
       .attr("idno2", function(d) {
         return d.data.name;
       })
-      .style("fill", "#555");
-      .style("opacity",.9)
+      .style("fill", "#555")
+      .style("opacity",.9);
 
     node
       .append("image")
