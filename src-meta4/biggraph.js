@@ -93,9 +93,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
     .style("opacity", 1)
     .attr("on", 0)
     .style("fill", function(d) {
-      if (d.Type == 20) return "PapayaWhip";
-      if (d.Type == 21) return "Gold";
-      return fill(d.Type);
+      return mgfill[parseInt(d.Type)];
     })
     .call(force.drag)
     .on("mousemove", function() {
