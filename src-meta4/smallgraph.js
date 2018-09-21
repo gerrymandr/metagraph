@@ -57,9 +57,7 @@ d3v3.json("src-meta4/data/gr2.json", function(json) {
       return d.Type;
     })
     .style("fill", function(d) {
-      if (d.Type == 20) return "PapayaWhip";
-      if (d.Type == 21) return "Gold";
-      return fill(d.Type);
+      return mgfill[parseInt(d.Type)];
     })
     .call(force.drag)
     .attr("on", 0)

@@ -1,7 +1,7 @@
 
 cur_plan_str2 = '4455511445551144566114376661337766233772223377222';
 
-var distfills = d3.scaleOrdinal(d3.schemeSet2);
+var distfills = ['#7bc8f6','#6fc276','#0343df','#bbf90f','#6a79f7','#475f94','#13eac9'];
 var grdrw = d3.select('#randomwalk').append('svg')
   .attr("width", (square7*8))
   .attr("height",square7*8);
@@ -35,7 +35,7 @@ _.times(square7sColumn, function(n) {
       })
       .attr("y", (16 + n * 1.04*square7sm))
     
-    .style("fill",function(d,i) { return distfills(cur_plan_str2[7*n + i]);})
+    .style("fill",function(d,i) { return distfills[cur_plan_str2[7*n + i]-1];})
     .style("stroke","#555")
     .style("stroke-width",1)
 
@@ -192,7 +192,7 @@ function update_distsrw(){
     grdrw.selectAll("rect").each(function(d){
         var nm = d3.select(this).attr("id");
 
-        d3.select(this).style("fill",function() { return distfills(cur_plan_str2[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]);})
+        d3.select(this).style("fill",function() { return distfills[cur_plan_str2[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]-1];})
 
     });
 
