@@ -5,6 +5,8 @@ var dist3 = 0;
 var dist4 = 0;
 var cnt = 0;
 
+var simp_fill_parts = ['#4a4a5e','#909090','#9e4b49'];
+
 // create the svg
 var grd2 = d3v3
   .select("#chart3")
@@ -45,7 +47,7 @@ _.times(squaresColumn, function(n) {
 
     .attr("party", 0)
     .attr("mask", 0)
-    .style("fill", simp_fill[2])
+    .style("fill", simp_fill_parts[2])
     .style("stroke", "#555")
     .style("stroke-width", 0);
 
@@ -72,7 +74,7 @@ _.times(squaresColumn, function(n) {
 
     .attr("party", 0.5)
     .attr("mask", 2)
-    .style("fill", simp_fill[0])
+    .style("fill", simp_fill_parts[0])
     .style("stroke", "#555")
     .style("stroke-width", 0);
 
