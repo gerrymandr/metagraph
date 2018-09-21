@@ -116,6 +116,8 @@ function do_updateis(r) {
     if (d3v3.event.defaultPrevented) return;
 
     var t = parseInt(d3v3.select(r).attr("party"));
+    var tid = d3v3.select(r).attr("id");
+
     d3v3.select(r).attr("party", t + 2);
     if (d3v3.select(r).attr("party") >= 2) {
       d3v3.select(r).attr("party", -1);
