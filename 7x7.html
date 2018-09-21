@@ -123,8 +123,8 @@
     <p>
       The idea behind this is that plans which disproportionately favor one particular party tend to be near each other
       in the metagraph, so we should search for improvements near the best plan we've already seen. However, we don't
-      want to get stuck in a neighborhood which has good plans, but not the best ones, so we include the possibility
-      for the random walk to move to a better location, which is controlled by the restart frequency.
+      want to get stuck in a neighborhood which has pretty good plans, but not the best, so we introduce some randomness
+      to get us unstuck, in a way that is controlled by the restart frequency.
     </p>
 
     <p>
@@ -142,10 +142,15 @@
     </p>
     <p>
       Sampling real-world districting plans is of course much more complex than sampling on the grid, but fundamentally
-      the idea of the random walk is the same. In practice, modifications can be made to this walk to sample from
-      whatever distribution over plans you want. The first implementation on this page is close to one which samples
+      the idea of the random walk is the same. When you  change the details of how you conduct the random walk, 
+      you change the "stationary distribution"&mdash; in other words, it alters the weight that tells you how likely
+      each plan is to come up if you were were to walk for a very long time.  
+      The first implementation on this page is close to one which samples
       uniformly, and the second implementation samples from a distribution which weights more heavily towards
-      <span class="purple">Purple</span>- or <span class="orange">Orange</span>-favoring plans.
+      extreme partisan plans.  
+      The scientific community is currently spending lots of energy to understand the 
+      details of how to conduct these walks to come to the strongest conclusions 
+      about the universe of redistricting possibilities.
     </p>
   </main>
 
