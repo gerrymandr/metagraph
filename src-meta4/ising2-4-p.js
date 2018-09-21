@@ -5,7 +5,7 @@ var dist3 = 0;
 var dist4 = 0;
 var cnt = 0;
 
-var simp_fill_parts = ['#4a4a5e','#909090','#9e4b49'];
+
 
 // create the svg
 var grd2 = d3v3

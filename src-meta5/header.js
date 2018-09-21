@@ -26,6 +26,8 @@ elecfill[8] = "#857ab8";
 
 var simp_fill = ['#1E1E26','#909090','#9E2825'];
 
+var simp_fill_parts = ['#4a4a5e','#909090','#9e4b49'];
+
 var simp_char = ["\u2663", '', "\u2665"];
 
 
