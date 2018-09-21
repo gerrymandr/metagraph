@@ -1,5 +1,5 @@
 
-var distfills = d3.scaleOrdinal(d3.schemeSet2);
+var distfills = ['#7bc8f6','#6fc276','#0343df','#bbf90f','#6a79f7','#475f94','#13eac9'];
 
 var square7 = 40;
 var square7sm = square7/1.25;
@@ -148,7 +148,7 @@ _.times(square7sColumn, function(n) {
       })
       .attr("y", (square7sm + n * 1.04*square7sm))
     .attr("district", function(d,i){return (cur_plan_str[7*n + i]);})
-    .style("fill",function(d,i) { return distfills(cur_plan_str[7*n + i]);})
+    .style("fill",function(d,i) { return distfills[cur_plan_str[7*n + i]-1];})
     .style("stroke","#555")
     .style("stroke-width",1)
 
@@ -627,7 +627,7 @@ function update_dists(){
 	grd2.selectAll("rect").each(function(d){
 		var nm = d3.select(this).attr("id");
     if (nm != null){
-		d3.select(this).style("fill",function() { return distfills(cur_plan_str[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]);})}
+    d3.select(this).style("fill",function() { return distfills[cur_plan_str[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]-1];})}
 
 	});
 

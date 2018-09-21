@@ -119,7 +119,7 @@ _.times(square7sColumn, function(n) {
       })
       .attr("y", (square7sm + n * 1.04*square7sm))
     .attr("district", function(d,i){return (cur_plan_str3[7*n + i]);})
-    .style("fill",function(d,i) { return distfills(cur_plan_str3[7*n + i]);})
+    .style("fill",function(d,i) { return distfills[cur_plan_str3[7*n + i]-1];})
     .style("stroke","#555")
     .style("stroke-width",1);});
 
@@ -514,7 +514,7 @@ function update_dists2(){
 	grd3.selectAll("rect").each(function(d){
 		var nm = d3.select(this).attr("id");
     if (nm != null){
-		d3.select(this).style("fill",function() { return distfills(cur_plan_str3[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]);})}
+    d3.select(this).style("fill",function() { return distfills[cur_plan_str3[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]-1];})}
 
 	});
 
