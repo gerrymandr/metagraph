@@ -24,7 +24,9 @@ elecfill[0] = "#fca336";
 elecfill[4] = "#909090";
 elecfill[8] = "#857ab8";
 
-var simp_fill = [elecfill[0], elecfill[4], elecfill[8]];
+var simp_fill = ['#1E1E26','#909090','#9E2825'];
+
+var simp_char = ["\u2663", '', "\u2665"];
 
 var idno2 = 0;
 var width = w;
