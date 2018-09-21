@@ -28,6 +28,12 @@ var simp_fill = ['#1E1E26','#909090','#9E2825'];
 
 var simp_char = ["\u2663", '', "\u2665"];
 
+
+opacity_red = .4;
+opacity_blk = .15;
+
+
+
 var idno2 = 0;
 var width = w;
 var height = h;

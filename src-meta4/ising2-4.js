@@ -121,15 +121,18 @@ function do_updateis(r) {
       d3v3.select(r).attr("party", -1);
     }
   }
-  grd.selectAll("rect").each(function(d) {
-    //console.log(d3v3.select(this).attr("party"));
-    if (d3v3.select(this).attr("party") == 0)
-      d3v3.select(this).style("fill", simp_fill[1]);
-    if (d3v3.select(this).attr("party") == 1)
-      d3v3.select(this).style("fill", simp_fill[2]);
-    if (d3v3.select(this).attr("party") == -1)
-      d3v3.select(this).style("fill", simp_fill[0]);
-  });
+    grd.selectAll('rect').each(function(d){
+        //console.log(d3v3.select(this).attr("party"));
+        if (d3v3.select(this).attr("party") == 0) d3v3.select(this).style("fill", simp_fill[1]);
+        if (d3v3.select(this).attr("party") == 1) {
+          d3v3.select(this).style("fill", simp_fill[2]);
+          d3v3.select(this).style("fill-opacity",opacity_red);
+        }
+        if (d3v3.select(this).attr("party") == -1) {
+          d3v3.select(this).style("fill", simp_fill[0]);
+          d3v3.select(this).style("fill-opacity",opacity_blk);
+      }
+    });
   grd.selectAll('text').each(function(d){
       if (d3v3.select(this).attr("id") == tid){
           d3v3.select(this).attr("party", t+2);
