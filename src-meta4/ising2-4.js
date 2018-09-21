@@ -93,6 +93,8 @@ _.times(squaresColumn, function(n) {
     })
     .style("stroke", "#555")
     .style("stroke-width", 1)
+    .style("stroke-opacity",1)
+    .style("fill-opacity", .4)
 
     .on("mouseover", function(d) {
       d3v3.select(this).style("stroke", "#000");
