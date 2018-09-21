@@ -171,6 +171,7 @@ function mk_gr2(fn, num) {
         return d.data.name;
       })
       .style("fill", "#555");
+      .style("opacity",.9)
 
     node
       .append("image")
