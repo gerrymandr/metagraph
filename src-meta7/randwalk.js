@@ -17,13 +17,8 @@ _.times(square7sColumn, function(n) {
   // create each set of rows
   var rows = grdrw.selectAll('rect' + ' .row-' + (n + 1))
     .data(d3.range(square7sRow))
-    .enter().append('rect')
-    
+    .enter().append('rect')   
 
-    
-    
-    
-    
     .attr("class", function(d, i) {return 'square7 row-' + (n + 1) + ' ' + 'col-' + (i + 1);})
     .attr("id", function(d, i) {
         return 's-' + (n + 1) + (i + 1);
@@ -40,8 +35,6 @@ _.times(square7sColumn, function(n) {
     .style("stroke-width",1)
 
 });
-
-
 
 function grid_bordersrw(){
 
