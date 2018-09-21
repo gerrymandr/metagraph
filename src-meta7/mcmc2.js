@@ -672,7 +672,20 @@ helptxt.append("text")
 }
         res_txt.text("");
       });
+      grd4.selectAll("text").each(function(d){
+        if (d3.select(this).attr("id")!=null){
+        var nm = d3.select(this).attr("id");
+        var n = nm[2]-1;
+        var k = nm[3]-1;
+        
+        d3.select(this).attr("party",function(d) {return party_init[7*n+k];})
+        d3.select(this).style("fill",function(d) { return simp_fill[1+parseInt(d3.select(this).attr("party"))];})
 
+        do_update4(-1);
+
+}
+      
+      });
       });
 
 
