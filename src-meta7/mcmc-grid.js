@@ -997,7 +997,7 @@ helptxt.append("text")
       
       });
       grd.selectAll("text").each(function(d){
-        if (d3.select(this).attr("button")==null){
+        if (d3.select(this).attr("button")==null && d3.select(this).attr("id") != null){
         var nm = d3.select(this).attr("id");
         var n = nm[2]-1;
         var k = nm[3]-1;
