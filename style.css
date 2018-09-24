@@ -47,15 +47,14 @@ a:visited {
 }
 
 html {
-  font-family: "Source Sans Pro", "Segoe UI", Tahoma, Geneva, Verdana,
-    sans-serif;
-  font-size: 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 100%;
 }
 
 body {
   font-size: 1.2rem;
-  line-height: 2rem;
   font-weight: 400;
+  line-height: 1.7;
   color: #111;
   margin: 0;
   padding: 0;
@@ -82,6 +81,10 @@ main > * {
   margin-left: auto;
   margin-right: auto;
   padding: 0 2vw;
+}
+
+li {
+  margin-left: 2rem;
 }
 
 /* figures */
