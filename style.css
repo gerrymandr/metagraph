@@ -73,7 +73,9 @@ main {
 
 main > p,
 main > h2,
-main > h3 {
+main > h3,
+main > h4,
+main > h5 {
   max-width: 900px;
   margin: 0 auto 1rem auto;
   padding: 0 2vw;
