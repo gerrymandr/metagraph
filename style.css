@@ -14,7 +14,7 @@
 }
 
 .hearts {
-  color: #9E2825;
+  color: #9e2825;
 }
 
 .green {
@@ -53,12 +53,17 @@ html {
 
 body {
   font-size: 1.2rem;
-  line-height: 2rem;
   font-weight: 400;
+  line-height: 1.7;
   color: #111;
   margin: 0;
   padding: 0;
 }
+/* Dark blue theme: 
+text {
+  fill: white;
+}
+*/
 
 /* main */
 
@@ -66,12 +71,20 @@ main {
   margin-bottom: 2rem;
 }
 
-main > p,
-main > h2,
-main > h3 {
+p {
+  line-height: 1.7;
+}
+
+/* Need a better solution than this */
+main > * {
   max-width: 900px;
-  margin: 0 auto 1rem auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 2vw;
+}
+
+li {
+  margin-left: 2rem;
 }
 
 /* figures */
@@ -101,18 +114,21 @@ figure img {
 figcaption {
   color: #444;
   font-size: 1rem;
-  max-width: 40rem;
+  max-width: 500px;
   text-align: center;
 }
 
 /* charts (interactive) */
 
 .chart {
-  margin: 2rem 0;
+  margin: 2rem auto;
   padding: 1rem 0;
+  max-width: none;
   width: 100%;
   text-align: left;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   justify-items: center;
   align-items: center;
   background: #eaf3f6;
@@ -120,14 +136,17 @@ figcaption {
   border-bottom: 1px solid #cad3d6;
   overflow: auto;
 }
-/* Dark blue:
-  
+
+svg {
+  overflow: auto;
+}
+/* Dark blue: 
+
 .chart {
   border-top: 1px solid #111;
   background: #012;
   border-bottom: 1px solid #111;
   color: white;
-  
 }
 */
 
@@ -168,7 +187,7 @@ header > summary {
   line-height: 1.2;
   font-size: 1rem;
   max-width: 600px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 1rem auto;
   color: #444;
 }
 
@@ -236,8 +255,14 @@ footer > p {
 nav {
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(max-content, 1fr));
   grid-gap: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    display: block;
+  }
 }
 
 .nav-link,

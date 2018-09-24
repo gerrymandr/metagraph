@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
     crossorigin="anonymous">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Source+Sans+Pro" rel="stylesheet"> -->
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
     crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
@@ -30,7 +31,8 @@
       Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous districts of 5 units each.
       (Gridlandia has grown!)
       There
-      are 4006 districting plans $\mathcal D$ that satisfy these criteria, and we can construct the metagraph in the same way as
+      are 4006 districting plans $\mathcal D$ that satisfy these criteria, and we can construct the metagraph in the
+      same way as
       <a href="./4x4.html">before</a>&mdash;with
       a node for each plan and an edge between plans that can be transformed into each other by one step (swapping two
       cells in
@@ -44,7 +46,7 @@
       Click on a plan in the local metagraph (at right) to put it in the center and study its 2-neighborhood.
       (Note: we're not showing the connections between the neighbors, but only how they relate to the center node.)
       Alternatively, use the panel on the
-      left to build a districting plan $\mathcal D$ 
+      left to build a districting plan $\mathcal D$
       from scratch, one district at a time, and jump directly to it.
       You can change the vote distribution $\Delta$ by
       clicking the units to toggle the vote between the two parties, and watch
@@ -54,14 +56,14 @@
 
     <div id="chart1" class="chart three-columns"></div>
 
-    <p>Try exploring:  create a distribution $\Delta$ that's about half and half split between the parties, start with 
+    <p>Try exploring: create a distribution $\Delta$ that's about half and half split between the parties, start with
       any initial plan $\mathcal D$, and try clicking your way around the metagraph and looking for areas
       that favor one party or the other.
     </p>
     <h3>Statistics over the metagraph</h3>
     <p>
       Since there are 4006 possible districting plans, it's hard to use such a zoomed-in view to get a good sense of
-      the universe of possibilities.  Furthermore, there are $2^{25}=33,554,432$ possible voting distributions,
+      the universe of possibilities. Furthermore, there are $2^{25}=33,554,432$ possible voting distributions,
       even before we allow units to split their votes, since each of the 25 units can go for either party.
       For a particular vote distribution $\Delta$,
       we might happen to be in an area of the metagraph where many plans give the <span class="hearts">Hearts</span>
@@ -80,11 +82,13 @@
 
     <p>
       The first histogram fixes your districting plan but varies the vote distribution over all the possibilities
-      with the same proportion of voters for each party.  (For instance, if your $\Delta$ has 9 
+
+      with the same proportion of voters for each party. (For instance, if your $\Delta$ has 9
       <span class="clubs">Clubs</span> units, then it is compared against the ${25 \choose 9}=2,042,975$ distributions
       that are also 36% <span class="clubs">Clubs</span>.)
       The number of
-      <span class="hearts">Hearts</span> seats for your $(\mathcal D,\Delta)$  
+      <span class="hearts">Hearts</span> seats for your $(\mathcal D,\Delta)$
+
       is indicated by the <span class="green">Green</span> bar.
     </p>
 
@@ -101,25 +105,25 @@
       How should we interpret this?
     </p>
 
-   
+
     <h4>Fixed $\Delta$, varied $\mathcal D$</h4>
-     <p>
-      Now suppose, for a fixed distribution of votes, that your plan performed very extremely&mdash;it's in a 
-        <span class="blue">Blue</span> bar that's far to the left or the right of the bulk of the distribution.
-        Perhaps this occurred by chance, but another thing this could mean is that the favored party had
-        a good prediction of where the vote would fall and drew the lines to carefully extract electoral advantage
-        from that pattern&mdash;gerrymandering!
-    </p>
-    
-        <h4>Varying $\Delta$ with fixed party shares</h4>
     <p>
-    This lets you explore whether the layout of voters, itself, is skewing the representation away from 
-    proportionality.
-    For instance, consider all the 
-    voter distributions that have just four <span class="hearts">Hearts</span> units in the grid.  Most 
-    of them don't yield even one way to get a <span class="hearts">Hearts</span> district, but if you 
-    place them close together, then over 41% of plans do give representation to the <span class="hearts">Hearts</span>
-    party.
+      Now suppose, for a fixed distribution of votes, that your plan performed very extremely&mdash;it's in a
+      <span class="blue">Blue</span> bar that's far to the left or the right of the bulk of the distribution.
+      Perhaps this occurred by chance, but another thing this could mean is that the favored party had
+      a good prediction of where the vote would fall and drew the lines to carefully extract electoral advantage
+      from that pattern&mdash;gerrymandering!
+    </p>
+
+    <h4>Varying $\Delta$ with fixed party shares</h4>
+    <p>
+      This lets you explore whether the layout of voters, itself, is skewing the representation away from
+      proportionality.
+      For instance, consider all the
+      voter distributions that have just four <span class="hearts">Hearts</span> units in the grid. Most
+      of them don't yield even one way to get a <span class="hearts">Hearts</span> district, but if you
+      place them close together, then over 41% of plans do give representation to the <span class="hearts">Hearts</span>
+      party.
     </p>
 
 
