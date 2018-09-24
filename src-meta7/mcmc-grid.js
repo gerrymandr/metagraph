@@ -1,5 +1,5 @@
 
-var distfills = d3.scaleOrdinal(d3.schemeSet2);
+var distfills = ['#7bc8f6','#6fc276','#0343df','#bbf90f','#6a79f7','#475f94','#13eac9'];
 
 var square7 = 40;
 var square7sm = square7/1.25;
@@ -25,8 +25,14 @@ elecfill[0] = '#fca336';
 elecfill[4] = '#909090';
 elecfill[8] = '#857ab8';
 
+var simp_fill = ['#1E1E26','#909090','#9E2825'];
 
-var simp_fill = [elecfill[0],elecfill[4],elecfill[8]];
+var simp_fill_parts = ['#4a4a5e','#909090','#9e4b49'];
+var simp_char = ["\u2663", '', "\u2665"];
+
+
+opacity_red = .4;
+opacity_blk = .15;
 
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -64,6 +70,55 @@ var cnt = 0;
 
 var ptmp = 0;
 var pinit = [];
+
+
+
+// loop over number of columns
+_.times(square7sColumn, function(n) {
+
+  // create each set of rows
+  var rows = grd
+    .selectAll('text' + ' .row-' + (n + 1))
+    .data(d3.range(square7sRow))
+    .enter()
+    .append("text")
+
+    .attr("class", function(d, i) {
+      return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
+    })
+    .attr("id", function(d, i) {
+      return "s-" + (n + 1) + (i + 1);
+    })
+    .attr("width", square7)
+    .attr("height", square7)
+    .attr("x", function(d, i) {
+      return 30 + square7/2 + i * 1.04 * square7;
+    })
+    .attr("y", 1.5*square7 + n * 1.03 * square7)
+
+    .attr("party", function(d, i) {
+      return party_init[4 * n + i];
+    })
+    .style("fill", function(d) {
+      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+    })
+
+
+    .text(function(d){
+      return simp_char[1 + parseInt(d3.select(this).attr("party"))];
+    })
+    .attr("text-anchor","middle")
+    .attr("dy", ".35em")
+    .style("font-size", function(d){
+      return (square7-7) + "px";
+    });
+});
+
+
+
+
+
+
 
 // loop over number of columns
 _.times(square7sColumn, function(n) {
@@ -148,7 +203,7 @@ _.times(square7sColumn, function(n) {
       })
       .attr("y", (square7sm + n * 1.04*square7sm))
     .attr("district", function(d,i){return (cur_plan_str[7*n + i]);})
-    .style("fill",function(d,i) { return distfills(cur_plan_str[7*n + i]);})
+    .style("fill",function(d,i) { return distfills[cur_plan_str[7*n + i]-1];})
     .style("stroke","#555")
     .style("stroke-width",1)
 
@@ -236,6 +291,7 @@ var rand_txt = go_button_g.append("text")
    .attr("transform","translate(0,15)")
    .attr("text-anchor","middle")
    .style("font-size","12px")
+   .style("font-weight","bolder")
    .text("Random Plan")
 
 
@@ -292,7 +348,8 @@ var go_txt = go_button_g.append("text")
    .attr("transform","translate(0,15)")
    .attr("text-anchor","middle")
    .style("font-size","12px")
-   .text("CLICK TO GO")
+   .style("font-weight","bolder")
+   .text(" ")
 
 
 var go_btn = go_button_g.append("rect")
@@ -586,6 +643,7 @@ grd2.selectAll("line").style("stroke","#000").style("stroke-width", 3);
 function do_update2(r){
         if (d3.event != null && r != -1){
             var t = parseInt(d3.select(r).attr("party"));
+            var tid = d3.select(r).attr("id");
         grd.selectAll('rect').each(function(d){
             if (d3.select(this).attr("id") == d3.select(r).attr("id")){
               d3.select(this).attr("party",t+2)
@@ -595,16 +653,49 @@ function do_update2(r){
     }
 
 
+    grd.selectAll('text').each(function(d){
+        if (d3.select(this).attr("id") == tid){
+            d3.select(this).attr("party", t+2);
+            if (d3.select(this).attr("party") >= 2){
+              d3.select(this).attr("party",-1);
+            }
+        }
 
+        //console.log(d3.select(this).attr("party"));
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).style("fill", simp_fill[1]);
+        if (d3.select(this).attr("party") == 0) 
+          d3.select(this).text(simp_char[1]);       
+        if (d3.select(this).attr("party") == 1) 
+          d3.select(this).style("fill", simp_fill[2]);
+        if (d3.select(this).attr("party") == 1) 
+          d3.select(this).text(simp_char[2]); 
+        if (d3.select(this).attr("party") == -1) 
+          d3.select(this).style("fill", simp_fill[0]);
+        if (d3.select(this).attr("party") == -1) 
+          d3.select(this).text(simp_char[0]); 
+
+    });
   
 
 
     grd.selectAll('rect').each(function(d){
       if (d3.select(this).attr("button") == null){
       var idnum = 7*(parseInt(d3.select(this).attr("id")[2])-1) + parseInt(d3.select(this).attr("id")[3])-1
-        if (d3.select(this).attr("party") == 0) {d3.select(this).style("fill", simp_fill[1]);  cell_cols[idnum] = 0;}
-        if (d3.select(this).attr("party") == 1) {d3.select(this).style("fill", simp_fill[2]); cell_cols[idnum] = 1;}
-        if (d3.select(this).attr("party") == -1) {d3.select(this).style("fill", simp_fill[0]); cell_cols[idnum] = -1;}
+        if (d3.select(this).attr("party") == 0) {
+          d3.select(this).style("fill", simp_fill[1]);  
+          cell_cols[idnum] = 0;
+        }
+        if (d3.select(this).attr("party") == 1) {
+          d3.select(this).style("fill", simp_fill[2]); 
+          d3.select(this).style("fill-opacity",opacity_red);
+          cell_cols[idnum] = 1;
+        }
+        if (d3.select(this).attr("party") == -1) {
+          d3.select(this).style("fill", simp_fill[0]);
+          d3.select(this).style("fill-opacity",opacity_blk); 
+          cell_cols[idnum] = -1;
+        }
 }
     });
 
@@ -621,16 +712,16 @@ function do_update2(r){
   
 }
 
-
+      
 function update_dists(){
 
-	grd2.selectAll("rect").each(function(d){
-		var nm = d3.select(this).attr("id");
+  grd2.selectAll("rect").each(function(d){
+    var nm = d3.select(this).attr("id");
     if (nm != null){
-		d3.select(this).style("fill",function() { return distfills(cur_plan_str[7*parseInt(nm[2]-1) + parseInt(nm[3])-1]);})}
+    var ix = parseInt(cur_plan_str[7*parseInt(nm[2]-1) + parseInt(nm[3])-1])-1;
+    d3.select(this).style("fill",function() { return distfills[ix];})}
 
-	});
-
+  });
 grid_borders();
 }
 
@@ -638,35 +729,33 @@ grid_borders();
 function is_conn(s){
 
 
-	for (var d=1; d<=7; d++){
-		var seen = [];
-		var to_check = [];
-		var first = -1;
-		var currnode;
-		var cand;
-		for (var i=0; i<s.length; i++){
-			if (s[i] == d && first == -1){
-				first = i;
-			}
-		}
-		
-		to_check.push(first);
+  for (var d=1; d<=7; d++){
+    var seen = [];
+    var to_check = [];
+    var first = -1;
+    var currnode;
+    var cand;
+    for (var i=0; i<s.length; i++){
+      if (s[i] == d && first == -1){
+        first = i;
+      }
+    }
+    
+    to_check.push(first);
 
-		while (to_check.length > 0){
-			currnode = parseInt(to_check.pop());
-			var already = false;
-			for (var a=0; a<seen.length; a++){
-				if (seen[a] == currnode){already = true;}
-			}
-			if (!already){
-			seen.push(currnode);
-			if (s[currnode+1] == d && currnode%7!=6){ to_check.push(currnode+1);}
-			if (s[currnode-1] == d && currnode%7!=0){ to_check.push(currnode-1);}
-			if (s[currnode+7] == d){ to_check.push(currnode+7);}
-			if (s[currnode-7] == d){ to_check.push(currnode-7);}
-		}
-
-
+    while (to_check.length > 0){
+      currnode = parseInt(to_check.pop());
+      var already = false;
+      for (var a=0; a<seen.length; a++){
+        if (seen[a] == currnode){already = true;}
+      }
+      if (!already){
+      seen.push(currnode);
+      if (s[currnode+1] == d && currnode%7!=6){ to_check.push(currnode+1);}
+      if (s[currnode-1] == d && currnode%7!=0){ to_check.push(currnode-1);}
+      if (s[currnode+7] == d){ to_check.push(currnode+7);}
+      if (s[currnode-7] == d){ to_check.push(currnode-7);}
+    }
 
 
 
@@ -674,8 +763,10 @@ function is_conn(s){
 
 
 
-		}
-		if (!(seen.length == 7)){return false;}
+
+
+    }
+    if (!(seen.length == 7)){return false;}
 
 
 
@@ -683,7 +774,7 @@ function is_conn(s){
 
 
 
-	}
+  }
 
 return true;
 
@@ -701,32 +792,32 @@ function setCharAt(str,index,chr) {
 
 function swap_cells(s) {
 
-	var val = false;
+  var val = false;
 var string_copy =  (' ' + s).slice(1);
-	while (!val){
-		string_copy = (' ' + s).slice(1);
-		var i1 = Math.floor(Math.random() * 49);
-		var i2 = Math.floor(Math.random() * 49);
+  while (!val){
+    string_copy = (' ' + s).slice(1);
+    var i1 = Math.floor(Math.random() * 49);
+    var i2 = Math.floor(Math.random() * 49);
 
-		var c1 = string_copy[i1];
-		var c2 = string_copy[i2];
+    var c1 = string_copy[i1];
+    var c2 = string_copy[i2];
 
-		if (c1 != c2){
-
-
-			string_copy = setCharAt(string_copy, i1,c2);
-			string_copy = setCharAt(string_copy, i2,c1);
+    if (c1 != c2){
 
 
-			val = is_conn(string_copy);
-		}
+      string_copy = setCharAt(string_copy, i1,c2);
+      string_copy = setCharAt(string_copy, i2,c1);
 
 
+      val = is_conn(string_copy);
+    }
 
 
 
 
-	}
+
+
+  }
 
 return string_copy;
 
@@ -858,6 +949,8 @@ helptxt.append("text")
    .attr("transform","translate(0,15)")
    .attr("text-anchor","middle")
    .style("font-size","12px")
+   .style("font-weight","bolder")
+
    .text("Click cells to change their color");
 
 
@@ -869,6 +962,8 @@ helptxt.append("text")
    .attr("transform","translate(0,15)")
    .attr("text-anchor","middle")
    .style("font-size","12px")
+   .style("font-weight","bolder")
+
    .text("Randomize");
 
 
@@ -883,7 +978,7 @@ helptxt.append("text")
     .attr("rx",8)
     .attr("ry",8)
 
-    .style("fill","brown")
+    .style("fill","violet")
     .style("fill-opacity",.5)
     .on("click", function(d) {
       party_init = shuffle(party_init);
@@ -901,7 +996,20 @@ helptxt.append("text")
 }
       
       });
+      grd.selectAll("text").each(function(d){
+        if (d3.select(this).attr("button")==null){
+        var nm = d3.select(this).attr("id");
+        var n = nm[2]-1;
+        var k = nm[3]-1;
+        
+        d3.select(this).attr("party",function(d) {return party_init[7*n+k];})
+        d3.select(this).style("fill",function(d) { return simp_fill[1+parseInt(d3.select(this).attr("party"))];})
 
+        do_update2(-1);
+
+}
+      
+      });
       });
 
 

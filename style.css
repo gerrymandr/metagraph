@@ -2,10 +2,10 @@
   box-sizing: border-box;
 }
 
-.orange,
+.clubs,
 .blue,
 .green,
-.purple {
+.hearts {
   font-weight: 600;
 }
 
@@ -13,16 +13,16 @@
   color: #66abff;
 }
 
-.purple {
-  color: #857ab8;
+.hearts {
+  color: #9E2825;
 }
 
 .green {
   color: #99cc9a;
 }
 
-.orange {
-  color: #fca336;
+.clubs {
+  color: #1E1E26;
 }
 
 strong {

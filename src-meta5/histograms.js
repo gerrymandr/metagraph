@@ -49,8 +49,8 @@ var winbox = d3.select("#chart2").append("svg")
             var dgrp = winbox.append("g").attr("transform","translate(3,15)");
             
             //vgrp.append("rect").style("fill","none").style("width",100).style("height",100).style("stroke-width",2).style("stroke","black");
-            dgrp.append("text") .text("This plan, all distributions with "+num_red+" Purple voters:")  .attr('dy','0.35em').attr("h",0).attr("x","175").style("font-size","14px").attr("text-anchor","middle").attr("width",350);
-            dgrp.append("text") .text("This plan, all distributions with "+num_red+" Purple voters:")  .attr('dy','0.35em').attr("h",4).attr("x","175").attr("y",18).style("font-size","14px").attr("text-anchor","middle").attr("width",350);
+            dgrp.append("text") .text("This plan, all distributions with "+num_red+" Hearts voters:")  .attr('dy','0.35em').attr("h",0).attr("x","175").style("font-size","14px").attr("text-anchor","middle").attr("width",350);
+            dgrp.append("text") .text("This plan, all distributions with "+num_red+" Hearts voters:")  .attr('dy','0.35em').attr("h",4).attr("x","175").attr("y",18).style("font-size","14px").attr("text-anchor","middle").attr("width",350);
             var tr0 = dgrp.append("rect").attr("x",  0).attr("width",50).attr("fill","none").attr("i",0).attr("height",50).attr("y",200).style("fill-opacity",1).style("stroke","black").style("stroke-width",2);;
             var tr1 = dgrp.append("rect").attr("x", 55).attr("width",50).attr("fill","none").attr("i",1).attr("height",50).attr("y",200).style("fill-opacity",1).style("stroke","black").style("stroke-width",2);;
             var tr2 = dgrp.append("rect").attr("x",110).attr("width",50).attr("fill","none").attr("i",2).attr("height",50).attr("y",200).style("fill-opacity",1).style("stroke","black").style("stroke-width",2);;
@@ -145,7 +145,7 @@ dgrp.selectAll("text").each(function(d){
         var toth = 0;
         for (var jnk in elec_dist[num_red]){toth += elec_dist[num_red][jnk];}
     if (d3.select(this).attr("h")==0){d3.select(this).text("This plan, all "+ toth + " distributions with");}    
-    if (d3.select(this).attr("h")==4){d3.select(this).text(num_red+" Purple voters:");}   
+    if (d3.select(this).attr("h")==4){d3.select(this).text(num_red+" Hearts voters:");}   
     if (d3.select(this).attr("h") == 2){
         var tmpi = d3.select(this).attr("i");
 

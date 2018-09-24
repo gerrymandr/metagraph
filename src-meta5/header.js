@@ -4,7 +4,8 @@ var w = Math.min(
   600
 );
 h = 700; //Math.round(.6*document.getElementById("chart1").clientWidth);
-fill = d3v3.scale.category20();
+     mgfill = ['#824029','#ADC9C0','#2F8484','#43696E','#B2869E','#58575B','#B03420','#E59241','#9BD3C4','#3353BC','#201F6D','#1E597C','#639EC6','#D86DCF','#E4E5CF','#B7B7B7','#2A4512','#3D150D','#7C9124','#604F6D','#C9DB45','#E5D9BA'];
+
 wp = Math.round(0.2 * document.getElementById("chart1").clientWidth);
 
 var elecfill = [
@@ -23,7 +24,18 @@ elecfill[0] = "#fca336";
 elecfill[4] = "#909090";
 elecfill[8] = "#857ab8";
 
-var simp_fill = [elecfill[0], elecfill[4], elecfill[8]];
+var simp_fill = ['#1E1E26','#909090','#9E2825'];
+
+//var simp_fill_parts = ['#4a4a5e','#909090','#9e4b49'];
+var simp_fill_parts = simp_fill;
+
+var simp_char = ["\u2663", '', "\u2665"];
+
+
+opacity_red = .4;
+opacity_blk = .15;
+
+
 
 var idno2 = 0;
 var width = w;
