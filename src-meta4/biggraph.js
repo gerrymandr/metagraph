@@ -100,7 +100,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
       tooltip.html(function(d) {
         return (
-          "<div  style='; width:100px; height: 100px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
+          "<div  style='; width:100px; height: 97px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
           c.attr("name") +
           ".png'></div>"
         );
