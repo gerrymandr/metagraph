@@ -213,16 +213,12 @@ footer {
   flex-direction: column;
   align-items: flex-end;
   justify-content: start;
-  padding: 0.8rem 1vw;
+  padding: 0.8rem 1vw 2rem;
 
   font-size: 0.8rem;
 
-  /* border-top: 1px solid #cad3d6;
-  color: #444;
-  background: #96d9f0; */
-}
+  box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.3);
 
-footer {
   border-top: 1px solid #111;
   color: #0099cd;
   background: #012;
@@ -247,7 +243,7 @@ footer > p {
 /* navigation */
 
 nav {
-  margin: 0;
+  margin: 4rem 0 2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(max-content, 1fr));
   grid-gap: 1rem;
