@@ -30,11 +30,30 @@
   </header>
 
   <main>
-    <h3>Exploration with MCMC: Finding extremes</h3>
+
+<!--   	<h3>So you want to do a gerrymander?</h3>
+  	<p>
+  		Up until now, we've developed mathematical tools to try to <i>detect</i> and <i>analyze</i> potential gerrymandering,
+  		but now we're going to take the opposite point of view and look at how to apply this knowlege to <i>creating</i> a
+  		gerrymander. When we develop algorithmic tools which interface with society, it's important to consider the 
+  	    full scope of how those tools will be used, and by examining the mathematics from this perspective,
+  	    we can gain greater insight into how we might be able to detect and analyze gerrymandering.   We'll continue 
+  	    working on the 7x7 grid.
+  	</p>
+
+  	<p>
+  		Today, we've been hired as expert consultants for the <span class="hearts">Hearts</span> Party.  They
+  		want us to help them find districting plans which have a large number of 
+  		<span class="hearts">Hearts</span>-favoring districts.  
+  	</p>
+ -->
+
+    <h3>Finding extremes</h3>
     <p>
-      As another indication of how well our random walks are exploring, let's see what happens if we take many short
-      runs
-      and look for extreme outcomes. Once you pick your distribution and click to search, the algorithm will run
+      The first thing we'll do is use the MCMC sampler we built in the last demo, but instead of using it
+      to generate an ensemble of plans to compare against, we'll use it to hunt for plans which award a high
+      number of seats for one of the parties.  We've slightly modified the code to look for extreme outcomes. 
+      Once you pick your distribution and click to search, the algorithm will run
       for 1,500 steps in short bursts of 150. Every 150 steps, it restarts its walk from the most extreme plan
       it has found so far, and at the end it displays the best one found overall.
     </p>
@@ -46,7 +65,7 @@
       in the metagraph, so we should search for improvements near the best plan we've already seen. However, we don't
       want to get stuck in a neighborhood which has pretty good plans, but not the best, so we introduce some
       randomness
-      to get us unstuck, in a way that is controlled by the restart frequency.
+      to get us unstuck, in a way that is moderated by the restart frequency.
     </p>
 
     <p>
