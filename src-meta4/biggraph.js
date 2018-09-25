@@ -1,4 +1,3 @@
-console.log(w, wp, h);
 var linkedByIndex = {};
 
 var toggle = 0;
@@ -7,8 +6,7 @@ var vis = d3v3
   .select("#chart1")
   .append("svg")
   .attr("width", w)
-  .attr("height", h)
-  .style("float", "left");
+  .attr("height", h);
 //.attr("transform","translate(-"+wp+",0)");
 
 var tooltip = d3v3
@@ -16,13 +14,6 @@ var tooltip = d3v3
   .append("div")
   .style("position", "absolute")
   .style("z-index", "10")
-  .style("opacity", 0);
-
-// Define the div for the tooltip
-var div = d3v3
-  .select("body")
-  .append("div")
-  .attr("class", "tooltip")
   .style("opacity", 0);
 
 d3v3.json("src-meta4/data/gr.json", function(json) {
@@ -109,7 +100,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
       tooltip.html(function(d) {
         return (
-          "<div class='metagraph-tooltip'><img width='100' src='m4-imgs/im_" +
+          "<div  style='; width:100px; height: 100px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
           c.attr("name") +
           ".png'></div>"
         );

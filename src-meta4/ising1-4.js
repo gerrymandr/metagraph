@@ -92,8 +92,8 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
     .call(force.drag)
     .on("mousemove", function() {
       return tooltip
-        .style("top", event.pageY - 10 + "px")
-        .style("left", event.pageX + 10 + "px");
+        .style("top", d3v3.event.pageY - 10 + "px")
+        .style("left", d3v3.event.pageX + 10 + "px");
     })
 
     .on("mouseover", function() {
@@ -102,7 +102,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       tooltip.style("visibility", "visible");
       tooltip.html(function(d) {
         return (
-          "<div class='metagraph-tooltip'><img width='100' src='m4-imgs/im_" +
+          "<div  style='; width:100px; height: 100px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
           c.attr("name") +
           ".png'></div>"
         );
