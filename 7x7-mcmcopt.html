@@ -33,8 +33,8 @@
 
 <!--   	<h3>So you want to do a gerrymander?</h3>
   	<p>
-  		Up until now, we've developed mathematical tools to try to <i>detect</i> and <i>analyze</i> potential gerrymandering,
-  		but now we're going to take the opposite point of view and look at how to apply this knowlege to <i>creating</i> a
+  		Up until now, we've developed mathematical tools to try to <em>detect</em> and <em>analyze</em> potential gerrymandering,
+  		but now we're going to take the opposite point of view and look at how to apply this knowlege to <em>creating</em> a
   		gerrymander. When we develop algorithmic tools which interface with society, it's important to consider the 
   	    full scope of how those tools will be used, and by examining the mathematics from this perspective,
   	    we can gain greater insight into how we might be able to detect and analyze gerrymandering.   We'll continue 
@@ -42,7 +42,7 @@
   	</p>
 
   	<p>
-  		Today, we've been hired as expert consultants for the <span class="hearts">Hearts</span> Party.  They
+  		Today, we've been tapped as expert gerrymanderers for the <span class="hearts">Hearts</span> Party.  They
   		want us to help them find districting plans which have a large number of 
   		<span class="hearts">Hearts</span>-favoring districts.  
   	</p>
@@ -81,6 +81,46 @@
       of plans with five. Very rarely will it even find a six-<span class="hearts">Hearts</span>-seat plan,
       which demonstrates the effectiveness of the restarting mechanism.
     </p>
+
+<!--     <h3>Electoral uncertainty</h3> 
+    <p>
+    	Before we move forward, we need an additional piece of machinery from probability theory.  Up until now, we've
+    	treated elections as <em>deterministic</em>, meaning that a party will surely win a seat if at least half of the
+    	squares in the corresponding district are of that color.  Now, we'll introduce a little bit of uncertainty.  To 
+    	keep the math simple, we'll now say that the <em>probability</em> that a party wins a seat is equal to the 
+    	<em>proportion of squares in the coresponding district of that color</em>.  In this new framework, we say that
+    	a district with three <span class="hearts">Hearts</span> and four <span class="clubs">Clubs</span> squares
+    	will be won by the <span class="clubs">Clubs</span> Party with probability $\tfrac{4}{7}$ and the 
+    	<span class="hearts">Hearts</span> Party with probability $\tfrac{3}{7}$.
+    </p>
+
+    <p>
+    	Now, instead of talking about how many seats we can get for the <span class="hearts">Hearts</span> Party, 
+    	we need to talk about how many <em>and</em> with what probability.  Below, you can adjust the arrangement
+    	of the voters to play around with this concept.  The districting plan is fixed, and as you change the 
+    	voters, you'll see the probability that the <span class="hearts">Hearts</span> Party wins each district 
+    	as well as <em>cumulative probabilities</em> for the <span class="hearts">Hearts</span> Party winning 
+    	any particular number of seats.
+    	this is computed by summing independent events.... probably not worth writing out 
+    </p>
+
+    <center><summary>
+      DEMO IS UNDER CONSTRUCTION
+    </summary></center>
+
+
+    <p>
+    	From the perspective of the <span class="hearts">Hearts</span> Party, these probabilities are incredibly
+    	important.  Notice that if you make each district have four <span class="hearts">Hearts</span> voters, then
+    	there is still a solid probability of the <span class="clubs">Clubs</span> Party winning a majority of seats,
+    	but if you have four districts with seven  <span class="hearts">Hearts</span> voters, then the
+    	 <span class="clubs">Clubs</span> can never win a majority of the seats.
+    </p>
+    <p>
+    	Of course, our task as an experts is to examine different districting possiblilities
+    	on the behalf of the <span class="hearts">Hearts</span> Party, and we don't get to
+    	choose where the voters live, but we do get to choose how to draw the lines. 
+    </p> -->
 
   </main>
 
