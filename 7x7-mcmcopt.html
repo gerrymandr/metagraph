@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <title>Metagraph 7x7</title>
   <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
   <link rel="stylesheet" href="style.css" />
@@ -20,19 +21,20 @@
 
   <header>
     <h1>MCMC for Optimization on a 7x7 Grid</h1>
-      <img width="450" src="imgs/gerryconstruct.png?raw=true" alt="A 7-by-7 grid"> 
+    <img width="450" src="imgs/gerryconstruct.png?raw=true" alt="A 7-by-7 grid">
 
-      <summary>
+    <summary>
       THIS PAGE IS UNDER CONSTRUCTION
     </summary>
   </header>
   <main>
-   <h3>Exploration with MCMC: Finding extremes</h3>
+    <h3>Exploration with MCMC: Finding extremes</h3>
     <p>
-      As another indication of how well our random walks are exploring, let's see what happens if we take many short runs
-      and look for extreme outcomes.  Once you pick your distribution and click to search, the algorithm will run 
-      for 1,500 steps in short bursts of 150.  Every 150 steps, it restarts its walk from the most extreme plan 
-      it has found so far, and at the end it displays the best one found overall.  
+      As another indication of how well our random walks are exploring, let's see what happens if we take many short
+      runs
+      and look for extreme outcomes. Once you pick your distribution and click to search, the algorithm will run
+      for 1,500 steps in short bursts of 150. Every 150 steps, it restarts its walk from the most extreme plan
+      it has found so far, and at the end it displays the best one found overall.
     </p>
 
     <div id="optspace" class="chart center"></div>
@@ -40,7 +42,8 @@
     <p>
       The idea behind this is that plans which disproportionately favor one particular party tend to be near each other
       in the metagraph, so we should search for improvements near the best plan we've already seen. However, we don't
-      want to get stuck in a neighborhood which has pretty good plans, but not the best, so we introduce some randomness
+      want to get stuck in a neighborhood which has pretty good plans, but not the best, so we introduce some
+      randomness
       to get us unstuck, in a way that is controlled by the restart frequency.
     </p>
 
