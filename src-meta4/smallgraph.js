@@ -2,7 +2,7 @@ var linkedByIndex2 = {};
 var vis2 = d3v3
   .select("#chart1")
   .append("svg")
-  .attr("width", w - wp)
+  .attr("width", 400)
   .attr("height", h);
 
 d3v3.json("src-meta4/data/gr2.json", function(json) {
@@ -12,7 +12,7 @@ d3v3.json("src-meta4/data/gr2.json", function(json) {
     .linkDistance(40)
     .nodes(json.nodes)
     .links(json.links)
-    .size([w - wp, h])
+    .size([400, h])
     .start();
 
   var link = vis2
