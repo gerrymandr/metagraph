@@ -96,11 +96,11 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
     .on("mouseover", function() {
       var t = d3v3.select(this).attr("type");
       var c = d3v3.select(this);
-      tooltip.style("visibility", "visible");
+      tooltip.style("display", "block");
       //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
       tooltip.html(function(d) {
         return (
-          "<div  style='; width:100px; height: 100px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
+          "<div  style='; width:100px; height: 97px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
           c.attr("name") +
           ".png'></div>"
         );
@@ -136,7 +136,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
     })
 
     .on("mouseout", function() {
-      tooltip.style("visibility", "hidden");
+      tooltip.style("display", "none");
       vis.selectAll("circle.node").each(function(d) {
         d3v3.select(this).attr("r", function(d) {
           return Math.round(2 * d.deg) - 1;
