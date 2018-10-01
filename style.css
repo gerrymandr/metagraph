@@ -127,20 +127,31 @@ figcaption {
 /* charts (interactive) */
 
 .chart {
-  margin: 2rem auto;
-  padding: 1rem 0;
-  max-width: none;
-  width: 100%;
-  text-align: left;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   justify-items: center;
   align-items: center;
+
+  overflow: auto;
+
+  text-align: left;
+
+  margin: 2rem auto;
+  padding: 1rem 0;
+
+  max-width: none;
+  width: 100%;
+
   background: #eaf3f6;
+
+  /* alternate dark: */
+  /* background: #111;
+  fill: white;
+  stroke: white; */
+
   border-top: 1px solid #cad3d6;
   border-bottom: 1px solid #cad3d6;
-  overflow: auto;
 }
 
 svg {
