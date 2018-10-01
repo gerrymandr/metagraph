@@ -30,17 +30,23 @@ strong {
   font-style: italic;
 }
 
+/* a */
+
 a {
-  color: darkslateblue;
+  text-decoration: none;
+  color: #006b9c;
 }
 
 a:hover {
-  color: slateblue;
+  color: #0099cd;
+  text-decoration: none;
 }
 
-a:visited {
-  color: darkred;
+main a {
+  font-weight: 600;
 }
+
+/* main */
 
 .round {
   border-radius: 50%;
@@ -175,6 +181,8 @@ svg {
 /* header */
 
 header {
+  padding: 1rem 0 0;
+  box-shadow: 0 -15px 10px -20px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
@@ -206,6 +214,24 @@ header > img {
   margin: 0 0 0 0;
 }
 
+/* banner */
+
+.banner {
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 0 auto;
+  background: #f9f9f9;
+}
+
+.logo {
+  width: 150px;
+}
+
 /* footer */
 
 footer {
@@ -213,23 +239,32 @@ footer {
   flex-direction: column;
   align-items: flex-end;
   justify-content: start;
-  padding: 0.8rem 1vw 2rem;
+  padding: 1rem 1vw 2rem;
 
   font-size: 0.8rem;
 
   box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.3);
 
   border-top: 1px solid #111;
-  color: #0099cd;
-  background: #012;
+  /* color: #0099cd; */
+  color: #aaa;
+  background: #010101;
 }
 
-footer a {
+/* footer a {
   color: white;
 }
 
 footer a:visited {
   color: #eeeeff;
+} */
+
+footer a {
+  color: #0099cd;
+}
+
+footer a:hover {
+  color: #5dcaff;
 }
 
 footer > p {
