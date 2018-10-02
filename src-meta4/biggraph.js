@@ -12,6 +12,7 @@ var tooltip = d3v3
   .style("position", "absolute")
   .style("z-index", "10")
   .style("opacity", 0);
+var tooltipSvg = tooltip.append("svg").attr("viewBox", "0 0 100 100");
 
 function appendGrid(selection, str_rep, width, height, gap, colorMap) {
   const rows = str_rep
@@ -38,6 +39,8 @@ function appendGrid(selection, str_rep, width, height, gap, colorMap) {
   return selection;
 }
 
+// TODO: Fix the tooltip stuff. I'll need to create some object where the graphs
+// register themselves for the tooltip callbacks
 function defaultMetagraphTooltip(node, getRadius) {
   node
     .on("mousemove", function() {
@@ -51,7 +54,14 @@ function defaultMetagraphTooltip(node, getRadius) {
       var c = d3v3.select(this);
       tooltip.style("display", "block");
 
-      appendGrid(tooltip, c.attr("str_rep"), 100, 100, 4, mgfill);
+      appendGrid(
+        tooltip.selectAll("svg"),
+        c.attr("str_rep"),
+        100,
+        100,
+        4,
+        mgfill
+      );
 
       tooltip
         .transition()
@@ -230,7 +240,7 @@ function appendMetagraph(
   }
 
   viz.on("click", connectedNodes);
-  defaultMetagraphTooltip(node, tooltip, getNodeRadius);
+  // defaultMetagraphTooltip(node, tooltip, getNodeRadius);
 
   return viz;
 }
