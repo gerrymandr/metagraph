@@ -1,29 +1,31 @@
-var linkedByIndex = {};
+function getMetagraphNodeColor(d) {
+  return mgfill[parseInt(d.Type)];
+}
 
-var toggle = 0;
+function getBigGraphNodeRadius(d) {
+  return Math.round(2 * d.deg) - 1;
+}
 
-var vis = d3v3
-  .select("#chart1")
-  .append("svg")
-  .attr("width", w)
-  .attr("height", h);
-//.attr("transform","translate(-"+wp+",0)");
+function appendMetagraph(
+  selection,
+  json,
+  getNodeColor,
+  getNodeRadius,
+  width,
+  height
+) {
+  var vis = selection
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
 
-var tooltip = d3v3
-  .select("body")
-  .append("div")
-  .style("position", "absolute")
-  .style("z-index", "10")
-  .style("opacity", 0);
-
-d3v3.json("src-meta4/data/gr.json", function(json) {
   var force = d3v3.layout
     .force()
     .charge(-125)
     .linkDistance(40)
     .nodes(json.nodes)
     .links(json.links)
-    .size([w, h])
+    .size([width, height])
     .start();
 
   var link = vis
@@ -73,95 +75,13 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
     .attr("name", function(d) {
       return d.id;
     })
-    .attr("html_rep", function(d) {
-      return d.html_rep;
-    })
-    .attr("r", function(d) {
-      return Math.round(2 * d.deg) - 1;
-    })
+    .attr("r", getNodeRadius)
     .style("stroke-width", 0)
     .style("stroke", "black")
     .style("opacity", 1)
     .attr("on", 0)
-    .style("fill", function(d) {
-      return mgfill[parseInt(d.Type)];
-    })
-    .call(force.drag)
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", d3v3.event.pageY - 10 + "px")
-        .style("left", d3v3.event.pageX + 10 + "px");
-    })
-
-    .on("mouseover", function() {
-      var t = d3v3.select(this).attr("type");
-      var c = d3v3.select(this);
-      tooltip.style("display", "block");
-      //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
-      tooltip.html(function(d) {
-        return (
-          "<div  style='; width:100px; height: 97px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
-          c.attr("name") +
-          ".png'></div>"
-        );
-      });
-
-      tooltip
-        .transition()
-        .duration(200)
-        .style("opacity", 0.95);
-
-      vis.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-
-      vis2.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-
-      vis3.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-    })
-
-    .on("mouseout", function() {
-      tooltip.style("display", "none");
-      vis.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(2 * d.deg) - 1;
-        });
-      });
-
-      vis2.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(1.2 * d.orbit) + 2;
-        });
-      });
-
-      vis3.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(2 * d.deg) - 1;
-        });
-      });
-
-      tooltip
-        .transition()
-        .duration(500)
-        .style("opacity", 0);
-    })
-
-    .on("click", connectedNodes);
+    .style("fill", getNodeColor)
+    .call(force.drag);
 
   vis
     .style("opacity", 1e-6)
@@ -193,6 +113,9 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       });
   });
 
+  var toggle = 0;
+  var linkedByIndex = {};
+
   vis.selectAll("line.link").each(function(d) {
     linkedByIndex[d.source.index + "," + d.target.index] = 1;
     linkedByIndex[d.target.index + "," + d.target.index] = 1;
@@ -206,50 +129,12 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       node.style("opacity", 1);
       node.style("stroke-width", 0);
       d3v3.select(this).attr("on", 0);
-      var tp = d3v3.select(this).attr("type");
-      vis2.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("on", 0);
-        d3v3.select(this).style("stroke-width", 0);
-        d3v3.select(this).style("opacity", 1);
-      });
-
-      vis3.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("on", 0);
-        d3v3.select(this).style("stroke-width", 0);
-        d3v3.select(this).style("opacity", 1);
-      });
-
       toggle = 0;
       return;
     } else {
       node.style("opacity", 1);
       node.style("stroke-width", 0);
       d3v3.select(this).attr("on", 1);
-
-      var tp = d3v3.select(this).attr("type");
-      vis2.selectAll("circle.node").each(function(d) {
-        //d3v3.select(this).attr("on",1);
-        d3v3.select(this).style("stroke-width", 0);
-        var tq = d3v3.select(this).attr("type");
-        if (tp == tq) {
-          d3v3.select(this).attr("on", 1);
-
-          d3v3.select(this).style("opacity", 1);
-        }
-      });
-
-      vis3.selectAll("circle.node").each(function(d) {
-        //d3v3.select(this).attr("on",1);
-        d3v3.select(this).style("stroke-width", 0);
-        var tq = d3v3.select(this).attr("type");
-        if (tp == tq) {
-          d3v3.select(this).attr("on", 1);
-
-          d3v3.select(this).style("opacity", 1);
-        }
-      });
-
-      toggle = 0;
     }
 
     if (toggle == 0) {
@@ -260,62 +145,49 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       node.style("stroke-width", function(o) {
         return neighboring(d, o) | neighboring(o, d) | (o === d) ? 3 : 0;
       });
-      var oth;
-      var oth2;
-      var tp = d3v3.select(this).attr("type");
-      vis2.selectAll("circle.node").each(function(e) {
-        var tq = d3v3.select(this).attr("type");
-        if (tp == tq) {
-          oth = d3v3.select(this);
-
-          oth2 = oth.node().__data__;
-          return;
-        }
-      });
-      vis2.selectAll("circle.node").each(function(e) {
-        d3v3.select(this).style("opacity", function(o) {
-          return neighboring2(oth2, o) | neighboring2(o, oth2) | (o === d)
-            ? 1
-            : 0.7;
-        });
-        d3v3.select(this).style("stroke-width", function(o) {
-          return neighboring2(oth2, o) | neighboring2(o, oth2) | (o === d)
-            ? 3
-            : 0;
-        });
-      });
-      oth.style("opacity", 1);
-      oth.style("stroke-width", 3);
-
-      vis3.selectAll("circle.node").each(function(e) {
-        var tq = d3v3.select(this).attr("type");
-        if (tp == tq) {
-          oth = d3v3.select(this);
-
-          oth2 = oth.node().__data__;
-          return;
-        }
-      });
-      vis3.selectAll("circle.node").each(function(e) {
-        d3v3.select(this).style("opacity", function(o) {
-          return neighboring(oth2, o) | neighboring(o, oth2) | (o === d)
-            ? 1
-            : 0.7;
-        });
-        d3v3.select(this).style("stroke-width", function(o) {
-          return neighboring(oth2, o) | neighboring(o, oth2) | (o === d)
-            ? 3
-            : 0;
-        });
-      });
-      oth.style("opacity", 1);
-      oth.style("stroke-width", 3);
 
       toggle = 1 - toggle;
     }
   }
-});
 
-function neighboring(a, b) {
-  return linkedByIndex[a.index + "," + b.index];
+  function neighboring(a, b) {
+    return linkedByIndex[a.index + "," + b.index];
+  }
+
+  vis.on("click", connectedNodes);
+  defaultMetagraphTooltip(node, tooltip, getNodeRadius);
 }
+
+var vis1, vis3, vis5;
+
+d3v3.json("src-meta4/data/gr.json", function(json) {
+  var chart1 = d3v3.select("#chart1");
+  vis1 = appendMetagraph(
+    chart1,
+    json,
+    getMetagraphNodeColor,
+    getBigGraphNodeRadius,
+    w,
+    h
+  );
+
+  var chart3 = d3v3.select("#chart3");
+  vis5 = appendMetagraph(
+    chart3,
+    json,
+    () => elecfill[4],
+    getBigGraphNodeRadius,
+    w,
+    h
+  );
+
+  var chart2 = d3v3.select("#chart2");
+  vis3 = appendMetagraph(
+    chart2,
+    json,
+    get_my_col_sm,
+    getBigGraphNodeRadius,
+    w,
+    h
+  );
+});
