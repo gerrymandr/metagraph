@@ -14,7 +14,7 @@ function appendMetagraph(
   width,
   height
 ) {
-  var vis = selection
+  let viz = selection
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -28,7 +28,7 @@ function appendMetagraph(
     .size([width, height])
     .start();
 
-  var link = vis
+  var link = viz
     .selectAll("line.link")
     .data(json.links)
     .enter()
@@ -57,7 +57,7 @@ function appendMetagraph(
       return d.target;
     });
 
-  var node = vis
+  var node = viz
     .selectAll("circle.node")
     .data(json.nodes)
     .enter()
@@ -83,7 +83,7 @@ function appendMetagraph(
     .style("fill", getNodeColor)
     .call(force.drag);
 
-  vis
+  viz
     .style("opacity", 1e-6)
     .transition()
     .duration(1000)
@@ -116,7 +116,7 @@ function appendMetagraph(
   var toggle = 0;
   var linkedByIndex = {};
 
-  vis.selectAll("line.link").each(function(d) {
+  viz.selectAll("line.link").each(function(d) {
     linkedByIndex[d.source.index + "," + d.target.index] = 1;
     linkedByIndex[d.target.index + "," + d.target.index] = 1;
     linkedByIndex[d.target.index + "," + d.source.index] = 1;
@@ -154,15 +154,17 @@ function appendMetagraph(
     return linkedByIndex[a.index + "," + b.index];
   }
 
-  vis.on("click", connectedNodes);
-  defaultMetagraphTooltip(node, tooltip, getNodeRadius);
+  viz.on("click", connectedNodes);
+  // defaultMetagraphTooltip(node, tooltip, getNodeRadius);
+
+  return viz;
 }
 
-var vis1, vis3, vis5;
+var vis, vis3, vis5;
 
 d3v3.json("src-meta4/data/gr.json", function(json) {
   var chart1 = d3v3.select("#chart1");
-  vis1 = appendMetagraph(
+  vis = appendMetagraph(
     chart1,
     json,
     getMetagraphNodeColor,
