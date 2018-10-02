@@ -1,3 +1,5 @@
+// TODO: There's now a race condition for the small graph vs. big graph
+
 function getMetagraphNodeColor(d) {
   return mgfill[parseInt(d.Type)];
 }
