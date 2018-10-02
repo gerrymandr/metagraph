@@ -5,6 +5,31 @@ var tooltip = d3v3
   .style("z-index", "10")
   .style("opacity", 0);
 
+function appendGrid(selection, str_rep, width, height, gap, colorMap) {
+  const rows = str_rep
+    .split("\n")
+    .map(rowString => rowString.split(/\s/g).filter(x => x.length > 0));
+  console.log(rows);
+
+  const squareH = (height - (rows.length - 1) * gap) / rows.length;
+  const squareW = (width - (rows[0].length - 1) * gap) / rows[0].length;
+
+  rows.forEach((row, i) => {
+    row.forEach((color, j) => {
+      const xOffset = j * (squareW + gap);
+      const yOffset = i * (squareH + gap);
+      selection
+        .append("rect")
+        .attr("height", squareH)
+        .attr("width", squareW)
+        .attr("x", xOffset)
+        .attr("y", yOffset)
+        .style("fill", colorMap[color]);
+    });
+  });
+  return selection;
+}
+
 function defaultMetagraphTooltip(node, getRadius) {
   node
     .on("mousemove", function() {
@@ -17,14 +42,8 @@ function defaultMetagraphTooltip(node, getRadius) {
       var t = d3v3.select(this).attr("type");
       var c = d3v3.select(this);
       tooltip.style("display", "block");
-      //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
-      tooltip.html(function(d) {
-        return (
-          "<div  style='; width:100px; height: 97px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
-          c.attr("name") +
-          ".png'></div>"
-        );
-      });
+
+      appendGrid(tooltip, c.attr("str_rep"), 100, 100, 4, mgfill);
 
       tooltip
         .transition()
