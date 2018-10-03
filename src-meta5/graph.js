@@ -28,6 +28,9 @@ function mk_gr2(fn, num) {
   distpic.attr("xlink:href", function(d) {
     return "m5-imgs/whole/im_" + idno2 + ".png";
   });
+  treedistpic.attr("xlink:href", function(d) {
+    return "m5-imgs/whole/im_" + idno2 + ".png";
+  });
 
   d3.json(fn, function(error, treeData) {
     if (error) throw error;

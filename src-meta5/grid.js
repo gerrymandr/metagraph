@@ -211,10 +211,10 @@ function do_update2(r) {
 }
 
 var currentDContainer = d3
-  .select("#current-d-2")
+  .select("#current-d")
   .append("svg")
-  .attr("width", 130 + 8)
-  .attr("height", 130 + 4);
+  .attr("width", 138)
+  .attr("height", 134);
 
 var currentDBackground = currentDContainer
   .append("rect")
@@ -223,7 +223,30 @@ var currentDBackground = currentDContainer
   .attr("fill", "#555")
   .attr("bg", true);
 
-var distpic = currentDContainer
+var treedistpic = currentDContainer
+  .append("image")
+  .attr("width", 130)
+  .attr("height", 130)
+  .attr("x", 4)
+  .attr("y", 2)
+  .attr("xlink:href", function(d) {
+    return "m5-imgs/whole/im_" + idno2 + ".png";
+  });
+
+var currentDContainer2 = d3
+  .select("#current-d-2")
+  .append("svg")
+  .attr("width", 130 + 8)
+  .attr("height", 130 + 4);
+
+var currentDBackground2 = currentDContainer2
+  .append("rect")
+  .attr("width", 140)
+  .attr("height", 136)
+  .attr("fill", "#555")
+  .attr("bg", true);
+
+var distpic = currentDContainer2
   .append("image")
   .attr("width", 130)
   .attr("height", 130)
