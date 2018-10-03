@@ -194,7 +194,8 @@ svg {
 
 /* Chart-specific styles */
 
-.grid-container {
+.grid-container,
+.hist-container {
   display: flex;
   flex-direction: column;
   align-items: center;
