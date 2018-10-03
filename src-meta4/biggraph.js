@@ -92,6 +92,9 @@ var tooltip = d3v3
   .style("z-index", "10")
   .style("opacity", 0);
 
+// TODO: Use enter/update/exit to make tooltip data-driven
+// Like, the callback could just be "tooltip.data(str_rep)"
+
 d3v3.json("src-meta4/data/gr.json", function(json) {
   var force = d3v3.layout
     .force()
