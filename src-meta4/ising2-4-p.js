@@ -5,20 +5,23 @@ var dist3 = 0;
 var dist4 = 0;
 var cnt = 0;
 
-// create the svg
-var grd2 = d3v3
-  .select("#chart3")
-  .append("svg")
-  //.attr("transform","translate("+(w-wp)/4+","+(-h/3) +")")
-  .attr({
-    width: 6 * square,
-    height: 6 * square
-  });
-
-var grd2grp = grd2.append("g");
 // calculate number of rows and columns
 var squaresRow = 4;
 var squaresColumn = 4;
+
+// create the svg
+var grd2 = d3v3
+  .select("#chart3")
+  .select(".grid-container")
+  .select(".grid")
+  .append("svg")
+  //.attr("transform","translate("+(w-wp)/4+","+(-h/3) +")")
+  .attr({
+    width: (square + gap) * squaresRow + 2 * gap,
+    height: (square + gap) * squaresColumn + 2 * gap
+  });
+
+var grd2grp = grd2.append("g");
 
 // loop over number of columns
 for (let n = 0; n < squaresColumn; n++) {
@@ -38,9 +41,9 @@ for (let n = 0; n < squaresColumn; n++) {
       width: square,
       height: square,
       x: function(d, i) {
-        return i * 1.07 * square + square / 2;
+        return i * (square + gap) + gap;
       },
-      y: n * 1.07 * square + square / 2
+      y: n * (square + gap) + gap
     })
 
     .attr("party", 0)
@@ -65,9 +68,9 @@ for (let n = 0; n < squaresColumn; n++) {
       width: square,
       height: square / 2,
       x: function(d, i) {
-        return i * 1.07 * square + square / 2;
+        return i * (square + gap) + gap;
       },
-      y: n * 1.07 * square + square / 2
+      y: n * (square + gap) + gap
     })
 
     .attr("party", 0.5)
@@ -93,9 +96,9 @@ for (let n = 0; n < squaresColumn; n++) {
       width: square,
       height: square,
       x: function(d, i) {
-        return i * 1.07 * square + square / 2;
+        return i * (square + gap) + gap;
       },
-      y: n * 1.07 * square + square / 2
+      y: n * (square + gap) + gap
     })
 
     .attr("mask", 3)
@@ -232,30 +235,3 @@ function do_updaterc() {
   });
 }
 do_update;
-
-grd
-  .append("text")
-  .attr("x", 104)
-  .attr("y", 15)
-  .text("Current Distribution")
-  .attr("text-anchor", "middle");
-grd
-  .append("text")
-  .attr("x", 104)
-  .attr("y", 200)
-  .text("Click cells to change their color")
-  .style("font-size", "12px")
-  .attr("text-anchor", "middle");
-grd2
-  .append("text")
-  .attr("x", 104)
-  .attr("y", 15)
-  .text("Current Distribution")
-  .attr("text-anchor", "middle");
-grd2
-  .append("text")
-  .attr("x", 104)
-  .attr("y", 200)
-  .text("Click cells to change their color")
-  .style("font-size", "12px")
-  .attr("text-anchor", "middle");

@@ -6,18 +6,23 @@ var dist4 = 0;
 var cnt = 0;
 
 var square = 10 * Math.round(Math.min(4, (w - wp) / 5));
-// create the svg
-var grd = d3v3
-  .select("#chart2")
-  .append("svg") //.attr("transform","translate("+(w-wp)/4+","+(-h/3) +")")
-  .attr({
-    width: 6 * square,
-    height: 6 * square
-  });
+
+var gap = 4;
 
 // calculate number of rows and columns
 var squaresRow = 4;
 var squaresColumn = 4;
+
+// create the svg
+var grd = d3v3
+  .select("#chart2")
+  .select(".grid-container")
+  .select(".grid")
+  .append("svg") //.attr("transform","translate("+(w-wp)/4+","+(-h/3) +")")
+  .attr({
+    width: (square + gap) * squaresRow + gap,
+    height: (square + gap) * squaresColumn + gap
+  });
 
 // loop over number of columns
 for (let n = 0; n < squaresColumn; n++) {
@@ -38,9 +43,9 @@ for (let n = 0; n < squaresColumn; n++) {
       width: square,
       height: square,
       x: function(d, i) {
-        return i * 1.07 * square + square;
+        return i * (square + gap) + square / 2 + gap;
       },
-      y: n * 1.07 * square + square
+      y: n * (square + gap) + square / 2 + gap
     })
 
     .attr("party", function(d, i) {
@@ -78,11 +83,10 @@ for (let n = 0; n < squaresColumn; n++) {
       width: square,
       height: square,
       x: function(d, i) {
-        return i * 1.07 * square + square / 2;
+        return i * (square + gap) + gap;
       },
-      y: n * 1.07 * square + square / 2
+      y: n * (square + gap) + gap
     })
-
     .attr("party", function(d, i) {
       return n < 2 ? -1 : 1;
     })
