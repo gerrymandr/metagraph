@@ -47,17 +47,38 @@
     <h3>A local view of the metagraph</h3>
     <p>
       Click on a plan in the local metagraph (at right) to put it in the center and study its 2-neighborhood.
-      (Note: we're not showing the connections between the neighbors, but only how they relate to the center node.)
-      Alternatively, use the panel on the
-      left to build a districting plan $\mathcal D$
-      from scratch, one district at a time, and jump directly to it.
-      You can change the vote distribution $\Delta$ by
-      clicking the units to toggle the vote between the two parties, and watch
-      the winning side change in the metagraph.
+      (That is, you see all the plans within two swaps. Note that we're not showing the connections between the
+      neighbors, but only how they relate to the center node.) Alternatively, use the panel on the left to build a
+      districting plan $\mathcal D$ from scratch, one district at a time, and jump directly to it.
+      You can change the vote distribution $\Delta$ by clicking the units to toggle the vote between the two parties,
+      and watch the winning side change in the metagraph.
     </p>
 
 
-    <div id="chart1" class="chart three-columns"></div>
+    <div id="chart1" class="chart three-columns">
+      <div>
+        <div class="plan-builder-header">
+          <h4>Build a Plan $\mathcal D$</h4>
+          <button id="reset-button">Reset</button>
+        </div>
+        <div id="plan-builder"></div>
+      </div>
+      <div class="grid-container">
+        <div class="grid-container">
+          <h4>Current Plan $\mathcal D$</h4>
+          <div id="current-d" class="grid"></div>
+        </div>
+        <div class="grid-container">
+          <h4>Vote Distribution $\Delta$</h4>
+          <div id="current-delta" class="grid"></div>
+        </div>
+      </div>
+
+      <div class="graph-container">
+        <div class="graph"></div>
+        <p>Click a node to move in the graph</p>
+      </div>
+    </div>
 
     <p>Try exploring: create a distribution $\Delta$ that's about half and half split between the parties, start with
       any initial plan $\mathcal D$, and try clicking your way around the metagraph and looking for areas
@@ -101,7 +122,32 @@
       in your selected plan is indicated by the <span class="blue">Blue</span> bar.
     </p>
 
-    <div id="chart2" class="chart three-columns"></div>
+    <div id="chart2" class="chart three-columns">
+      <div>
+        <div class="plan-builder-header">
+          <h4>Build a Plan $\mathcal D$</h4>
+          <button id="reset-button-2">Reset</button>
+        </div>
+        <div id="plan-builder-2"></div>
+      </div>
+      <div class="grid-container">
+        <div class="grid-container">
+          <h4>Current Plan $\mathcal D$</h4>
+          <div id="current-d-2" class="grid"></div>
+        </div>
+        <div class="grid-container">
+          <h4>Vote Distribution $\Delta$</h4>
+          <div id="current-delta-2" class="grid"></div>
+        </div>
+      </div>
+      <div class="hist-container">
+        <p>This distribution $\Delta$, all 4,006 plans:</p>
+        <div id="all-plans-hist"></div>
+        <p>This plan $\mathcal D$, all <span id="number-deltas"></span> distributions with <span id="number-hearts">14</span>
+          Hearts votes:</p>
+        <div id="all-deltas-hist"></div>
+      </div>
+    </div>
 
     <h3>Interpretation</h3>
     <p>
@@ -111,7 +157,7 @@
 
     <h4>Fixed $\Delta$, varied $\mathcal D$</h4>
     <p>
-      Now suppose, for a fixed distribution of votes, that your plan performed very extremely&mdash;it's in a
+      Suppose, for a fixed distribution of votes, that your plan performed very extremely: it's in a
       <span class="blue">Blue</span> bar that's far to the left or the right of the bulk of the distribution.
       Perhaps this occurred by chance, but another thing this could mean is that the favored party had
       a good prediction of where the vote would fall and drew the lines to carefully extract electoral advantage
@@ -126,7 +172,7 @@
       voter distributions that have just four <span class="hearts">Hearts</span> units in the grid. Most
       of them don't yield even one way to get a <span class="hearts">Hearts</span> district, but if you
       place them close together, then over 41% of plans do give representation to the <span class="hearts">Hearts</span>
-      party.
+      party. If your $\Delta$ is an outlier, that is supporting evidence that the plan was tailored to that $\Delta$.
     </p>
 
 
@@ -139,15 +185,15 @@
 
   <nav>
     <div class="previous">
-      <a href="./" class="nav-link">&laquo; 4x4</a>
+      <a href="./" class="nav-link">&laquo; 4x4 grid</a>
     </div>
 
     <div class="current">
-      <p class="current-page">5x5</p>
+      <p class="current-page">5x5 grid</p>
     </div>
 
     <div class="next">
-      <a href="./7x7.html" class="nav-link">7x7 &raquo;</a>
+      <a href="./7x7.html" class="nav-link">7x7 grid &raquo;</a>
       <a href="../table.html" class="nav-link">Everything we know &raquo;</a>
     </div>
   </nav>
@@ -165,12 +211,11 @@
 
   <script src="loc_d3v3.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="src-meta5/header.js"></script>
   <script src="src-meta5/distbox.js"></script>
   <script src="src-meta5/grid.js"></script>
   <script src="src-meta5/graph.js"></script>
+  <script src="src-meta5/histograms-lib.js"></script>
   <script src="src-meta5/histograms.js"></script>
   <script src="src-meta5/init.js"></script>
 

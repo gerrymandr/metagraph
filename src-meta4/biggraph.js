@@ -9,12 +9,91 @@ var vis = d3v3
   .attr("height", h);
 //.attr("transform","translate(-"+wp+",0)");
 
+function attachCallback(v) {
+  v.on("mousemove", function() {
+    console.log("move");
+    return tooltip
+      .style("top", d3v3.event.pageY - 10 + "px")
+      .style("left", d3v3.event.pageX + 10 + "px");
+  });
+  v.on("mouseout", function() {
+    tooltip.style("display", "none");
+    vis.selectAll("circle.node").each(function(d) {
+      d3v3.select(this).attr("r", function(d) {
+        return Math.round(2 * d.deg) - 1;
+      });
+    });
+
+    vis2.selectAll("circle.node").each(function(d) {
+      d3v3.select(this).attr("r", function(d) {
+        return Math.round(1.2 * d.orbit) + 2;
+      });
+    });
+
+    vis3.selectAll("circle.node").each(function(d) {
+      d3v3.select(this).attr("r", function(d) {
+        return Math.round(2 * d.deg) - 1;
+      });
+    });
+
+    tooltip
+      .transition()
+      .duration(500)
+      .style("opacity", 0);
+  });
+
+  v.on("mouseover", function() {
+    var t = d3v3.select(this).attr("type");
+    var c = d3v3.select(this);
+    tooltip.style("display", "block");
+    //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
+    tooltip.html(function(d) {
+      return (
+        "<div  style='; width:100px; height: 97px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
+        c.attr("name") +
+        ".png'></div>"
+      );
+    });
+
+    tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 0.95);
+
+    vis.selectAll("circle.node").each(function(d) {
+      var u = d3v3.select(this).attr("type");
+
+      if (u == t) {
+        d3v3.select(this).attr("r", 20);
+      }
+    });
+
+    vis2.selectAll("circle.node").each(function(d) {
+      var u = d3v3.select(this).attr("type");
+      if (u == t) {
+        d3v3.select(this).attr("r", 20);
+      }
+    });
+
+    vis3.selectAll("circle.node").each(function(d) {
+      var u = d3v3.select(this).attr("type");
+
+      if (u == t) {
+        d3v3.select(this).attr("r", 20);
+      }
+    });
+  });
+}
+
 var tooltip = d3v3
   .select("body")
   .append("div")
   .style("position", "absolute")
   .style("z-index", "10")
   .style("opacity", 0);
+
+// TODO: Use enter/update/exit to make tooltip data-driven
+// Like, the callback could just be "tooltip.data(str_rep)"
 
 d3v3.json("src-meta4/data/gr.json", function(json) {
   var force = d3v3.layout
@@ -87,79 +166,6 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       return mgfill[parseInt(d.Type)];
     })
     .call(force.drag)
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", d3v3.event.pageY - 10 + "px")
-        .style("left", d3v3.event.pageX + 10 + "px");
-    })
-
-    .on("mouseover", function() {
-      var t = d3v3.select(this).attr("type");
-      var c = d3v3.select(this);
-      tooltip.style("display", "block");
-      //tooltip.html('<p style="margin:0;padding:0;font-size:50px;letter-spacing:-10px;line-height:35px;">' + c.attr( "html_rep" ) + "</p>");
-      tooltip.html(function(d) {
-        return (
-          "<div  style='; width:100px; height: 97px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
-          c.attr("name") +
-          ".png'></div>"
-        );
-      });
-
-      tooltip
-        .transition()
-        .duration(200)
-        .style("opacity", 0.95);
-
-      vis.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-
-      vis2.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-
-      vis3.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-    })
-
-    .on("mouseout", function() {
-      tooltip.style("display", "none");
-      vis.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(2 * d.deg) - 1;
-        });
-      });
-
-      vis2.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(1.2 * d.orbit) + 2;
-        });
-      });
-
-      vis3.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(2 * d.deg) - 1;
-        });
-      });
-
-      tooltip
-        .transition()
-        .duration(500)
-        .style("opacity", 0);
-    })
 
     .on("click", connectedNodes);
 
@@ -314,6 +320,7 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       toggle = 1 - toggle;
     }
   }
+  attachCallback(node);
 });
 
 function neighboring(a, b) {

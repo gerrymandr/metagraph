@@ -1,5 +1,6 @@
 var vis5 = d3v3
   .select("#chart3")
+  .select(".graph")
   .append("svg")
   .attr("width", w)
   .attr("height", h);
