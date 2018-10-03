@@ -216,11 +216,13 @@ party_init = shuffle(party_init);
 
 var parties = [-1, 1];
 
+var gap = 2;
+
 var grd = d3
-  .select("#gridspace")
+  .select("#current-delta")
   .append("svg")
-  .attr("width", square7 * 9)
-  .attr("height", square7 * 10);
+  .attr("width", (square7 + gap) * 7 + gap)
+  .attr("height", (square7 + gap) * 7 + gap);
 
 var chk = "";
 var dist1 = 0;
@@ -251,9 +253,9 @@ for (let n = 0; n < square7sColumn; n++) {
     .attr("width", square7)
     .attr("height", square7)
     .attr("x", function(d, i) {
-      return 30 + square7 / 2 + i * 1.04 * square7;
+      return (square7 + gap) * i + square7 / 2 + gap;
     })
-    .attr("y", 1.5 * square7 + n * 1.03 * square7)
+    .attr("y", (square7 + gap) * n + square7 / 2 + gap)
 
     .attr("party", function(d, i) {
       return party_init[4 * n + i];
@@ -290,9 +292,9 @@ for (let n = 0; n < square7sColumn; n++) {
     .attr("width", square7)
     .attr("height", square7)
     .attr("x", function(d, i) {
-      return 30 + i * 1.04 * square7;
+      return (square7 + gap) * i + gap;
     })
-    .attr("y", square7 + n * 1.04 * square7)
+    .attr("y", (square7 + gap) * n + gap)
 
     .attr("party", function(d, i) {
       return party_init[4 * n + i];
@@ -321,10 +323,10 @@ for (let n = 0; n < square7sColumn; n++) {
     });
 }
 var grd2 = d3
-  .select("#gridspace")
+  .select("#current-d")
   .append("svg")
-  .attr("width", square7 * 9)
-  .attr("height", square7 * 10);
+  .attr("width", (square7 + gap) * 7 + gap)
+  .attr("height", (square7 + gap) * 7 + gap);
 
 // loop over number of columns
 for (let n = 0; n < square7sColumn; n++) {
@@ -344,9 +346,9 @@ for (let n = 0; n < square7sColumn; n++) {
     .attr("width", square7sm)
     .attr("height", square7sm)
     .attr("x", function(d, i) {
-      return 30 + i * 1.04 * square7sm;
+      return (square7 + gap) * i + gap;
     })
-    .attr("y", square7sm + n * 1.04 * square7sm)
+    .attr("y", (square7 + gap) * n + gap)
     .attr("district", function(d, i) {
       return cur_plan_str[7 * n + i];
     })
@@ -371,11 +373,11 @@ for (let n = 0; n < square7sColumn; n++) {
       can_chain = is_conn(cur_plan_str);
 
       if (can_chain) {
-        go_txt.text("Click to sample with MCMC");
-        go_btn.style("fill", "green");
+        go_btn.html("Click to sample with MCMC");
+        go_btn.classed("disabled", false);
       } else {
-        go_txt.text("Current plan is invalid");
-        go_btn.style("fill", "red");
+        go_btn.html("Current plan is invalid");
+        go_btn.classed("disabled", true);
       }
 
       update_dists();
@@ -404,11 +406,11 @@ for (let n = 0; n < square7sColumn; n++) {
       });
 
       if (can_chain) {
-        go_txt.text("Click to sample with MCMC");
-        go_btn.style("fill", "green");
+        go_btn.html("Click to sample with MCMC");
+        go_btn.classed("disabled", false);
       } else {
-        go_txt.text("Current plan is invalid");
-        go_btn.style("fill", "red");
+        go_btn.html("Current plan is invalid");
+        go_btn.classed("disabled", true);
       }
     })
     .on("mouseover", function(d) {
@@ -424,126 +426,83 @@ for (let n = 0; n < square7sColumn; n++) {
 
 var go_button_g = grd2.append("svg").attr("height", 10 * square7);
 
-var rand_txt = go_button_g
-  .append("text")
-  .attr("dy", "0.35em")
-  .attr("width", 150)
-  .attr("x", 146)
-  .attr("y", 266)
-  .attr("transform", "translate(0,15)")
-  .attr("text-anchor", "middle")
-  .style("font-size", "12px")
-  .style("font-weight", "bolder")
-  .text("Random Plan");
+var randomDButton = d3.select("#random-d").on("click", function(d) {
+  if (!is_conn(cur_plan_str)) {
+    cur_plan_str = "4455511445551144566114376661337766233772223377222";
+  }
 
-var rand_btn = go_button_g
-  .append("rect")
-  .attr("button", true)
-  .attr("width", 100)
-  .attr("height", 30)
-  .attr("x", 96)
-  .attr("y", 266)
-  .attr("rx", 8)
-  .attr("ry", 8)
+  var counter = 0;
+  while (counter < 200) {
+    counter += 1;
+    cur_plan_str = swap_cells(cur_plan_str);
+  }
 
-  .style("fill", "black")
-  .style("fill-opacity", 0.5)
-  .on("click", function(d) {
-    if (!is_conn(cur_plan_str)) {
-      cur_plan_str = "4455511445551144566114376661337766233772223377222";
+  update_dists();
+
+  can_chain = is_conn(cur_plan_str);
+
+  if (can_chain) {
+    go_btn.html("Click to sample with MCMC");
+    go_btn.classed("disabled", false);
+  } else {
+    go_btn.html("Current plan is invalid");
+    go_btn.classed("disabled", true);
+  }
+});
+
+var go_btn = d3.select("#go-button").on("click", function(d) {
+  if (!can_chain) {
+    return;
+  }
+  var oldsv = (" " + cur_plan_str).slice(1);
+  var samples = [];
+  var histo = [0, 0, 0, 0, 0, 0, 0, 0];
+
+  temph = [0, 0, 0, 0, 0, 0, 0];
+  var c = 0;
+  for (var i = 0; i < 49; i++) {
+    temph[parseInt(cur_plan_str[i]) - 1] += parseInt(cell_cols[i]);
+  }
+  for (var i = 0; i < 7; i++) {
+    if (temph[i] > 0) {
+      c += 1;
+    }
+  }
+  red_this = c;
+
+  while (samples.length < 1000) {
+    cur_plan_str = swap_cells(cur_plan_str);
+
+    if (samples.length % 100 == 0) {
     }
 
-    var counter = 0;
-    while (counter < 200) {
-      counter += 1;
-      cur_plan_str = swap_cells(cur_plan_str);
-    }
-
-    update_dists();
-
-    can_chain = is_conn(cur_plan_str);
-
-    if (can_chain) {
-      go_txt.text("Click to sample with MCMC");
-      go_btn.style("fill", "green");
-    } else {
-      go_txt.text("Current plan is invalid");
-      go_btn.style("fill", "red");
-    }
-  });
-
-var go_txt = go_button_g
-  .append("text")
-  .attr("dy", "0.35em")
-  .attr("width", 200)
-  .attr("x", 145)
-  .attr("transform", "translate(0,15)")
-  .attr("text-anchor", "middle")
-  .style("font-size", "12px")
-  .style("font-weight", "bolder")
-  .text(" ");
-
-var go_btn = go_button_g
-  .append("rect")
-  .attr("button", true)
-  .attr("width", 180)
-  .attr("height", 30)
-  .attr("x", 55)
-  .attr("rx", 8)
-  .attr("ry", 8)
-
-  .style("fill", "black")
-  .style("fill-opacity", 0.5)
-  .on("click", function(d) {
-    if (!can_chain) {
-      return;
-    }
-    var oldsv = (" " + cur_plan_str).slice(1);
-    var samples = [];
-    var histo = [0, 0, 0, 0, 0, 0, 0, 0];
-
-    temph = [0, 0, 0, 0, 0, 0, 0];
-    var c = 0;
-    for (var i = 0; i < 49; i++) {
-      temph[parseInt(cur_plan_str[i]) - 1] += parseInt(cell_cols[i]);
-    }
-    for (var i = 0; i < 7; i++) {
-      if (temph[i] > 0) {
-        c += 1;
+    var already = false;
+    for (var i = 0; i < samples.length; i++) {
+      if (samples[i] == cur_plan_str) {
+        already = true;
       }
     }
-    red_this = c;
-
-    while (samples.length < 1000) {
-      cur_plan_str = swap_cells(cur_plan_str);
-
-      var already = false;
-      for (var i = 0; i < samples.length; i++) {
-        if (samples[i] == cur_plan_str) {
-          already = true;
+    if (!already) {
+      temph = [0, 0, 0, 0, 0, 0, 0];
+      var c = 0;
+      for (var i = 0; i < 49; i++) {
+        temph[parseInt(cur_plan_str[i]) - 1] += parseInt(cell_cols[i]);
+      }
+      for (var i = 0; i < 7; i++) {
+        if (temph[i] > 0) {
+          c += 1;
         }
       }
-      if (!already) {
-        temph = [0, 0, 0, 0, 0, 0, 0];
-        var c = 0;
-        for (var i = 0; i < 49; i++) {
-          temph[parseInt(cur_plan_str[i]) - 1] += parseInt(cell_cols[i]);
-        }
-        for (var i = 0; i < 7; i++) {
-          if (temph[i] > 0) {
-            c += 1;
-          }
-        }
-        histo[c] += 1;
+      histo[c] += 1;
 
-        samples.push((" " + cur_plan_str).slice(1));
-      }
+      samples.push((" " + cur_plan_str).slice(1));
     }
+  }
 
-    cur_plan_str = (" " + oldsv).slice(1);
-    update_dists();
-    update_histo(histo);
-  });
+  cur_plan_str = (" " + oldsv).slice(1);
+  update_dists();
+  update_histo(histo);
+});
 
 function grid_borders() {
   grd.selectAll("line").remove();
@@ -953,375 +912,69 @@ function swap_cells(s) {
   return string_copy;
 }
 
-var winbox = d3
-  .select("#gridspace")
-  .append("svg")
-  .attr("width", 437)
-  .attr("height", 320);
-
-var vgrp = winbox.append("g");
-
-//vgrp.append("rect").style("fill","none").style("width",100).style("height",100).style("stroke-width",2).style("stroke","black");
-vgrp
-  .append("text")
-  .text("Is your plan an outlier for this distribution?")
-  .attr("dy", "0.35em")
-  .attr("h", 0)
-  .style("font-size", "18px")
-  .attr("x", 50)
-  .attr("y", 10);
-var wr0 = vgrp
-  .append("rect")
-  .attr("x", 0)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 0)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr1 = vgrp
-  .append("rect")
-  .attr("x", 55)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 1)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr2 = vgrp
-  .append("rect")
-  .attr("x", 110)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 2)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr3 = vgrp
-  .append("rect")
-  .attr("x", 165)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 3)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr4 = vgrp
-  .append("rect")
-  .attr("x", 220)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 4)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr5 = vgrp
-  .append("rect")
-  .attr("x", 275)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 5)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr6 = vgrp
-  .append("rect")
-  .attr("x", 330)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 6)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-var wr7 = vgrp
-  .append("rect")
-  .attr("x", 385)
-  .attr("width", 50)
-  .attr("fill", "none")
-  .attr("i", 7)
-  .attr("height", 0)
-  .attr("y", 250)
-  .style("fill-opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", 2);
-
-vgrp
-  .append("line")
-  .attr("stroke", "#000")
-  .attr("stroke-width", 3)
-  .attr("x1", 0)
-  .attr("y1", 250)
-  .attr("x2", 435)
-  .attr("y2", 250);
-
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "25")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 0)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "80")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 1)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "135")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 2)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "190")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 3)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "245")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 4)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "300")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 5)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "355")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 6)
-  .attr("text-anchor", "middle");
-vgrp
-  .append("text")
-  .attr("dy", "0.15em")
-  .attr("x", "410")
-  .attr("h", 2)
-  .attr("y", 259)
-  .style("font-size", "12px")
-  .attr("i", 7)
-  .attr("text-anchor", "middle");
-
-vgrp
-  .append("text")
-  .text("0 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "3")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("1 Seat")
-  .attr("dy", "0.15em")
-  .attr("x", "58")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("2 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "113")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("3 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "168")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("4 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "223")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("5 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "278")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("6 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "333")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
-vgrp
-  .append("text")
-  .text("7 Seats")
-  .attr("dy", "0.15em")
-  .attr("x", "388")
-  .attr("h", 1)
-  .attr("y", 259)
-  .style("font-size", "12px");
+let histogram = createHistogram(
+  d3.select("#histogram"),
+  [
+    { label: "0 Seats", count: 0 },
+    { label: "1 Seat", count: 0 },
+    { label: "2 Seats", count: 0 },
+    { label: "3 Seats", count: 0 },
+    { label: "4 Seats", count: 0 },
+    { label: "5 Seats", count: 0 },
+    { label: "6 Seats", count: 0 },
+    { label: "7 Seats", count: 0 }
+  ],
+  500,
+  300
+);
 
 function update_histo(newhist) {
-  vgrp.selectAll("rect").each(function(d) {
-    var i = d3.select(this).attr("i");
-
-    if (i != null) {
-      var newh = (200 * newhist[i]) / 1000;
-      d3.select(this).attr("height", newh);
-      d3.select(this).attr("y", 250 - newh);
-
-      if (i == red_this) {
-        d3.select(this).style("fill", "#66ABFF");
-      } else {
-        d3.select(this).style("fill", "#cccccc");
-      }
-    }
-  });
-
-  vgrp.selectAll("text").each(function(d) {
-    if (d3.select(this).attr("h") == 2) {
-      var tmpi = d3.select(this).attr("i");
-      var newh = (200 * newhist[tmpi]) / 1000;
-
-      d3.select(this).text("" + newhist[tmpi]);
-      d3.select(this).attr("y", 245 - newh);
-    }
-  });
+  console.log(red_this);
+  let data = newhist.map((count, i) => ({
+    label: i == 1 ? "1 Seat" : i + " Seats",
+    count,
+    currentPlan: i == red_this
+  }));
+  updateHistogram(histogram, data, "#66ABFF", 500, 300);
 }
 
-var helptxt = grd
-  .append("svg")
-  .attr("height", 11 * square7)
-  .attr("width", 300)
-  .attr("x", 0);
+let randomDeltaButton = d3.select("#random-delta");
 
-helptxt
-  .append("text")
-  .attr("dy", "0.35em")
-  .attr("width", 300)
-  .attr("x", 146)
-  .attr("transform", "translate(0,15)")
-  .attr("text-anchor", "middle")
-  .text("Current Distribution");
+randomDeltaButton.on("click", function(d) {
+  party_init = shuffle(party_init);
+  grd.selectAll("rect").each(function(d) {
+    if (d3.select(this).attr("button") == null) {
+      var nm = d3.select(this).attr("id");
+      var n = nm[2] - 1;
+      var k = nm[3] - 1;
 
-helptxt
-  .append("text")
-  .attr("dy", "0.35em")
-  .attr("width", 300)
-  .attr("x", 146)
-  .attr("y", 261)
-  .attr("transform", "translate(0,15)")
-  .attr("text-anchor", "middle")
-  .style("font-size", "12px")
-  .style("font-weight", "bolder")
+      d3.select(this).attr("party", function(d) {
+        return party_init[7 * n + k];
+      });
+      d3.select(this).style("fill", function(d) {
+        return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+      });
 
-  .text("Click cells to change their color");
-
-helptxt
-  .append("text")
-  .attr("dy", "0.35em")
-  .attr("width", 300)
-  .attr("x", 146)
-  .attr("y", 281)
-  .attr("transform", "translate(0,15)")
-  .attr("text-anchor", "middle")
-  .style("font-size", "12px")
-  .style("font-weight", "bolder")
-
-  .text("Randomize");
-
-helptxt
-  .append("rect")
-  .attr("button", true)
-  .attr("width", 100)
-  .attr("height", 25)
-  .attr("x", 96)
-  .attr("y", 284)
-  .attr("rx", 8)
-  .attr("ry", 8)
-
-  .style("fill", "violet")
-  .style("fill-opacity", 0.5)
-  .on("click", function(d) {
-    party_init = shuffle(party_init);
-    grd.selectAll("rect").each(function(d) {
-      if (d3.select(this).attr("button") == null) {
-        var nm = d3.select(this).attr("id");
-        var n = nm[2] - 1;
-        var k = nm[3] - 1;
-
-        d3.select(this).attr("party", function(d) {
-          return party_init[7 * n + k];
-        });
-        d3.select(this).style("fill", function(d) {
-          return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-        });
-
-        do_update2(-1);
-      }
-    });
-    grd.selectAll("text").each(function(d) {
-      if (
-        d3.select(this).attr("button") == null &&
-        d3.select(this).attr("id") != null
-      ) {
-        var nm = d3.select(this).attr("id");
-        var n = nm[2] - 1;
-        var k = nm[3] - 1;
-
-        d3.select(this).attr("party", function(d) {
-          return party_init[7 * n + k];
-        });
-        d3.select(this).style("fill", function(d) {
-          return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-        });
-
-        do_update2(-1);
-      }
-    });
+      do_update2(-1);
+    }
   });
+  grd.selectAll("text").each(function(d) {
+    if (
+      d3.select(this).attr("button") == null &&
+      d3.select(this).attr("id") != null
+    ) {
+      var nm = d3.select(this).attr("id");
+      var n = nm[2] - 1;
+      var k = nm[3] - 1;
+
+      d3.select(this).attr("party", function(d) {
+        return party_init[7 * n + k];
+      });
+      d3.select(this).style("fill", function(d) {
+        return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+      });
+
+      do_update2(-1);
+    }
+  });
+});

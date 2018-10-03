@@ -102,7 +102,25 @@
       the <span class="clubs">Clubs</span> Party than yours.
     </p>
 
-    <div id="gridspace" class="chart three-columns"></div>
+    <div id="gridspace" class="chart rows">
+      <div style="display: flex; flex-direction: row; flex-wrap: row; align-items: flex-start; margin-bottom: 2rem;">
+        <div class="grid-container" style="margin: 0 2rem">
+          <h4>Design a distribution $\Delta$</h4>
+          <div id="current-delta" class="grid"></div>
+          <button id="random-delta">Randomize $\Delta$</button>
+          <p>Click cells to toggle</p>
+        </div>
+        <div class="grid-container" style="margin: 0 2rem">
+          <h4>Design a plan $\mathcal D$</h4>
+          <div id="current-d" class="grid"></div>
+          <button id="random-d">Randomize $\mathcal D$</button>
+          <p>Click cells change their district assignments</p>
+        </div>
+      </div>
+      <h4>Is your plan an outlier for this distribution?</h4>
+      <button id="go-button">Sample with MCMC</button>
+      <div id="histogram"></div>
+    </div>
 
     <p>
       If you leave your distribution of voters alone and click the Sample button multiple times, the histogram will
@@ -184,6 +202,7 @@
   </footer>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="src-meta5/histograms-lib.js"></script>
   <script src="src-meta7/mcmc-grid.js"></script>
   <script src="src-meta7/randwalk.js"></script>
   <script src="src-meta7/mcmc2.js"></script>

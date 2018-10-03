@@ -758,6 +758,3 @@ grid_borders();
 do_update2();
 grid_borders2();
 do_update4(-1);
-
-go_txt.text("Click to sample with MCMC");
-go_btn.style("fill", "green");
