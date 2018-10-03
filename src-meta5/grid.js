@@ -91,12 +91,16 @@ function appendDeltaGrid(chart) {
 
       .on("mouseover", function(d) {
         d3.select(this).style("stroke", "#444");
-        d3.select(this).style("stroke-width", "3");
+        d3.select(this)
+          .style("stroke-width", "3")
+          .style("cursor", "pointer");
       })
 
       .on("mouseout", function(d) {
         d3.select(this).style("stroke", "#555");
-        d3.select(this).style("stroke-width", "1");
+        d3.select(this)
+          .style("stroke-width", "1")
+          .style("cursor", "pointer");
       })
 
       .on("click", function(d) {

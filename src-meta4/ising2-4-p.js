@@ -109,12 +109,18 @@ for (let n = 0; n < squaresColumn; n++) {
 
     .on("mouseover", function(d) {
       d3v3.select(this).style("stroke", "#000");
-      d3v3.select(this).style("stroke-width", "3");
+      d3v3
+        .select(this)
+        .style("stroke-width", "3")
+        .style("cursor", "pointer");
     })
 
     .on("mouseout", function(d) {
       d3v3.select(this).style("stroke", "#555");
-      d3v3.select(this).style("stroke-width", "1");
+      d3v3
+        .select(this)
+        .style("stroke-width", "1")
+        .style("cursor", "pointer");
     })
 
     .on("click", do_update)

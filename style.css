@@ -260,6 +260,10 @@ svg {
   margin: 1rem 0;
 }
 
+.plan-builder-header button {
+  margin: 0;
+}
+
 .chart button.disabled {
   background: darkred;
   color: #999;
