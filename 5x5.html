@@ -55,7 +55,30 @@
     </p>
 
 
-    <div id="chart1" class="chart three-columns"></div>
+    <div id="chart1" class="chart three-columns">
+      <div>
+        <div class="plan-builder-header">
+          <h4>Build a Plan $\mathcal D$</h4>
+          <button id="reset-button">Reset</button>
+        </div>
+        <div id="plan-builder"></div>
+      </div>
+      <div class="grid-container">
+        <div class="grid-container">
+          <h4>Current Plan $\mathcal D$</h4>
+          <div id="current-d" class="grid"></div>
+        </div>
+        <div class="grid-container">
+          <h4>Vote Distribution $\Delta$</h4>
+          <div id="current-delta" class="grid"></div>
+        </div>
+      </div>
+
+      <div class="graph-container">
+        <div class="graph"></div>
+        <p>Click a node to move in the graph</p>
+      </div>
+    </div>
 
     <p>Try exploring: create a distribution $\Delta$ that's about half and half split between the parties, start with
       any initial plan $\mathcal D$, and try clicking your way around the metagraph and looking for areas
@@ -99,7 +122,25 @@
       in your selected plan is indicated by the <span class="blue">Blue</span> bar.
     </p>
 
-    <div id="chart2" class="chart three-columns"></div>
+    <div id="chart2" class="chart three-columns">
+      <div>
+        <div class="plan-builder-header">
+          <h4>Build a Plan $\mathcal D$</h4>
+          <button id="reset-button-2">Reset</button>
+        </div>
+        <div id="plan-builder-2"></div>
+      </div>
+      <div class="grid-container">
+        <div class="grid-container">
+          <h4>Current Plan $\mathcal D$</h4>
+          <div id="current-d-2" class="grid"></div>
+        </div>
+        <div class="grid-container">
+          <h4>Vote Distribution $\Delta$</h4>
+          <div id="current-delta-2" class="grid"></div>
+        </div>
+      </div>
+    </div>
 
     <h3>Interpretation</h3>
     <p>
@@ -163,8 +204,6 @@
 
   <script src="loc_d3v3.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="src-meta5/header.js"></script>
   <script src="src-meta5/distbox.js"></script>
   <script src="src-meta5/grid.js"></script>

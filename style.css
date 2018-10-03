@@ -199,6 +199,7 @@ svg {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 1rem 0;
 }
 
 .chart h3,
@@ -210,15 +211,50 @@ svg {
 .chart h4 {
   font-size: 1.2rem;
   margin: 0.2rem 0;
+  text-align: center;
 }
 
 .chart p {
   margin: 0;
 }
+
+.graph-container {
+  text-align: center;
+}
+
 .graph {
+  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.chart button {
+  color: white;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  padding: 0.4rem;
+  cursor: pointer;
+  background: #0099cd;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 -0.5px 0 #e0e0e0, 0 0 1px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.chart button:hover {
+  background: #006b9c;
+}
+
+.plan-builder-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 1rem 0;
 }
 
 /* header */

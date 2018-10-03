@@ -1,12 +1,5 @@
 var parties = [-1, 1];
 
-var grd3 = d3
-  .select("#chart1")
-  .append("svg")
-  .attr("width", square5 * 7)
-  .attr("height", 150 + square5 * 7)
-  .attr("transform", "translate(50,-50)");
-
 var chk = "";
 var dist1 = 0;
 var dist2 = 0;
@@ -18,189 +11,108 @@ var cnt = 0;
 var ptmp = 0;
 var pinit = [];
 
-// loop over number of columns
-for (let n = 0; n < square5sColumn; n++) {
-  // create each set of rows
-  var rows = grd3
-    .selectAll("text" + " .row-" + (n + 1))
-    .data(d3.range(square5sRow))
-    .enter()
-    .append("text")
+var gap = 2;
 
-    .attr("class", function(d, i) {
-      return "square5 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square5)
-    .attr("height", square5)
-    .attr("x", function(d, i) {
-      return 30 + square5 / 2 + i * 1.07 * square5;
-    })
-    .attr("y", 1.5 * square5 + n * 1.07 * square5)
+function appendDeltaGrid(chart) {
+  let grid = chart
+    .append("svg")
+    .attr("width", (square5 + gap) * 5 + gap)
+    .attr("height", (square5 + gap) * 5 + gap);
 
-    .attr("party", function(d, i) {
-      return party_init[4 * n + i];
-    })
-    .style("fill", function(d) {
-      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-    })
+  // loop over number of columns
+  for (let n = 0; n < square5sColumn; n++) {
+    // create each set of rows
+    var rows = grid
+      .selectAll("text" + " .row-" + (n + 1))
+      .data(d3.range(square5sRow))
+      .enter()
+      .append("text")
 
-    .text(function(d) {
-      return simp_char[1 + parseInt(d3.select(this).attr("party"))];
-    })
-    .attr("text-anchor", "middle")
-    .attr("dy", ".35em")
-    .style("font-size", function(d) {
-      return square5 - 7 + "px";
-    });
+      .attr("class", function(d, i) {
+        return "square5 row-" + (n + 1) + " " + "col-" + (i + 1);
+      })
+      .attr("id", function(d, i) {
+        return "s-" + (n + 1) + (i + 1);
+      })
+      .attr("width", square5)
+      .attr("height", square5)
+      .attr("x", function(d, i) {
+        return i * (square5 + gap) + gap + square5 / 2;
+      })
+      .attr("y", n * (square5 + gap) + gap + square5 / 2)
+
+      .attr("party", function(d, i) {
+        return party_init[4 * n + i];
+      })
+      .style("fill", function(d) {
+        return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+      })
+
+      .text(function(d) {
+        return simp_char[1 + parseInt(d3.select(this).attr("party"))];
+      })
+      .attr("text-anchor", "middle")
+      .attr("dy", ".35em")
+      .style("font-size", function(d) {
+        return square5 - 7 + "px";
+      });
+  }
+
+  // loop over number of columns
+  for (let n = 0; n < square5sColumn; n++) {
+    // create each set of rows
+    var rows = grid
+      .selectAll("rect" + " .row-" + (n + 1))
+      .data(d3.range(square5sRow))
+      .enter()
+      .append("rect")
+      .attr("class", function(d, i) {
+        return "square5 row-" + (n + 1) + " " + "col-" + (i + 1);
+      })
+      .attr("id", function(d, i) {
+        return "s-" + (n + 1) + (i + 1);
+      })
+      .attr("width", square5)
+      .attr("height", square5)
+      .attr("x", function(d, i) {
+        return i * (square5 + gap) + gap;
+      })
+      .attr("y", n * (square5 + gap) + gap)
+
+      .attr("party", function(d, i) {
+        return party_init[4 * n + i];
+      })
+      .style("fill", function(d) {
+        return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+      })
+      .style("stroke", "#555")
+      .style("stroke-width", 1)
+      .style("fill-opacity", 0.4)
+
+      .on("mouseover", function(d) {
+        d3.select(this).style("stroke", "#444");
+        d3.select(this).style("stroke-width", "3");
+      })
+
+      .on("mouseout", function(d) {
+        d3.select(this).style("stroke", "#555");
+        d3.select(this).style("stroke-width", "1");
+      })
+
+      .on("click", function(d) {
+        clsq = true;
+        do_update2(this);
+        get_col_2();
+        //compute_hists();
+        update_textboxes();
+      });
+  }
+  return grid;
 }
 
-// loop over number of columns
-for (let n = 0; n < square5sColumn; n++) {
-  // create each set of rows
-  var rows = grd3
-    .selectAll("rect" + " .row-" + (n + 1))
-    .data(d3.range(square5sRow))
-    .enter()
-    .append("rect")
-    .attr("class", function(d, i) {
-      return "square5 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square5)
-    .attr("height", square5)
-    .attr("x", function(d, i) {
-      return 30 + i * 1.07 * square5;
-    })
-    .attr("y", square5 + n * 1.07 * square5)
+var grd3 = appendDeltaGrid(d3.select("#current-delta"));
 
-    .attr("party", function(d, i) {
-      return party_init[4 * n + i];
-    })
-    .style("fill", function(d) {
-      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-    })
-    .style("stroke", "#555")
-    .style("stroke-width", 1)
-    .style("fill-opacity", 0.4)
-
-    .on("mouseover", function(d) {
-      d3.select(this).style("stroke", "#000");
-      d3.select(this).style("stroke-width", "3");
-    })
-
-    .on("mouseout", function(d) {
-      d3.select(this).style("stroke", "#555");
-      d3.select(this).style("stroke-width", "1");
-    })
-
-    .on("click", function(d) {
-      clsq = true;
-      do_update2(this);
-      get_col_2();
-      //compute_hists();
-      update_textboxes();
-    });
-}
-
-var grd4 = d3
-  .select("#chart2")
-  .append("svg")
-  .attr("width", 100 + square5 * 7)
-  .attr("height", 604);
-
-for (let n = 0; n < square5sColumn; n++) {
-  // create each set of rows
-  var rows = grd4
-    .selectAll("text" + " .row-" + (n + 1))
-    .data(d3.range(square5sRow))
-    .enter()
-    .append("text")
-
-    .attr("class", function(d, i) {
-      return "square5 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square5)
-    .attr("height", square5)
-    .attr("x", function(d, i) {
-      return 60 + i * 1.07 * square5 + square5 / 2;
-    })
-    .attr("y", 320 + (square5 + n * 1.07 * square5) + square5 / 2)
-
-    .attr("party", function(d, i) {
-      return party_init[4 * n + i];
-    })
-    .style("fill", function(d) {
-      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-    })
-
-    .text(function(d) {
-      return simp_char[1 + parseInt(d3.select(this).attr("party"))];
-    })
-    .attr("text-anchor", "middle")
-    .attr("dy", ".35em")
-    .style("font-size", function(d) {
-      return square5 - 7 + "px";
-    });
-}
-
-// loop over number of columns
-for (let n = 0; n < square5sColumn; n++) {
-  // create each set of rows
-  var rows = grd4
-    .selectAll("rect" + " .row-" + (n + 1))
-    .data(d3.range(square5sRow))
-    .enter()
-    .append("rect")
-
-    .attr("class", function(d, i) {
-      return "square5 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square5)
-    .attr("height", square5)
-    .attr("x", function(d, i) {
-      return 60 + i * 1.07 * square5;
-    })
-    .attr("y", 320 + (square5 + n * 1.07 * square5))
-
-    .attr("party", function(d, i) {
-      return party_init[4 * n + i];
-    })
-    .style("fill", function(d) {
-      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-    })
-    .style("stroke", "#555")
-    .style("stroke-width", 1)
-    .style("fill-opacity", 0.4)
-
-    .on("mouseover", function(d) {
-      d3.select(this).style("stroke", "#000");
-      d3.select(this).style("stroke-width", "3");
-    })
-
-    .on("mouseout", function(d) {
-      d3.select(this).style("stroke", "#555");
-      d3.select(this).style("stroke-width", "1");
-    })
-
-    .on("click", function(d) {
-      clsq = true;
-      do_update2(this);
-      get_col_2();
-      //compute_hists();
-      update_textboxes();
-    });
-}
+var grd4 = appendDeltaGrid(d3.select("#current-delta-2"));
 
 function do_update2(r) {
   if (d3.event != null && r != -1) {
@@ -298,58 +210,28 @@ function do_update2(r) {
   compute_hists();
 }
 
-grd4
+var currentDContainer = d3
+  .select("#current-d-2")
+  .append("svg")
+  .attr("width", 130 + 8)
+  .attr("height", 130 + 4);
+
+var currentDBackground = currentDContainer
   .append("rect")
   .attr("width", 140)
   .attr("height", 136)
-  .attr("transform", "translate(" + (305 / 2 - 65 - 5) + ",105)")
   .attr("fill", "#555")
   .attr("bg", true);
 
-var distpic = grd4
+var distpic = currentDContainer
   .append("image")
-
   .attr("width", 130)
   .attr("height", 130)
-  .attr("transform", "translate(" + (305 / 2 - 65) + ",107)")
+  .attr("x", 4)
+  .attr("y", 2)
   .attr("xlink:href", function(d) {
     return "m5-imgs/whole/im_" + idno2 + ".png";
   });
-
-grd4
-  .append("text")
-  .attr("x", 153)
-  .attr("y", 103)
-  .text("Current Plan")
-  .attr("text-anchor", "middle");
-
-grd4
-  .append("text")
-  .attr("x", 153)
-  .attr("y", 350)
-  .text("Current Distribution")
-  .attr("text-anchor", "middle");
-grd4
-  .append("text")
-  .attr("x", 153)
-  .attr("y", 555)
-  .text("Click cells to change their color")
-  .style("font-size", "12px")
-  .attr("text-anchor", "middle");
-
-grd3
-  .append("text")
-  .attr("x", 120)
-  .attr("y", 30)
-  .text("Current Distribution")
-  .attr("text-anchor", "middle");
-grd3
-  .append("text")
-  .attr("x", 120)
-  .attr("y", 233)
-  .text("Click cells to change their color")
-  .style("font-size", "12px")
-  .attr("text-anchor", "middle");
 
 function grid_borders() {
   grd3.selectAll("line").remove();
