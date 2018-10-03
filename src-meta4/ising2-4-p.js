@@ -5,8 +5,6 @@ var dist3 = 0;
 var dist4 = 0;
 var cnt = 0;
 
-
-
 // create the svg
 var grd2 = d3v3
   .select("#chart3")
@@ -23,7 +21,7 @@ var squaresRow = 4;
 var squaresColumn = 4;
 
 // loop over number of columns
-_.times(squaresColumn, function(n) {
+for (let n = 0; n < squaresColumn; n++) {
   var rows = grd2grp
     .selectAll("rect" + " .row-" + (n + 1))
     .data(d3v3.range(squaresRow))
@@ -118,7 +116,7 @@ _.times(squaresColumn, function(n) {
 
     .on("click", do_update)
     .on("contextmenu", do_updaterc);
-});
+}
 
 function do_update() {
   if (d3v3.event.defaultPrevented) return;
