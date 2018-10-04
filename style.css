@@ -83,7 +83,7 @@ p {
 
 /* Need a better solution than this */
 main > * {
-  max-width: 900px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 2vw;

@@ -373,7 +373,7 @@ for (let n = 0; n < square7sColumn; n++) {
       can_chain = is_conn(cur_plan_str);
 
       if (can_chain) {
-        go_btn.html("Click to sample with MCMC");
+        go_btn.html("Sample with MCMC");
         go_btn.classed("disabled", false);
       } else {
         go_btn.html("Current plan is invalid");
@@ -406,7 +406,7 @@ for (let n = 0; n < square7sColumn; n++) {
       });
 
       if (can_chain) {
-        go_btn.html("Click to sample with MCMC");
+        go_btn.html("Sample with MCMC");
         go_btn.classed("disabled", false);
       } else {
         go_btn.html("Current plan is invalid");
@@ -442,7 +442,7 @@ var randomDButton = d3.select("#random-d").on("click", function(d) {
   can_chain = is_conn(cur_plan_str);
 
   if (can_chain) {
-    go_btn.html("Click to sample with MCMC");
+    go_btn.html("Sample with MCMC");
     go_btn.classed("disabled", false);
   } else {
     go_btn.html("Current plan is invalid");
@@ -925,7 +925,7 @@ let histogram = createHistogram(
     { label: "7 Seats", count: 0 }
   ],
   500,
-  300
+  220
 );
 
 function update_histo(newhist) {
@@ -935,7 +935,7 @@ function update_histo(newhist) {
     count,
     currentPlan: i == red_this
   }));
-  updateHistogram(histogram, data, "#66ABFF", 500, 300);
+  updateHistogram(histogram, data, "#66ABFF", 500, 220);
 }
 
 let randomDeltaButton = d3.select("#random-delta");
