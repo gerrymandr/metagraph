@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>Metagraph 7x7</title>
-  <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
     crossorigin="anonymous">
@@ -31,7 +33,7 @@
 
   <main>
 
-<!--   	<h3>So you want to do a gerrymander?</h3>
+    <!--   	<h3>So you want to do a gerrymander?</h3>
   	<p>
   		Up until now, we've developed mathematical tools to try to <i>detect</i> and <i>analyze</i> potential gerrymandering,
   		but now we're going to take the opposite point of view and look at how to apply this knowlege to <i>creating</i> a
@@ -52,7 +54,7 @@
     <p>
       The first thing we'll do is use the MCMC sampler we built in the last demo, but instead of using it
       to generate an ensemble of plans to compare against, we'll use it to hunt for plans which award a high
-      number of seats for one of the parties.  We've slightly modified the code to look for extreme outcomes. 
+      number of seats for one of the parties. We've slightly modified the code to look for extreme outcomes.
       Once you pick your distribution and click to search, the algorithm will run
       for 1,500 steps in short bursts of 150. Every 150 steps, it restarts its walk from the most extreme plan
       it has found so far, and at the end it displays the best one found overall.
