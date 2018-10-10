@@ -8,14 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.">
   <link rel="canonical" href="https://www.mggg.org/metagraph/">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
-    crossorigin="anonymous">
-  <!-- <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Source+Sans+Pro" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Source+Sans+Pro:300,400"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
     crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-    crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters: [
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {delimiters: [
       {left: '$', right: '$', display: false}
     ]});"></script>
 </head>
@@ -31,101 +33,132 @@
     <p class="subtitle">an interactive introduction to the math of redistricting</p>
     <img width="200" src="imgs/blankgrid.png?raw=true" alt="A 4-by-4 grid">
     <summary>
-      This project uses interactive widgets and visualizations to explore some of the mathematical tools used to
-      analyze electoral redistricting, especially the question of <em>detecting gerrymanders</em>. We use very small
+      This project uses interactive widgets and visualizations to explore some of the mathematical
+      tools used to
+      analyze electoral redistricting, especially the question of <em>detecting gerrymanders</em>.
+      We use very small
       examples to develop and demonstrate some techniques.
     </summary>
   </header>
 
   <main>
-    <p>
-      The nation of Gridlandia is trying to draw voting districts for its upcoming elections. The rules are that there
-      must be
-      four districts and each district must be made up of four contiguous units. (Basically, each district
-      looks like a tetris piece.)
-      Since Gridlandia is laid out neatly
-      in a four-by-four grid, it's not too hard to write down all of the valid plans.
-      There turn out to be only 117 of them.
-    </p>
+    <section>
+      <p>
+        The nation of Gridlandia is trying to draw voting districts for its upcoming elections. The
+        rules are that
+        there
+        must be
+        four districts and each district must be made up of four contiguous units. (Basically, each
+        district
+        looks like a tetris piece.)
+        Since Gridlandia is laid out neatly
+        in a four-by-four grid, it's not too hard to write down all of the valid plans.
+        There turn out to be only 117 of them.
+      </p>
 
-    <figure>
-      <figcaption>Here is one:</figcaption>
-      <img src="imgs/fillgrid.png?raw=true">
-    </figure>
-
-    <p>
-      We can impose a <em>graph</em> or <em> network</em> structure to organize
-      the collection of all of those 117 districting options.
-      We'll let each valid plan be represented by a node in this network, and we'll
-      connect two nodes with an edge if the plans they represent
-      are related by a simple <em>swap move</em>, exchanging the district assignments
-      of two cells from adjacent districts.
-    </p>
-    <figure>
-      <div id="edgeswap">
-      </div>
-      <figcaption>
-        We can transfom the plan on the left (olive-colored node) into the plan on the right (seafoam green node)
-        by swapping the district assignments of the two cells that are grayed out in the center image.
-      </figcaption>
-    </figure>
-
-    <p>
-      We call this structure the <strong>metagraph of districting plans</strong>.
-      ("Metagraph" because it is a graph whose nodes represent ways of partitioning another graph.)
-      Since Gridlandia itself is so symmetric, it might be useful to consider two districting plans to be <em>the same</em>
-      if they are equivalent after a rigid motion like a rotation or a flip. For example,
-    </p>
-
-    <figure>
-      <div>
+      <figure>
+        <figcaption>Here is one:</figcaption>
         <img src="imgs/fillgrid.png?raw=true">
-        <img src="imgs/rotgrid.png?raw=true">
-      </div>
-      <figcaption>
-        A 90 degree rotation makes these two plans equivalent.
-      </figcaption>
-    </figure>
+      </figure>
 
-    <p>If we do collapse the metagraph in this way (in mathematical terms, if we quotient by the action
-      of the dihedral group <em>D</em><sub>4</sub>) we are left with only 22 nodes, and we will call that
-      smaller object a <em>reduced metagraph</em>.</p>
+      <p>
+        We can impose a <em>graph</em> or <em> network</em> structure to organize
+        the collection of all of those 117 districting options.
+        We'll let each valid plan be represented by a node in this network, and we'll
+        connect two nodes with an edge if the plans they represent
+        are related by a simple <em>swap move</em>, exchanging the district assignments
+        of two cells from adjacent districts.
+      </p>
+      <figure>
+        <div id="edgeswap">
+        </div>
+        <figcaption>
+          We can transfom the plan on the left (olive-colored node) into the plan on the right
+          (seafoam green node)
+          by swapping the district assignments of the two cells that are grayed out in the center
+          image.
+        </figcaption>
+      </figure>
 
-    <h3>All the ways to district Gridlandia</h3>
-    <p>
-      Below, you can interact with these
-      mathematical objects&mdash; if your screen is big enough, they are side-by-side.
-      On the left you can manipulate the full metagraph of Gridlandia.
-      On the right you see the reduced metagraph where plans which are related by symmetry are merged into the same
-      node, and two
-      nodes are linked by an edge if any two of their representatives are adjacent in the full metagraph. Mouse over a
-      node in
-      the left-hand graph to see the corresponding plan and highlight all of the other nodes corresponding to
-      symmetrically equivalent plans.
-      Click a node to highlight all of its neighbors. Clicking a node in the right-hand graph will highlight
-      all nodes in that symmetry class from the larger graph, plus their neighbors.</p>
+      <p>
+        We call this structure the <strong>metagraph of districting plans</strong>.
+        ("Metagraph" because it is a graph whose nodes represent ways of partitioning another
+        graph.)
+        Since Gridlandia itself is so symmetric, it might be useful to consider two districting
+        plans to be <em>the
+          same</em>
+        if they are equivalent after a rigid motion like a rotation or a flip. For example,
+      </p>
 
-    <div id="chart1" class="chart center"></div>
+      <figure>
+        <div>
+          <img src="imgs/fillgrid.png?raw=true">
+          <img src="imgs/rotgrid.png?raw=true">
+        </div>
+        <figcaption>
+          A 90 degree rotation makes these two plans equivalent.
+        </figcaption>
+      </figure>
 
-    <p> Nodes in the full metagraph are sized according to their degree, or number of neighbors. Nodes in the
-      reduced metagraph are sized according to the number of representatives in their symmetry class.</p>
+      <p>If we do collapse the metagraph in this way (in mathematical terms, if we quotient by the
+        action
+        of the dihedral group <em>D</em><sub>4</sub>) we are left with only 22 nodes, and we will
+        call that
+        smaller object a <em>reduced metagraph</em>.</p>
 
-    <h3>Elections in Gridlandia</h3>
-    <p>
-      To analyze the partisan performance of a districting plan $\mathcal D$, you must also specify a vote distribution
-      $\Delta$. So let's think about voting in Gridlandia. Gridlandia has plurality elections and two political
-      parties, the <span class="hearts">Hearts</span> Party and the <span class="clubs">Clubs</span>
-      Party. For simplicity, we'll start by assuming that everyone in the same grid unit votes the same
-      way&mdash;either for the <span class="hearts">Hearts</span> candidate or the <span class="clubs">Clubs</span>
-      candidate. Within each district, the party with the most votes wins the election, and ties are left
-      ambiguous&mdash;nobody wins. Below, you can click each grid unit to toggle its vote between the parties.
-      On the left, the nodes in the metagraph will change color
-      to indicate which party wins more seats under the corresponding plan. A node will remain gray if
-      it has the same
-      number of <span class="hearts">Hearts</span>- and <span class="clubs">Clubs</span>-favoring
-      districts.</p>
+      <h3>All the ways to district Gridlandia</h3>
+      <p>
+        Below, you can interact with these
+        mathematical objects&mdash; if your screen is big enough, they are side-by-side.
+        On the left you can manipulate the full metagraph of Gridlandia.
+        On the right you see the reduced metagraph where plans which are related by symmetry are
+        merged into the same
+        node, and two
+        nodes are linked by an edge if any two of their representatives are adjacent in the full
+        metagraph. Mouse over
+        a
+        node in
+        the left-hand graph to see the corresponding plan and highlight all of the other nodes
+        corresponding to
+        symmetrically equivalent plans.
+        Click a node to highlight all of its neighbors. Clicking a node in the right-hand graph
+        will highlight
+        all nodes in that symmetry class from the larger graph, plus their neighbors.</p>
 
-    <div id="chart2" class="chart center">
+      <p> Nodes in the full metagraph are sized according to their degree, or number of neighbors.
+        Nodes in the
+        reduced metagraph are sized according to the number of representatives in their symmetry
+        class.</p>
+    </section>
+
+    <section id="chart1" class="chart center">
+    </section>
+    <section>
+      <h3>Elections in Gridlandia</h3>
+      <p>
+        To analyze the partisan performance of a districting plan $\mathcal D$, you must also
+        specify a vote
+        distribution
+        $\Delta$. So let's think about voting in Gridlandia. Gridlandia has plurality elections and
+        two political
+        parties, the <span class="hearts">Hearts</span> Party and the <span class="clubs">Clubs</span>
+        Party. For simplicity, we'll start by assuming that everyone in the same grid unit votes
+        the same
+        way&mdash;either for the <span class="hearts">Hearts</span> candidate or the <span class="clubs">Clubs</span>
+        candidate. Within each district, the party with the most votes wins the election, and ties
+        are left
+        ambiguous&mdash;nobody wins. Below, you can click each grid unit to toggle its vote between
+        the parties.
+        On the left, the nodes in the metagraph will change color
+        to indicate which party wins more seats under the corresponding plan. A node will remain
+        gray if
+        it has the same
+        number of <span class="hearts">Hearts</span>- and <span class="clubs">Clubs</span>-favoring
+        districts.</p>
+
+    </section>
+
+    <section id="chart2" class="chart center">
       <div class="graph"></div>
       <div class="grid-container">
         <h4>Vote Distribution $\Delta$</h4>
@@ -133,31 +166,38 @@
         </div>
         <p>Click cells to toggle</p>
       </div>
-    </div>
+    </section>
 
-    <p>
-      Let's make things a little more complicated. Instead of each unit voting entirely for one party, we will give
-      it a balance of
-      <span class="hearts">Hearts</span> and some <span class="clubs">Clubs</span>
-      supporters, in 10% increments. The same electoral rules apply.
-      Left- or right-click on each unit to adjust the
-      balance of <span class="clubs">Clubs</span> and <span class="hearts">Hearts</span> supporters.</p>
+    <section>
+      <p>
+        Let's make things a little more complicated. Instead of each unit voting entirely for one
+        party, we will give
+        it a balance of
+        <span class="hearts">Hearts</span> and some <span class="clubs">Clubs</span>
+        supporters, in 10% increments. The same electoral rules apply.
+        Left- or right-click on each unit to adjust the
+        balance of <span class="clubs">Clubs</span> and <span class="hearts">Hearts</span>
+        supporters.</p>
 
-    <p>
-      Play around with this!
-    </p>
+      <p>
+        Play around with this!
+      </p>
 
-    <ul>
-      <li>What happens when the <span class="clubs">Clubs</span> party has a slight majority in most of the
-        cells but a few are heavily <span class="hearts">Hearts</span>?</li>
-      <li>Can you find a distribution of voters where one party has less than half of the votes but
-        still wins three out of four districts?</li>
-      <li>Can you find a distribution of voters that creates
-        a <span class="hearts">Hearts</span>-colored metagraph node surrounded entirely by <span class="clubs">Clubs</span>
-        nodes?</li>
-    </ul>
+      <ul>
+        <li>What happens when the <span class="clubs">Clubs</span> party has a slight majority in
+          most of the
+          cells but a few are heavily <span class="hearts">Hearts</span>?</li>
+        <li>Can you find a distribution of voters where one party has less than half of the votes
+          but
+          still wins three out of four districts?</li>
+        <li>Can you find a distribution of voters that creates
+          a <span class="hearts">Hearts</span>-colored metagraph node surrounded entirely by <span
+            class="clubs">Clubs</span>
+          nodes?</li>
+      </ul>
+    </section>
 
-    <div id="chart3" class="chart center">
+    <section id="chart3" class="chart center">
       <div class="graph"></div>
       <div class="grid-container">
         <h4>Vote Distribution $\Delta$</h4>
@@ -165,14 +205,17 @@
         </div>
         <p>Click cells to adjust balance</p>
       </div>
-    </div>
+    </section>
 
-    <p>
-      If we're interested in studying redistricting in the real world, we'll need techniques that work on much, much
-      more complicated graphs. We will develop some of these techniques using the 5x5 grid, which already has a
-      substantially larger universe of valid districting plans.
-    </p>
-
+    <section>
+      <p>
+        If we're interested in studying redistricting in the real world, we'll need techniques that
+        work on much, much
+        more complicated graphs. We will develop some of these techniques using the 5x5 grid, which
+        already has a
+        substantially larger universe of valid districting plans.
+      </p>
+    </section>
   </main>
 
   <nav>
@@ -189,10 +232,12 @@
 
   <footer>
     <p>
-      This page was created by <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a> based on work at the
+      This page was created by <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a>
+      based on work at the
       <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
       and is being edited and maintained by MGGG. The project includes joint work with
-      <a href="http://sethdrew.com/">Seth Drew</a>, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
+      <a href="http://sethdrew.com/">Seth Drew</a>, Eugene Henninger-Voss, Amara Jaeger, and
+      Heather Newman.
       Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
         project</a> served as inspiration.
     </p>

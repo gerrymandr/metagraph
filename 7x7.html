@@ -7,14 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
-    crossorigin="anonymous">
-  <!-- <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Source+Sans+Pro" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Source+Sans+Pro:300,400"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
     crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-    crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters: [
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {delimiters: [
       {left: '$', right: '$', display: false}
     ]});"></script>
 </head>
@@ -33,74 +35,115 @@
 
   <main>
     <p>
-      Once more Gridlandia has gotten a little bigger, and now our task is to examine drawing seven connected,
-      equal-size districts (we're going to skip the 6x6 grid because we don't want to have to worry about ties). We'd
-      like to be able to do a similar analysis as in the 5x5 case, where we can examine a proposed plan and a
-      distribution of voters to see if there is evidence that the plan was intentionally selected to favor or disfavor
-      one of the parties. This time, however, we don't have a full list of all of the legal plans. We know that
-      <a href="http://oeis.org/A172477">there are 158,753,814 of them</a>, and even with a careful encoding scheme, a
-      file containing all of these would be a couple of gigabytes. But this is okay! If we have trouble writing down
-      all of the legal districtings of a 7x7 grid, there is no way we'll be able to do such a thing for a real
-      jurisdiction, so we can use this as an opportunity to develop some <strong>sampling techniques</strong>.</p>
+      Once more Gridlandia has gotten a little bigger, and now our task is to examine drawing seven
+      connected,
+      equal-size districts (we're going to skip the 6x6 grid because we don't want to have to worry
+      about ties). We'd
+      like to be able to do a similar analysis as in the 5x5 case, where we can examine a proposed
+      plan and a
+      distribution of voters to see if there is evidence that the plan was intentionally selected
+      to favor or disfavor
+      one of the parties. This time, however, we don't have a full list of all of the legal plans.
+      We know that
+      <a href="http://oeis.org/A172477">there are 158,753,814 of them</a>, and even with a careful
+      encoding scheme, a
+      file containing all of these would be a couple of gigabytes. But this is okay! If we have
+      trouble writing down
+      all of the legal districtings of a 7x7 grid, there is no way we'll be able to do such a thing
+      for a real
+      jurisdiction, so we can use this as an opportunity to develop some <strong>sampling
+        techniques</strong>.</p>
     </p>
     <p>
       How do we generate a random, and hopefully representative, sample of plans?
       There are two really simple techniques which are terrible on their
-      own, but when combined become very powerful. The first is to have a computer generate district assignments of the
+      own, but when combined become very powerful. The first is to have a computer generate
+      district assignments of the
       cells by a uniformly random process
-      and keep the ones which satisfy the criteria for being legal districting plans. What's great about this is
-      that each valid plan occurs with equal probability. What's not so great is that this probability is extremely
-      tiny. While there are a very large number of legal plans, there are way, way, way more labellings than legal
-      plans&mdash;about $10^33$ of them. Even if we had a computer that could generate 1,000 attempted plans per
-      second, we wouldn't expect to hit a valid one within a human lifetime, or the duration of life on earth.
+      and keep the ones which satisfy the criteria for being legal districting plans. What's great
+      about this is
+      that each valid plan occurs with equal probability. What's not so great is that this
+      probability is extremely
+      tiny. While there are a very large number of legal plans, there are way, way, way more
+      labellings than legal
+      plans&mdash;about $10^33$ of them. Even if we had a computer that could generate 1,000
+      attempted plans per
+      second, we wouldn't expect to hit a valid one within a human lifetime, or the duration of
+      life on earth.
     </p>
     <p>
-      The second strategy is to use a human to produce plans. This has the advantage of not wasting time drawing and
-      checking labellings which are not legal plans. The downside is that, in the grand scheme of things, humans are
-      pretty slow at this task. Some of our brave researchers tried to write down all of the legal plans for the 4x4
+      The second strategy is to use a human to produce plans. This has the advantage of not wasting
+      time drawing and
+      checking labellings which are not legal plans. The downside is that, in the grand scheme of
+      things, humans are
+      pretty slow at this task. Some of our brave researchers tried to write down all of the legal
+      plans for the 4x4
       grid and, although they succeeded, it did take quite a few hours of time.
     </p>
     <p>
-      How can we combine these? What we can do is <strong>start with a human-drawn (or human-assisted) plan</strong>,
-      then use a computer to <strong>randomly modify it</strong>. Remember when we defined two plans to be <strong>adjacent
-        in the metagraph</strong> if we could transform one into the other by swapping two cells in adjacent districts?
+      How can we combine these? What we can do is <strong>start with a human-drawn (or
+        human-assisted) plan</strong>,
+      then use a computer to <strong>randomly modify it</strong>. Remember when we defined two
+      plans to be <strong>adjacent
+        in the metagraph</strong> if we could transform one into the other by swapping two cells in
+      adjacent districts?
       Since there are only 1176 ways to randomly pick a pair of cells to try to swap in a 7x7 grid,
       a computer can very easily move from one plan to the next, which is exactly what is
-      happening in the animation below. Every half-second, an algorithm randomly picks two cells and checks if
-      exchanging their district assignments yields a legal districting plan. If so, it moves to that plan. If not, it
+      happening in the animation below. Every half-second, an algorithm randomly picks two cells
+      and checks if
+      exchanging their district assignments yields a legal districting plan. If so, it moves to
+      that plan. If not, it
       tries again.
     </p>
 
     <div id="randomwalk" class="chart"></div>
 
     <p>
-      We are doing a <strong>random walk</strong> on the metagraph. Each plan is represented by a node in the
-      metagraph. Every second, the walk takes a random step to one of the neighbors of the current plan. This algorithm
-      is remarkable for three important reasons. The first is its simplicity&mdash;the demo above is running live off
+      We are doing a <strong>random walk</strong> on the metagraph. Each plan is represented by a
+      node in the
+      metagraph. Every second, the walk takes a random step to one of the neighbors of the current
+      plan. This algorithm
+      is remarkable for three important reasons. The first is its simplicity&mdash;the demo above
+      is running live off
       of
-      about 50 lines of JavaScript, in your browser, right now. The second is the effectiveness and speed. While it
-      would take a long time to enumerate <em>all</em> of the legal districting plans, we can definitely
-      enumerate a huge chunk of them very quickly. The third is that the process often rapidly converges to a truly
+      about 50 lines of JavaScript, in your browser, right now. The second is the effectiveness and
+      speed. While it
+      would take a long time to enumerate <em>all</em> of the legal districting plans, we can
+      definitely
+      enumerate a huge chunk of them very quickly. The third is that the process often rapidly
+      converges to a truly
       representative sample of the full universe.
     </p>
     <h3>Introducing MCMC: A Demo</h3>
     <p>
-      This kind of sampling algorithm is called a <em><strong>Markov chain Monte Carlo</strong></em> method, or MCMC
-      for short. These are incredibly powerful tools for sampling, approximation, and optimization in settings where it
-      is difficult to get your hands on the object you're interested in, such as the space of all valid districting
+      This kind of sampling algorithm is called a <em><strong>Markov chain Monte Carlo</strong></em>
+      method, or MCMC
+      for short. These are incredibly powerful tools for sampling, approximation, and optimization
+      in settings where it
+      is difficult to get your hands on the object you're interested in, such as the space of all
+      valid districting
       plans.
     </p>
 
     <p>
-      Once again, you can select a distribution of voters below. This time you can design a plan by clicking and
-      right-clicking the cells to change their district assignment, or press the 'Random Plan' button to have the
-      random walk choose one for you. Once you have a valid plan, press the 'MCMC Sampler' button to generate a
-      histogram. The <span class="blue">Blue</span> bar represents the number of seats your distribution of voters the
-      <span class="hearts">Hearts</span> Party wins under your selected plan, and the histogram bars show
-      the seat shares for a sample of 1,000 plans generated by the MCMC random walk. If the <span class="blue">Blue</span>
-      bar is to the left of most of the mass of the histogram, it means that the nearby sample found a lot of plans
-      that gave more seats to the <span class="hearts">Hearts</span> Party than yours. If the <span class="blue">Blue</span>
-      bar is to the right of most of the mass, it means that the sampler found a lot of plans which give more seats to
+      Once again, you can select a distribution of voters below. This time you can design a plan by
+      clicking and
+      right-clicking the cells to change their district assignment, or press the 'Random Plan'
+      button to have the
+      random walk choose one for you. Once you have a valid plan, press the 'MCMC Sampler' button
+      to generate a
+      histogram. The <span class="blue">Blue</span> bar represents the number of seats your
+      distribution of voters the
+      <span class="hearts">Hearts</span> Party wins under your selected plan, and the histogram
+      bars show
+      the seat shares for a sample of 1,000 plans generated by the MCMC random walk. If the <span
+        class="blue">Blue</span>
+      bar is to the left of most of the mass of the histogram, it means that the nearby sample
+      found a lot of plans
+      that gave more seats to the <span class="hearts">Hearts</span> Party than yours. If the <span
+        class="blue">Blue</span>
+      bar is to the right of most of the mass, it means that the sampler found a lot of plans which
+      give more seats to
       the <span class="clubs">Clubs</span> Party than yours.
     </p>
 
@@ -126,12 +169,17 @@
     </div>
 
     <p>
-      If you leave your distribution of voters alone and click the Sample button multiple times, the histogram will
-      change, but not by too much, and the general shape will still be the same. This is because even though 1,000 is a
-      very small number compared to 158,753,814&mdash;less than one percent of one percent&mdash;it's still a large
+      If you leave your distribution of voters alone and click the Sample button multiple times,
+      the histogram will
+      change, but not by too much, and the general shape will still be the same. This is because
+      even though 1,000 is a
+      very small number compared to 158,753,814&mdash;less than one percent of one
+      percent&mdash;it's still a large
       enough sample of
-      plans to be a fairly <strong>representative</strong> of the whole collection of plans. How to do this in the real
-      world where we need to draw districts on states and municipalities which may have hundreds or thousands of cells
+      plans to be a fairly <strong>representative</strong> of the whole collection of plans. How to
+      do this in the real
+      world where we need to draw districts on states and municipalities which may have hundreds or
+      thousands of cells
       is a hot area of research in redistricting.
     </p>
 
@@ -169,9 +217,12 @@
       which demonstrates the effectiveness of the restarting mechanism.
     </p>-->
     <p>
-      Sampling real-world districting plans is of course much more complex than sampling on the grid, but fundamentally
-      the idea of the random walk is the same. When you change the details of how you conduct the random walk,
-      you change the "stationary distribution"&mdash;in other words, it alters the weight that tells you how likely
+      Sampling real-world districting plans is of course much more complex than sampling on the
+      grid, but fundamentally
+      the idea of the random walk is the same. When you change the details of how you conduct the
+      random walk,
+      you change the "stationary distribution"&mdash;in other words, it alters the weight that
+      tells you how likely
       each plan is to come up if you were were to walk for a very long time.
       The scientific community is currently spending lots of energy to understand the
       details of how to conduct these walks to come to the strongest conclusions
@@ -196,10 +247,12 @@
 
   <footer>
     <p>
-      This page was created by <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a> based on work at the
+      This page was created by <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a>
+      based on work at the
       <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
       and is being edited and maintained by MGGG. The project includes joint work with
-      <a href="http://sethdrew.com/">Seth Drew</a>, Eugene Henninger-Voss, Amara Jaeger, and Heather Newman.
+      <a href="http://sethdrew.com/">Seth Drew</a>, Eugene Henninger-Voss, Amara Jaeger, and
+      Heather Newman.
       Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
         project</a> served as inspiration.
     </p>
