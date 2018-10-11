@@ -361,6 +361,7 @@ footer {
   justify-content: start;
   padding: 1rem 1vw 2rem;
 
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 0.8rem;
 
   box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.3);
