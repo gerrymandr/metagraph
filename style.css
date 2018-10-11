@@ -345,6 +345,7 @@ header > img {
   padding: 1rem;
   margin: 0 auto;
   background: #f9f9f9;
+  box-shadow: 0 -10px 15px -20px rgba(0, 0, 0, 0.3) inset;
 }
 
 .logo {
@@ -402,7 +403,6 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(max-content, 1fr));
   grid-gap: 1rem;
-  box-shadow: 0 -10px 15px -20px rgba(0, 0, 0, 0.3) inset;
 }
 
 @media only screen and (max-width: 600px) {
