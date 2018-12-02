@@ -1,263 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>Metagraph 5x5</title>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting.">
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Source+Sans+Pro:300,400|Quattrocento:400,700"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
-    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
-    crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
-    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, {delimiters: [
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Redistricting a 5x5 Grid | Metric Geometry and Gerrymandering Group
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A nonpartisan research organization studying applications of geometry and computing to U.S. redistricting."
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Lora:400,400i,700|Source+Sans+Pro:300,400"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+      integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+      integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+      integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body, {delimiters: [
       {left: '$', right: '$', display: false}
-    ]});"></script>
-</head>
+    ]});"
+    ></script>
+  </head>
 
-<body>
-  <div class="banner">
-    <a href="/">
-      <img class="logo" src="logo.svg" alt="Metric Geometry and Gerrymandering Group">
-    </a>
-  </div>
+  <body>
+    <div class="banner">
+      <a href="/">
+        <img
+          class="logo"
+          src="logo.svg"
+          alt="Metric Geometry and Gerrymandering Group"
+        />
+      </a>
+    </div>
 
-  <header>
-    <h1>Redistricting a 5x5 Grid</h1>
-    <img width="200" src="imgs/blankgrid5.png?raw=true" alt="A 5-by-5 grid">
-  </header>
+    <header>
+      <h1>Redistricting a 5x5 Grid</h1>
+      <img width="200" src="imgs/blankgrid5.png?raw=true" alt="A 5-by-5 grid" />
+    </header>
 
-  <main>
-    <p>
-      Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous districts of 5 units
-      each.
-      (Gridlandia has grown!)
-      There
-      are 4006 districting plans $\mathcal D$ that satisfy these criteria, and we can construct the
-      metagraph in the
-      same way as
-      <a href="./4x4.html">before</a>&mdash;with
-      a node for each plan and an edge between plans that can be transformed into each other by one
-      step (swapping two
-      cells in
-      adjacent districts). We can write these all down, but the full visualization is hard to work
-      with.
-      Instead, we'll show a local picture of the metagraph where you can see a districting plan and
-      all of the other
-      plans within two steps.
-    </p>
+    <main>
+      <p>
+        Now let's consider how to redistrict a 5x5 grid into 5 rook-contiguous
+        districts of 5 units each. (Gridlandia has grown!) There are 4006
+        districting plans $\mathcal D$ that satisfy these criteria, and we can
+        construct the metagraph in the same way as
+        <a href="./4x4.html">before</a>&mdash;with a node for each plan and an
+        edge between plans that can be transformed into each other by one step
+        (swapping two cells in adjacent districts). We can write these all down,
+        but the full visualization is hard to work with. Instead, we'll show a
+        local picture of the metagraph where you can see a districting plan and
+        all of the other plans within two steps.
+      </p>
 
-    <h3>A local view of the metagraph</h3>
-    <p>
-      Click on a plan in the local metagraph (at right) to put it in the center and study its
-      2-neighborhood.
-      (That is, you see all the plans within two swaps. Note that we're not showing the connections
-      between the
-      neighbors, but only how they relate to the center node.) Alternatively, use the panel on the
-      left to build a
-      districting plan $\mathcal D$ from scratch, one district at a time, and jump directly to it.
-      You can change the vote distribution $\Delta$ by clicking the units to toggle the vote
-      between the two parties,
-      and watch the winning side change in the metagraph.
-    </p>
+      <h3>A local view of the metagraph</h3>
+      <p>
+        Click on a plan in the local metagraph (at right) to put it in the
+        center and study its 2-neighborhood. (That is, you see all the plans
+        within two swaps. Note that we're not showing the connections between
+        the neighbors, but only how they relate to the center node.)
+        Alternatively, use the panel on the left to build a districting plan
+        $\mathcal D$ from scratch, one district at a time, and jump directly to
+        it. You can change the vote distribution $\Delta$ by clicking the units
+        to toggle the vote between the two parties, and watch the winning side
+        change in the metagraph.
+      </p>
 
-
-    <div id="chart1" class="chart three-columns">
-      <div>
-        <div class="plan-builder-header">
-          <h4>Build a Plan $\mathcal D$</h4>
-          <button id="reset-button">Reset</button>
-        </div>
-        <div id="plan-builder"></div>
-      </div>
-      <div class="grid-container">
-        <div class="grid-container">
-          <h4>Current Plan $\mathcal D$</h4>
-          <div id="current-d" class="grid"></div>
+      <div id="chart1" class="chart three-columns">
+        <div>
+          <div class="plan-builder-header">
+            <h4>Build a Plan $\mathcal D$</h4>
+            <button id="reset-button">Reset</button>
+          </div>
+          <div id="plan-builder"></div>
         </div>
         <div class="grid-container">
-          <h4>Vote Distribution $\Delta$</h4>
-          <div id="current-delta" class="grid"></div>
+          <div class="grid-container">
+            <h4>Current Plan $\mathcal D$</h4>
+            <div id="current-d" class="grid"></div>
+          </div>
+          <div class="grid-container">
+            <h4>Vote Distribution $\Delta$</h4>
+            <div id="current-delta" class="grid"></div>
+          </div>
+        </div>
+
+        <div class="graph-container">
+          <div class="graph"></div>
+          <p>Click a node to move in the graph</p>
         </div>
       </div>
 
-      <div class="graph-container">
-        <div class="graph"></div>
-        <p>Click a node to move in the graph</p>
-      </div>
-    </div>
+      <p>
+        Try exploring: create a distribution $\Delta$ that's about half and half
+        split between the parties, start with any initial plan $\mathcal D$, and
+        try clicking your way around the metagraph and looking for areas that
+        favor one party or the other.
+      </p>
+      <h3>Statistics over the metagraph</h3>
+      <p>
+        Since there are 4006 possible districting plans, it's hard to use such a
+        zoomed-in view to get a good sense of the universe of possibilities.
+        Furthermore, there are $2^{25}=33,554,432$ possible voting
+        distributions, even before we allow units to split their votes, since
+        each of the 25 units can go for either party. For a particular vote
+        distribution $\Delta$, we might happen to be in an area of the metagraph
+        where many plans give the <span class="hearts">Hearts</span> Party the
+        majority of seats, even though globally the
+        <span class="clubs">Clubs</span> Party does better far more of the time.
+      </p>
 
-    <p>Try exploring: create a distribution $\Delta$ that's about half and half split between the
-      parties, start with
-      any initial plan $\mathcal D$, and try clicking your way around the metagraph and looking for
-      areas
-      that favor one party or the other.
-    </p>
-    <h3>Statistics over the metagraph</h3>
-    <p>
-      Since there are 4006 possible districting plans, it's hard to use such a zoomed-in view to
-      get a good sense of
-      the universe of possibilities. Furthermore, there are $2^{25}=33,554,432$ possible voting
-      distributions,
-      even before we allow units to split their votes, since each of the 25 units can go for either
-      party.
-      For a particular vote distribution $\Delta$,
-      we might happen to be in an area of the metagraph where many plans give the <span class="hearts">Hearts</span>
-      Party the majority of seats, even though globally the <span class="clubs">Clubs</span> Party
-      does better
-      far more of the time.
-    </p>
+      <p>
+        Instead of trying to visualize the whole metagraph, we can compute some
+        <strong>statistics</strong> about all possible $\mathcal D$ with respect
+        to a fixed distribution of votes $\Delta$ and also for all possible
+        distributions of votes $\Delta$ with respect to a fixed plan $\mathcal
+        D$. Below, you can build a plan using the panel on the left, or scroll
+        back up to pick a plan from the last figure. The selected plan will be
+        displayed next to the navigator panel. You can click and toggle $\Delta$
+        as before. Finally, there are two histograms.
+      </p>
 
-    <p>
-      Instead of trying to visualize the whole metagraph, we can compute some <strong>statistics</strong>
-      about all
-      possible $\mathcal D$ with respect to a fixed distribution of votes $\Delta$
-      and also for all possible distributions of votes $\Delta$ with respect to a fixed plan
-      $\mathcal D$.
-      Below, you can build a plan using the panel on the left, or scroll back up to pick a plan
-      from the last figure.
-      The selected plan will be displayed next to the navigator panel. You can click and toggle
-      $\Delta$ as
-      before. Finally, there are two histograms.
-    </p>
+      <p>
+        The first histogram fixes your districting plan but varies the vote
+        distribution over all the possibilities with the same proportion of
+        voters for each party. (For instance, if your $\Delta$ has 9
+        <span class="clubs">Clubs</span> units, then it is compared against the
+        ${25 \choose 9}=2,042,975$ distributions that are also 36%
+        <span class="clubs">Clubs</span>.) The number of
+        <span class="hearts">Hearts</span> seats for your $(\mathcal D,\Delta)$
+        is indicated by the <span class="green">Green</span> bar.
+      </p>
 
-    <p>
-      The first histogram fixes your districting plan but varies the vote distribution over all the
-      possibilities
+      <p>
+        The second histogram shows how many
+        <span class="hearts">Hearts</span> seats your distribution gives over
+        all 4006 possible districting plans. The number of
+        <span class="hearts">Hearts</span> seats in your selected plan is
+        indicated by the <span class="blue">Blue</span> bar.
+      </p>
 
-      with the same proportion of voters for each party. (For instance, if your $\Delta$ has 9
-      <span class="clubs">Clubs</span> units, then it is compared against the ${25 \choose
-      9}=2,042,975$ distributions
-      that are also 36% <span class="clubs">Clubs</span>.)
-      The number of
-      <span class="hearts">Hearts</span> seats for your $(\mathcal D,\Delta)$
-
-      is indicated by the <span class="green">Green</span> bar.
-    </p>
-
-    <p>
-      The second histogram shows how many <span class="hearts">Hearts</span> seats your
-      distribution
-      gives over all 4006 possible districting plans. The number of <span class="hearts">Hearts</span>
-      seats
-      in your selected plan is indicated by the <span class="blue">Blue</span> bar.
-    </p>
-
-    <div id="chart2" class="chart three-columns">
-      <div>
-        <div class="plan-builder-header">
-          <h4>Build a Plan $\mathcal D$</h4>
-          <button id="reset-button-2">Reset</button>
-        </div>
-        <div id="plan-builder-2"></div>
-      </div>
-      <div class="grid-container">
-        <div class="grid-container">
-          <h4>Current Plan $\mathcal D$</h4>
-          <div id="current-d-2" class="grid"></div>
+      <div id="chart2" class="chart three-columns">
+        <div>
+          <div class="plan-builder-header">
+            <h4>Build a Plan $\mathcal D$</h4>
+            <button id="reset-button-2">Reset</button>
+          </div>
+          <div id="plan-builder-2"></div>
         </div>
         <div class="grid-container">
-          <h4>Vote Distribution $\Delta$</h4>
-          <div id="current-delta-2" class="grid"></div>
+          <div class="grid-container">
+            <h4>Current Plan $\mathcal D$</h4>
+            <div id="current-d-2" class="grid"></div>
+          </div>
+          <div class="grid-container">
+            <h4>Vote Distribution $\Delta$</h4>
+            <div id="current-delta-2" class="grid"></div>
+          </div>
+        </div>
+        <div class="hist-container">
+          <p>This distribution $\Delta$, all 4,006 plans:</p>
+          <div id="all-plans-hist"></div>
+          <p>
+            This plan $\mathcal D$, all
+            <span id="number-deltas"></span> distributions with
+            <span id="number-hearts">14</span> Hearts votes:
+          </p>
+          <div id="all-deltas-hist"></div>
         </div>
       </div>
-      <div class="hist-container">
-        <p>This distribution $\Delta$, all 4,006 plans:</p>
-        <div id="all-plans-hist"></div>
-        <p>This plan $\mathcal D$, all <span id="number-deltas"></span> distributions with <span id="number-hearts">14</span>
-          Hearts votes:</p>
-        <div id="all-deltas-hist"></div>
+
+      <h3>Interpretation</h3>
+      <p>How should we interpret this?</p>
+
+      <h4>Fixed $\Delta$, varied $\mathcal D$</h4>
+      <p>
+        Suppose, for a fixed distribution of votes, that your plan performed
+        very extremely: it's in a <span class="blue">Blue</span> bar that's far
+        to the left or the right of the bulk of the distribution. Perhaps this
+        occurred by chance, but another thing this could mean is that the
+        favored party had a good prediction of where the vote would fall and
+        drew the lines to carefully extract electoral advantage from that
+        pattern&mdash;gerrymandering!
+      </p>
+
+      <h4>Varying $\Delta$ with fixed party shares</h4>
+      <p>
+        This lets you explore whether the layout of voters, itself, is skewing
+        the representation away from proportionality. For instance, consider all
+        the voter distributions that have just four
+        <span class="hearts">Hearts</span> units in the grid. Most of them don't
+        yield even one way to get a <span class="hearts">Hearts</span> district,
+        but if you place them close together, then over 41% of plans do give
+        representation to the <span class="hearts">Hearts</span> party. If your
+        $\Delta$ is an outlier, that is supporting evidence that the plan was
+        tailored to that $\Delta.$
+      </p>
+
+      <p>
+        Next, we'll look at the 7x7 grid, which has too many valid districting
+        plans for us to actually write down, so we'll have to develop some more
+        sophisticated methods to do these kinds of statistical comparisons.
+      </p>
+    </main>
+
+    <nav>
+      <div class="previous">
+        <a href="./" class="nav-link">&laquo; 4x4 grid</a>
       </div>
-    </div>
 
-    <h3>Interpretation</h3>
-    <p>
-      How should we interpret this?
-    </p>
+      <div class="current"><p class="current-page">5x5 grid</p></div>
 
+      <div class="next">
+        <a href="./7x7.html" class="nav-link">7x7 grid &raquo;</a>
+        <a href="../table.html" class="nav-link">Everything we know &raquo;</a>
+      </div>
+    </nav>
 
-    <h4>Fixed $\Delta$, varied $\mathcal D$</h4>
-    <p>
-      Suppose, for a fixed distribution of votes, that your plan performed very extremely: it's in
-      a
-      <span class="blue">Blue</span> bar that's far to the left or the right of the bulk of the
-      distribution.
-      Perhaps this occurred by chance, but another thing this could mean is that the favored party
-      had
-      a good prediction of where the vote would fall and drew the lines to carefully extract
-      electoral advantage
-      from that pattern&mdash;gerrymandering!
-    </p>
+    <footer>
+      <p>
+        This page was created by
+        <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a> based
+        on work at the
+        <a href="http://gerrydata.org">Voting Rights Data Institute</a>, and is
+        being edited and maintained by MGGG. The project includes joint work
+        with <a href="http://sethdrew.com/">Seth Drew</a>, Eugene
+        Henninger-Voss, Amara Jaeger, and Heather Newman. Special thanks to Mira
+        Bernstein, whose
+        <a
+          href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220"
+          >Liliputia project</a
+        >
+        served as inspiration.
+      </p>
+    </footer>
 
-    <h4>Varying $\Delta$ with fixed party shares</h4>
-    <p>
-      This lets you explore whether the layout of voters, itself, is skewing the representation
-      away from
-      proportionality.
-      For instance, consider all the
-      voter distributions that have just four <span class="hearts">Hearts</span> units in the grid.
-      Most
-      of them don't yield even one way to get a <span class="hearts">Hearts</span> district, but if
-      you
-      place them close together, then over 41% of plans do give representation to the <span class="hearts">Hearts</span>
-      party. If your $\Delta$ is an outlier, that is supporting evidence that the plan was tailored
-      to that $\Delta.$
-    </p>
-
-
-    <p>
-      Next, we'll look at the 7x7 grid, which has too many valid districting plans for us to
-      actually write down, so
-      we'll have to develop some more sophisticated methods to do these kinds of statistical
-      comparisons.
-    </p>
-  </main>
-
-
-  <nav>
-    <div class="previous">
-      <a href="./" class="nav-link">&laquo; 4x4 grid</a>
-    </div>
-
-    <div class="current">
-      <p class="current-page">5x5 grid</p>
-    </div>
-
-    <div class="next">
-      <a href="./7x7.html" class="nav-link">7x7 grid &raquo;</a>
-      <a href="../table.html" class="nav-link">Everything we know &raquo;</a>
-    </div>
-  </nav>
-
-  <footer>
-    <p>
-      This page was created by <a href="http://zachschutzman.com/"><b>Zachary Schutzman</b></a>
-      based on work at the
-      <a href="http://gerrydata.org">Voting Rights Data Institute</a>,
-      and is being edited and maintained by MGGG. The project includes joint work with
-      <a href="http://sethdrew.com/">Seth Drew</a>, Eugene Henninger-Voss, Amara Jaeger, and
-      Heather Newman.
-      Special thanks to Mira Bernstein, whose <a href="https://docs.google.com/spreadsheets/d/1U8XXRwwJ3zLLu9Xx-xsrePBFsCXkYYFj_MB4t-ZaZ4k/edit#gid=2131508220">Liliputia
-        project</a> served as inspiration.
-    </p>
-  </footer>
-
-  <script src="loc_d3v3.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="src-meta5/header.js"></script>
-  <script src="src-meta5/distbox.js"></script>
-  <script src="src-meta5/grid.js"></script>
-  <script src="src-meta5/graph.js"></script>
-  <script src="src-meta5/histograms-lib.js"></script>
-  <script src="src-meta5/histograms.js"></script>
-  <script src="src-meta5/init.js"></script>
-
-</body>
-
+    <script src="loc_d3v3.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="src-meta5/header.js"></script>
+    <script src="src-meta5/distbox.js"></script>
+    <script src="src-meta5/grid.js"></script>
+    <script src="src-meta5/graph.js"></script>
+    <script src="src-meta5/histograms-lib.js"></script>
+    <script src="src-meta5/histograms.js"></script>
+    <script src="src-meta5/init.js"></script>
+  </body>
 </html>
