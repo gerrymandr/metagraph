@@ -199,29 +199,7 @@ for (let n = 0; n < square7sColumn; n++) {
 
 
 
-var randomDButton2 = d3.select("#random-d2").on("click", function(d) {
-  if (!is_conn(cur_plan_str)) {
-    cur_plan_str = "4455511445551144566114376661337766233772223377222";
-  }
 
-  var counter = 0;
-  while (counter < 200) {
-    counter += 1;
-    cur_plan_str = swap_cells(cur_plan_str);
-  }
-
-  update_dists2();
-
-  can_chain = is_conn(cur_plan_str);
-
-  if (can_chain) {
-    go_btn.html("Sample with MCMC");
-    go_btn.classed("disabled", false);
-  } else {
-    go_btn.html("Current plan is invalid");
-    go_btn.classed("disabled", true);
-  }
-});
 
 var go_btn = d3.select("#go-button2").on("click", function(d) {
   if (!can_chain) {
