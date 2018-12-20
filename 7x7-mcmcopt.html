@@ -102,7 +102,7 @@
       which demonstrates the effectiveness of the restarting mechanism.
     </p>
 
-<!--     <h3>Electoral uncertainty</h3> 
+    <h3>Electoral uncertainty</h3> 
     <p>
     	Before we move forward, we need an additional piece of machinery from probability theory.  Up until now, we've
     	treated elections as <em>deterministic</em>, meaning that a party will surely win a seat if at least half of the
@@ -119,9 +119,8 @@
     	we need to talk about how many <em>and</em> with what probability.  Below, you can adjust the arrangement
     	of the voters to play around with this concept.  The districting plan is fixed, and as you change the 
     	voters, you'll see the probability that the <span class="hearts">Hearts</span> Party wins each district 
-    	as well as <em>cumulative probabilities</em> for the <span class="hearts">Hearts</span> Party winning 
+    	as well as <em>total probabilities</em> for the <span class="hearts">Hearts</span> Party winning 
     	any particular number of seats.
-    	this is computed by summing independent events.... probably not worth writing out 
     </p>
 
     <center><summary>
@@ -131,16 +130,51 @@
 
     <p>
     	From the perspective of the <span class="hearts">Hearts</span> Party, these probabilities are incredibly
-    	important.  Notice that if you make each district have four <span class="hearts">Hearts</span> voters, then
-    	there is still a solid probability of the <span class="clubs">Clubs</span> Party winning a majority of seats,
-    	but if you have four districts with seven  <span class="hearts">Hearts</span> voters, then the
-    	 <span class="clubs">Clubs</span> can never win a majority of the seats.
+    	important.  Notice that if you make each district have four <span class="hearts">Hearts</span> voters and 
+      three <span class="clubs">Clubs</span> voters, then there is still a reasonable probability of 
+      the <span class="clubs">Clubs</span> Party winning a majority of seats,
+    	but if you have four districts with seven  <span class="hearts">Hearts</span> voters,  and 
+      three with seven <span class="clubs">Clubs</span> voters, then the
+    	 <span class="clubs">Clubs</span> Party can never win a majority of the seats.
     </p>
     <p>
-    	Of course, our task as an experts is to examine different districting possiblilities
-    	on the behalf of the <span class="hearts">Hearts</span> Party, and we don't get to
-    	choose where the voters live, but we do get to choose how to draw the lines. 
-    </p> -->
+    	Now, the key problem to consider is <em>supposing we want at least a certain number of the districts to be 
+        won by the <span class="hearts">Hearts</span> Party with a certain probability, how should we
+        draw the districts?</em> We've introduced a new degree of freedom, called <em>seat fragility</em> which 
+        quantifies how secure the <span class="hearts">Hearts</span> Party feels about the outcome.  Using the example above, 
+        we might feel better about drawing a plan where the <span class="hearts">Hearts</span> Party is guaranteed to win
+        four of the seven seats than one which leaves the door open for our rivals to win a majority, even if it does allow 
+        the possibility of winning a larger majority sometimes.
+    </p>
+    <p>
+      The quantity we're interested in examining is the <em>cumulative probability</em> of the 
+       <span class="hearts">Hearts</span> Party winning <em>at least</em> some number of seats $k$. 
+       In other words, we can take any districting plan and arrangement of voters and figure out 
+       the probability of there being at least $k$ <span class="hearts">Hearts</span> Party wins in 
+       our new randomized model.  As we just saw, the plan which maximizes this quantity is different for 
+       different choices of $k$.  The safe plan, where four districts have all <span class="hearts">Hearts</span> 
+       voters and three have all <span class="clubs">Clubs</span> voters is the best choice if we choose $k$ to be 
+       four, but it's definitely not the right one if we want $k$ to be five.  
+    </p>
+    <p>
+      This all seems well and good, but even once we pick $k$, we've made the problem of finding the best plan 
+      much harder, at least by hand.  Before, we could kind of rely on a packing-and-cracking heurstic where we 
+      try to make the <span class="clubs">Clubs</span> Party win their districts by a bigger margin than the 
+      <span class="hearts">Hearts</span> Party wins theirs, but that doesn't seem like quite enough when 
+      we're working in this richer probabilistic model.  Fortunately for us, the MCMC algorithm from 
+      before is fantastic at performing this search.
+    </p>
+    <p>
+      Use the demo below to explore this concept. As before, you can arrange the voters on the left and use the buttons 
+      in the middle to perform the MCMC search.  The algorithm is the same as before, where it performs a random walk and 
+      occasionally restarts, keeping track of the best one it found so far.  The two charts on the right show the probabilities
+      we're interested in.  The first one is the probability of the <span class="hearts">Hearts</span> Party winning exactly 
+      that number of seats, and the one on the bottom is the <em>cumulative probability</em> of the <span class="hearts">Hearts</span> Party 
+      winning <em>at least</em> that number of seats.
+    </p>
+    <center><summary>
+      DEMO IS UNDER CONSTRUCTION
+    </summary></center>
 
   </main>
 
@@ -174,6 +208,7 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="src-meta5/histograms-lib.js"></script>
   <script src="src-meta7/mcmc-grid.js"></script>
   <script src="src-meta7/randwalk.js"></script>
   <script src="src-meta7/mcmc2.js"></script>
