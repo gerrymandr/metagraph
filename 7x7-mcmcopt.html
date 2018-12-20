@@ -126,7 +126,25 @@
     <center><summary>
       DEMO IS UNDER CONSTRUCTION
     </summary></center>
-
+    <div id="gridspace" class="chart rows">
+      <div style="display: flex; flex-direction: row; flex-wrap: row; align-items: flex-start; margin-bottom: 2rem;">
+        <div class="grid-container" style="margin: 0 2rem">
+          <h4>Design a distribution $\Delta$</h4>
+          <div id="current-delta" class="grid"></div>
+          <button id="random-delta">Randomize $\Delta$</button>
+          <p>Click cells to toggle</p>
+        </div>
+        <div class="grid-container" style="margin: 0 2rem">
+          <h4>Districting Plan $\mathcal D$</h4>
+          <div id="current-d" class="grid"></div>
+<!--           <button id="random-d">Randomize $\mathcal D$</button>
+ -->        </div>
+      </div>
+      <h4>How likely is it for the <span class="hearts">Hearts</span> Party to win $k$ seats?</h4>
+      <!-- <button id="go-button">Sample with MCMC</button> -->
+      <div id="histogram"></div>
+      <p>Probability of <em>exactly</em> $k$ <span class="hearts">&hearts;</span> seats</p>
+    </div>
 
     <p>
     	From the perspective of the <span class="hearts">Hearts</span> Party, these probabilities are incredibly
@@ -175,6 +193,27 @@
     <center><summary>
       DEMO IS UNDER CONSTRUCTION
     </summary></center>
+    <div id="gridspace2" class="chart rows">
+      <div style="display: flex; flex-direction: row; flex-wrap: row; align-items: flex-start; margin-bottom: 2rem;">
+        <div class="grid-container" style="margin: 0 2rem">
+          <h4>Design a distribution $\Delta$</h4>
+          <div id="current-delta2" class="grid"></div>
+          <button id="random-delta2">Randomize $\Delta$</button>
+          <p>Click cells to toggle</p>
+        </div>
+        <div class="grid-container2" style="margin: 0 2rem">
+          <h4>Districting Plan $\mathcal D$</h4>
+          <div id="current-d2" class="grid"></div>
+<!--           <button id="random-d">Randomize $\mathcal D$</button>
+ -->        </div>
+      </div>
+      <h4>How likely is it for the <span class="hearts">Hearts</span> Party to win $k$ seats?</h4>
+      <!-- <button id="go-button">Sample with MCMC</button> -->
+      <div id="histogram2-1"></div>
+      <p>Probability of <em>exactly</em> $k$ <span class="hearts">&hearts;</span> seats</p>
+      <div id="histogram2-2"></div>
+      <p>Probability of <em>at least</em> $k$ <span class="hearts">&hearts;</span> seats</p>
+    </div>
 
   </main>
 
@@ -209,7 +248,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="src-meta5/histograms-lib.js"></script>
-  <script src="src-meta7/mcmc-grid.js"></script>
+  <script src="src-meta7/data/problookup.js"></script>
+  <script src="src-meta7/mcmc-probopt.js"></script>
+  <script src="src-meta7/mcmc-cdf.js"></script>
   <script src="src-meta7/randwalk.js"></script>
   <script src="src-meta7/mcmc2.js"></script>
 

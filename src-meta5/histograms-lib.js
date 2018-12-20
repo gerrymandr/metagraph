@@ -72,7 +72,7 @@ function updateHistogram(container, data, accentColor, w, h) {
     .style("font-size", "12px")
     .merge(labels)
     .text(function(d) {
-      return numberWithCommas(d.count);
+      return d.percents ? numberWithCommas(d.count) + "%" : numberWithCommas(d.count);
     })
     .attr("x", function(d, i) {
       return (barWidth + gap) * i + gap + barWidth / 2;
