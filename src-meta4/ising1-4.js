@@ -1,5 +1,6 @@
 var vis3 = d3v3
   .select("#chart2")
+  .select(".graph")
   .append("svg")
   .attr("width", w)
   .attr("height", h);
@@ -90,52 +91,6 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
       return get_my_col_sm(d);
     })
     .call(force.drag)
-    .on("mousemove", function() {
-      return tooltip
-        .style("top", d3v3.event.pageY - 10 + "px")
-        .style("left", d3v3.event.pageX + 10 + "px");
-    })
-
-    .on("mouseover", function() {
-      var t = d3v3.select(this).attr("type");
-      var c = d3v3.select(this);
-      tooltip.style("visibility", "visible");
-      tooltip.html(function(d) {
-        return (
-          "<div  style='; width:100px; height: 100px; background-color:#555; box-sizing: content-box; padding:5px'><img width='100' src='m4-imgs/im_" +
-          c.attr("name") +
-          ".png'></div>"
-        );
-      });
-
-      tooltip
-        .transition()
-        .duration(200)
-        .style("opacity", 0.95);
-
-      vis3.selectAll("circle.node").each(function(d) {
-        var u = d3v3.select(this).attr("type");
-
-        if (u == t) {
-          d3v3.select(this).attr("r", 20);
-        }
-      });
-    })
-
-    .on("mouseout", function() {
-      tooltip.style("visibility", "hidden");
-      vis3.selectAll("circle.node").each(function(d) {
-        d3v3.select(this).attr("r", function(d) {
-          return Math.round(2 * d.deg) - 1;
-        });
-      });
-
-      tooltip
-        .transition()
-        .duration(500)
-        .style("opacity", 0);
-    })
-
     /* 
     .on("click", function(){
 
@@ -168,6 +123,8 @@ d3v3.json("src-meta4/data/gr.json", function(json) {
     
     })*/
     .on("click", connectedNodes);
+
+  attachCallback(node);
 
   vis3
     .style("opacity", 1e-6)

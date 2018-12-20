@@ -40,62 +40,17 @@ function distboxclick() {
 }
 
 var distbox = d3
-  .select("#chart1")
+  .select("#plan-builder")
   .append("svg")
-  .attr("width", 300)
-  .attr("height", 500);
-distbox
-  .append("text")
-  .attr("x", 180)
-  .attr("y", 17)
-  .text("Build a Plan")
-  .attr("dy", "0.35em")
-  .style("font-size", "20px")
-  .attr("text-anchor", "middle");
-distbox
-  .append("rect")
-  .attr("x", 30)
-  .attr("y", 3)
-  .attr("rx", 6)
-  .attr("ry", 6)
-  .attr("width", 60)
-  .attr("height", 28)
-  .style("fill", "#aac")
-  .style("stroke", "black")
-  .style("stroke-width", 3)
-  .on("click", function(d) {
-    plan = [];
-    distbox.selectAll("g").remove();
-    constr_distbox();
-    constr_distbox2();
-  });
-distbox
-  .append("text")
-  .attr("x", 32)
-  .attr("y", 17)
-  .text("Reset")
-  .attr("dy", "0.35em")
-  .style("font-size", "20px")
-  .on("click", function(d) {
-    plan = [];
-    distbox.selectAll("g").remove();
-    constr_distbox();
-    constr_distbox2();
-  });
-distbox
-  .append("rect")
-  .attr("x", 30)
-  .attr("y", 3)
-  .attr("width", 60)
-  .attr("height", 28)
-  .style("fill", "white")
-  .style("fill-opacity", 0)
-  .on("click", function(d) {
-    plan = [];
-    distbox.selectAll("g").remove();
-    constr_distbox();
-    constr_distbox2();
-  });
+  .attr("width", 272)
+  .attr("height", 380);
+
+var resetButton = d3.select("#reset-button").on("click", function(d) {
+  plan = [];
+  distbox.selectAll("g").remove();
+  constr_distbox();
+  constr_distbox2();
+});
 
 function constr_distbox() {
   var wgrp = distbox.append("g");
@@ -110,8 +65,8 @@ function constr_distbox() {
           .append("image")
           .attr("width", 47)
           .attr("height", 47)
-          .attr("x", 31 + j * 54)
-          .attr("y", 37 + i * 54)
+          .attr("x", 5 + j * 54)
+          .attr("y", 5 + i * 54)
 
           .attr("xlink:href", function(d) {
             return "m5-imgs/dists/im_" + kk + ".png";
@@ -121,12 +76,20 @@ function constr_distbox() {
           .append("rect")
           .attr("width", 50)
           .attr("height", 50)
-          .attr("x", 30 + j * 54)
-          .attr("y", 36 + i * 54)
+          .attr("x", 4 + j * 54)
+          .attr("y", 4 + i * 54)
           .style("stroke-width", 2)
           .style("stroke", "purple")
+          .style("fill", "purple")
           .style("fill-opacity", 0)
+          .style("cursor", "pointer")
           .attr("distno", k)
+          .on("mouseover", function() {
+            d3.select(this).style("fill-opacity", 0.2);
+          })
+          .on("mouseout", function() {
+            d3.select(this).style("fill-opacity", 0);
+          })
           .on("click", distboxclick);
 
         j += 1;
@@ -150,8 +113,8 @@ function constr_distbox() {
         .append("image")
         .attr("width", 47)
         .attr("height", 47)
-        .attr("x", 31 + j * 54)
-        .attr("y", 37 + i * 54)
+        .attr("x", 5 + j * 54)
+        .attr("y", 5 + i * 54)
 
         .attr("xlink:href", function(d) {
           return "m5-imgs/dists/im_" + kk + ".png";
@@ -161,11 +124,19 @@ function constr_distbox() {
         .append("rect")
         .attr("width", 50)
         .attr("height", 50)
-        .attr("x", 30 + j * 54)
-        .attr("y", 36 + i * 54)
+        .attr("x", 4 + j * 54)
+        .attr("y", 4 + i * 54)
         .style("stroke-width", 2)
         .style("stroke", "purple")
         .style("fill-opacity", 0)
+        .style("fill", "purple")
+        .style("cursor", "pointer")
+        .on("mouseover", function() {
+          d3.select(this).style("fill-opacity", 0.2);
+        })
+        .on("mouseout", function() {
+          d3.select(this).style("fill-opacity", 0);
+        })
         .attr("distno", dno)
         .on("click", distboxclick);
 
@@ -220,64 +191,17 @@ function distbox2click() {
 }
 
 var distbox2 = d3
-  .select("#chart2")
+  .select("#plan-builder-2")
   .append("svg")
-  .attr("width", 300)
-  .attr("height", 500);
+  .attr("width", 272)
+  .attr("height", 380);
 
-distbox2
-  .append("text")
-  .attr("x", 180)
-  .attr("y", 17)
-  .text("Build a Plan")
-  .attr("dy", "0.35em")
-  .style("font-size", "20px")
-  .attr("text-anchor", "middle");
-
-distbox2
-  .append("rect")
-  .attr("x", 30)
-  .attr("y", 3)
-  .attr("rx", 6)
-  .attr("ry", 6)
-  .attr("width", 60)
-  .attr("height", 28)
-  .style("fill", "#aac")
-  .style("stroke", "black")
-  .style("stroke-width", 3)
-  .on("click", function(d) {
-    plan = [];
-    distbox2.selectAll("g").remove();
-    constr_distbox();
-    constr_distbox2();
-  });
-distbox2
-  .append("text")
-  .attr("x", 32)
-  .attr("y", 17)
-  .text("Reset")
-  .attr("dy", "0.35em")
-  .style("font-size", "20px")
-  .on("click", function(d) {
-    plan = [];
-    distbox2.selectAll("g").remove();
-    constr_distbox();
-    constr_distbox2();
-  });
-distbox2
-  .append("rect")
-  .attr("x", 30)
-  .attr("y", 3)
-  .attr("width", 60)
-  .attr("height", 28)
-  .style("fill", "white")
-  .style("fill-opacity", 0)
-  .on("click", function(d) {
-    plan = [];
-    distbox2.selectAll("g").remove();
-    constr_distbox();
-    constr_distbox2();
-  });
+var resetButton2 = d3.select("#reset-button-2").on("click", function(d) {
+  plan = [];
+  distbox.selectAll("g").remove();
+  constr_distbox();
+  constr_distbox2();
+});
 
 function constr_distbox2() {
   var wgrp = distbox2.append("g");
@@ -292,8 +216,8 @@ function constr_distbox2() {
           .append("image")
           .attr("width", 47)
           .attr("height", 47)
-          .attr("x", 31 + j * 54)
-          .attr("y", 37 + i * 54)
+          .attr("x", 5 + j * 54)
+          .attr("y", 5 + i * 54)
 
           .attr("xlink:href", function(d) {
             return "m5-imgs/dists/im_" + kk + ".png";
@@ -301,14 +225,22 @@ function constr_distbox2() {
 
         wgrp
           .append("rect")
+          .attr("distno", k)
           .attr("width", 50)
           .attr("height", 50)
-          .attr("x", 30 + j * 54)
-          .attr("y", 36 + i * 54)
+          .attr("x", 4 + j * 54)
+          .attr("y", 4 + i * 54)
           .style("stroke-width", 2)
           .style("stroke", "purple")
           .style("fill-opacity", 0)
-          .attr("distno", k)
+          .style("fill", "purple")
+          .style("cursor", "pointer")
+          .on("mouseover", function() {
+            d3.select(this).style("fill-opacity", 0.2);
+          })
+          .on("mouseout", function() {
+            d3.select(this).style("fill-opacity", 0);
+          })
           .on("click", distbox2click);
 
         j += 1;
@@ -332,8 +264,8 @@ function constr_distbox2() {
         .append("image")
         .attr("width", 47)
         .attr("height", 47)
-        .attr("x", 31 + j * 54)
-        .attr("y", 37 + i * 54)
+        .attr("x", 5 + j * 54)
+        .attr("y", 5 + i * 54)
 
         .attr("xlink:href", function(d) {
           return "m5-imgs/dists/im_" + kk + ".png";
@@ -343,11 +275,19 @@ function constr_distbox2() {
         .append("rect")
         .attr("width", 50)
         .attr("height", 50)
-        .attr("x", 30 + j * 54)
-        .attr("y", 36 + i * 54)
+        .attr("x", 4 + j * 54)
+        .attr("y", 4 + i * 54)
         .style("stroke-width", 2)
         .style("stroke", "purple")
         .style("fill-opacity", 0)
+        .style("fill", "purple")
+        .style("cursor", "pointer")
+        .on("mouseover", function() {
+          d3.select(this).style("fill-opacity", 0.2);
+        })
+        .on("mouseout", function() {
+          d3.select(this).style("fill-opacity", 0);
+        })
         .attr("distno", dno)
         .on("click", distboxclick);
 

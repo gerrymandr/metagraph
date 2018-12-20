@@ -6,63 +6,66 @@ var dist4 = 0;
 var cnt = 0;
 
 var square = 10 * Math.round(Math.min(4, (w - wp) / 5));
-// create the svg
-var grd = d3v3
-  .select("#chart2")
-  .append("svg") //.attr("transform","translate("+(w-wp)/4+","+(-h/3) +")")
-  .attr({
-    width: 6 * square,
-    height: 6 * square
-  });
+
+var gap = 4;
 
 // calculate number of rows and columns
 var squaresRow = 4;
 var squaresColumn = 4;
 
+// create the svg
+var grd = d3v3
+  .select("#chart2")
+  .select(".grid-container")
+  .select(".grid")
+  .append("svg") //.attr("transform","translate("+(w-wp)/4+","+(-h/3) +")")
+  .attr({
+    width: (square + gap) * squaresRow + gap,
+    height: (square + gap) * squaresColumn + gap
+  });
 
 // loop over number of columns
-_.times(squaresColumn, function(n) {
-
+for (let n = 0; n < squaresColumn; n++) {
   // create each set of rows
-  var rows = grd.selectAll('text' + ' .row-' + (n + 1))
+  var rows = grd
+    .selectAll("text" + " .row-" + (n + 1))
     .data(d3v3.range(squaresRow))
-    .enter().append('text')
+    .enter()
+    .append("text")
 
     .attr({
       class: function(d, i) {
-        return 'text row-' + (n + 1) + ' ' + 'col-' + (i + 1);
+        return "text row-" + (n + 1) + " " + "col-" + (i + 1);
       },
       id: function(d, i) {
-        return 's-' + (n + 1) + (i + 1);
+        return "s-" + (n + 1) + (i + 1);
       },
       width: square,
       height: square,
       x: function(d, i) {
-        return (i * 1.07*square + square);
+        return i * (square + gap) + square / 2 + gap;
       },
-      y: (n * 1.07*square + square),
+      y: n * (square + gap) + square / 2 + gap
     })
-    
-    .attr("party",function(d,i) {
-      return n<2 ? -1:1;
+
+    .attr("party", function(d, i) {
+      return n < 2 ? -1 : 1;
     })
-    .text(function(d,i){ 
-      return n<2 ? "\u2663":"\u2665"
+    .text(function(d, i) {
+      return n < 2 ? "\u2663" : "\u2665";
     })
-    .attr("text-anchor","middle")
+    .attr("text-anchor", "middle")
     .attr("dy", ".35em")
-    .style("font-size", function(d){
-      return (square-7) + "px";
+    .style("font-size", function(d) {
+      return square - 7 + "px";
     })
-    .style("fill",function(d,i){ 
-      return n<2 ? simp_fill[0]:simp_fill[2];
-    })
-});
-
-
+    .style("fill", function(d, i) {
+      return n < 2 ? simp_fill[0] : simp_fill[2];
+    });
+}
 
 // loop over number of columns
-_.times(squaresColumn, function(n) {
+for (let n = 0; n < squaresColumn; n++) {
   // create each set of rows
   var rows = grd
     .selectAll("rect" + " .row-" + (n + 1))
@@ -80,11 +83,10 @@ _.times(squaresColumn, function(n) {
       width: square,
       height: square,
       x: function(d, i) {
-        return i * 1.07 * square + square / 2;
+        return i * (square + gap) + gap;
       },
-      y: n * 1.07 * square + square / 2
+      y: n * (square + gap) + gap
     })
-
     .attr("party", function(d, i) {
       return n < 2 ? -1 : 1;
     })
@@ -93,23 +95,29 @@ _.times(squaresColumn, function(n) {
     })
     .style("stroke", "#555")
     .style("stroke-width", 1)
-    .style("stroke-opacity",1)
-    .style("fill-opacity", .4)
+    .style("stroke-opacity", 1)
+    .style("fill-opacity", 0.4)
 
     .on("mouseover", function(d) {
       d3v3.select(this).style("stroke", "#000");
-      d3v3.select(this).style("stroke-width", "3");
+      d3v3
+        .select(this)
+        .style("stroke-width", "3")
+        .style("cursor", "pointer");
     })
 
     .on("mouseout", function(d) {
       d3v3.select(this).style("stroke", "#555");
-      d3v3.select(this).style("stroke-width", "1");
+      d3v3
+        .select(this)
+        .style("stroke-width", "1")
+        .style("cursor", "pointer");
     })
 
     .on("click", function(d) {
       do_updateis(this);
     });
-});
+}
 
 function do_updateis(r) {
   if (d3v3.event != null && r != -1) {
@@ -123,40 +131,40 @@ function do_updateis(r) {
       d3v3.select(r).attr("party", -1);
     }
   }
-    grd.selectAll('rect').each(function(d){
-        //console.log(d3v3.select(this).attr("party"));
-        if (d3v3.select(this).attr("party") == 0) d3v3.select(this).style("fill", simp_fill[1]);
-        if (d3v3.select(this).attr("party") == 1) {
-          d3v3.select(this).style("fill", simp_fill[2]);
-          d3v3.select(this).style("fill-opacity",opacity_red);
-        }
-        if (d3v3.select(this).attr("party") == -1) {
-          d3v3.select(this).style("fill", simp_fill[0]);
-          d3v3.select(this).style("fill-opacity",opacity_blk);
+  grd.selectAll("rect").each(function(d) {
+    //console.log(d3v3.select(this).attr("party"));
+    if (d3v3.select(this).attr("party") == 0)
+      d3v3.select(this).style("fill", simp_fill[1]);
+    if (d3v3.select(this).attr("party") == 1) {
+      d3v3.select(this).style("fill", simp_fill[2]);
+      d3v3.select(this).style("fill-opacity", opacity_red);
+    }
+    if (d3v3.select(this).attr("party") == -1) {
+      d3v3.select(this).style("fill", simp_fill[0]);
+      d3v3.select(this).style("fill-opacity", opacity_blk);
+    }
+  });
+  grd.selectAll("text").each(function(d) {
+    if (d3v3.select(this).attr("id") == tid) {
+      d3v3.select(this).attr("party", t + 2);
+      if (d3v3.select(this).attr("party") >= 2) {
+        d3v3.select(this).attr("party", -1);
       }
-    });
-  grd.selectAll('text').each(function(d){
-      if (d3v3.select(this).attr("id") == tid){
-          d3v3.select(this).attr("party", t+2);
-          if (d3v3.select(this).attr("party") >= 2){
-            d3v3.select(this).attr("party",-1)
-            ;}
-      }
+    }
 
-      //console.log(d3v3.select(this).attr("party"));
-      if (d3v3.select(this).attr("party") == 0) 
-        d3v3.select(this).style("fill", simp_fill[1]);
-      if (d3v3.select(this).attr("party") == 0) 
-        d3v3.select(this).text(simp_char[1]);       
-      if (d3v3.select(this).attr("party") == 1) 
-        d3v3.select(this).style("fill", simp_fill[2]);
-      if (d3v3.select(this).attr("party") == 1) 
-        d3v3.select(this).text(simp_char[2]); 
-      if (d3v3.select(this).attr("party") == -1) 
-        d3v3.select(this).style("fill", simp_fill[0]);
-      if (d3v3.select(this).attr("party") == -1) 
-        d3v3.select(this).text(simp_char[0]); 
-
+    //console.log(d3v3.select(this).attr("party"));
+    if (d3v3.select(this).attr("party") == 0)
+      d3v3.select(this).style("fill", simp_fill[1]);
+    if (d3v3.select(this).attr("party") == 0)
+      d3v3.select(this).text(simp_char[1]);
+    if (d3v3.select(this).attr("party") == 1)
+      d3v3.select(this).style("fill", simp_fill[2]);
+    if (d3v3.select(this).attr("party") == 1)
+      d3v3.select(this).text(simp_char[2]);
+    if (d3v3.select(this).attr("party") == -1)
+      d3v3.select(this).style("fill", simp_fill[0]);
+    if (d3v3.select(this).attr("party") == -1)
+      d3v3.select(this).text(simp_char[0]);
   });
 
   vis3.selectAll("circle.node").each(function(d) {

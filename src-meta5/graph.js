@@ -7,17 +7,17 @@ var tooltip2 = d3
 
 var graph = d3
   .select("#chart1")
+  .select(".graph-container")
+  .select(".graph")
   .append("svg")
-  .attr("width", width)
-  .attr("height", width);
+  .attr("width", 400)
+  .attr("height", 400);
 
-var treegroup = graph
-  .append("g")
-  .attr("transform", "translate(" + width / 2 + "," + width / 2.2 + ")");
+var treegroup = graph.append("g").attr("transform", "translate(200, 200)");
 
 var tree = d3
   .tree()
-  .size([2 * Math.PI, Math.min(width, height) / 3.5])
+  .size([2 * Math.PI, 160])
   .separation(function(a, b) {
     return (a.parent == b.parent ? 1000 : 2000) / a.depth;
   });
@@ -26,6 +26,9 @@ function mk_gr2(fn, num) {
   idno2 = num;
   console.log("idno2", idno2);
   distpic.attr("xlink:href", function(d) {
+    return "m5-imgs/whole/im_" + idno2 + ".png";
+  });
+  treedistpic.attr("xlink:href", function(d) {
     return "m5-imgs/whole/im_" + idno2 + ".png";
   });
 
@@ -171,7 +174,7 @@ function mk_gr2(fn, num) {
         return d.data.name;
       })
       .style("fill", "#555")
-      .style("opacity",.9);
+      .style("opacity", 0.9);
 
     node
       .append("image")
@@ -295,10 +298,3 @@ function swapgraph2() {
 
   do_update2(-1);
 }
-graph
-  .append("text")
-  .attr("x", 275)
-  .attr("y", 480)
-  .text("Click a node to recenter the graph")
-  .style("font-size", "12px")
-  .attr("text-anchor", "middle");
