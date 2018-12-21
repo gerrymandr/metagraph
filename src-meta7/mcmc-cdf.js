@@ -600,8 +600,8 @@ function update_histo2(newhist) {
     currentPlan: last_clicked > 0 ? last_clicked == i : false,
     percents: true
   }));
-  updateHistogram(histogram21, data, "#66ABFF", 500, 220);
-  updateHistogram(histogram22, data2, "#66ABFF", 500, 220);
+  updateHistogram(histogram21, data, "#FAB3A9", 500, 220);
+  updateHistogram(histogram22, data2, "#FAB3A9", 500, 220);
 
 }
 
