@@ -747,12 +747,15 @@ function update_prob_texts2() {
       }
 
       temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
-      
+
       var cdf = [100,0,0,0,0,0,0,0]
       for (var i=0; i<8; i++){
         for (var j=i;j>0;j--){
           cdf[j] += temph[i]
         }
+      }
+      for (var i=0; i<8; i++){
+        cdf[i] = Math.min(100,cdf[i]);
       }
       c = cdf[num]
       if (c > best_val) {cell_cols2
