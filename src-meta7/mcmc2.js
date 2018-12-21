@@ -139,6 +139,7 @@ for (let n = 0; n < square7sColumn; n++) {
     })
     .style("stroke", "#555")
     .style("stroke-width", 1)
+    .style("fill-opacity",.8)
 
     .on("mouseover", function(d) {
       d3.select(this).style("stroke", "#000");

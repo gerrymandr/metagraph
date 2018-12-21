@@ -3,8 +3,8 @@ var cur_plan_str2 = "4455511445551144566114376661337766233772223377222";
 
 var last_clicked = -1;
 
-var mcmcsteps = 2000;
-var mcmcreset = 200;
+var mcmcsteps = 1500;
+var mcmcreset = 150;
 var cell_cols2 = [
   0,
   0,
@@ -197,8 +197,8 @@ for (let n = 0; n < square7sColumn; n++) {
     })
     .style("stroke", "#555")
     .style("stroke-width", 1)
-    .style("stroke-opacity",.3)
-    .style("fill-opacity",.3);
+    //.style("stroke-opacity",.3)
+    .style("fill-opacity",.8);
 }
 
 
@@ -745,7 +745,9 @@ function update_prob_texts2() {
         temph[parseInt(cand[i]) - 1] += (parseInt(cell_cols2[i]) == 1 ? 1 : 0);
         
       }
+
       temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
+      
       var cdf = [100,0,0,0,0,0,0,0]
       for (var i=0; i<8; i++){
         for (var j=i;j>0;j--){
