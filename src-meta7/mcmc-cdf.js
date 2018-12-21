@@ -587,9 +587,12 @@ function update_histo2(newhist) {
 
   var cdf = [100,0,0,0,0,0,0,0]
   for (var i=0; i<8; i++){
-    for (var j=i;j>0;j--){
+    for (var j=i; j>0; j--){
       cdf[j] += newhist[i]
     }
+  }
+  for (var i=0; i<8; i++){
+    cdf[i] = Math.min(100,cdf[i]);
   }
   let data2 = cdf.map((count, i) => ({
     label: i == 1 ? "1 Seat" : i + " Seats",
