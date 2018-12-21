@@ -180,11 +180,11 @@
       try to make the <span class="clubs">Clubs</span> Party win their districts by a bigger margin than the 
       <span class="hearts">Hearts</span> Party wins theirs, but that doesn't seem like quite enough when 
       we're working in this richer probabilistic model.  Fortunately for us, the MCMC algorithm from 
-      before is fantastic at performing this search.
+      before is well-equipped to perform this search.
     </p>
     <p>
       Use the demo below to explore this concept. As before, you can arrange the voters on the left and use the buttons 
-      in the middle to perform the MCMC search.  The algorithm is the same as before, where it performs a random walk and 
+      in the middle to perform the MCMC search, again doing short bursts of 150 steps.  The algorithm is the same as before, where it performs a random walk and 
       occasionally restarts, keeping track of the best one it found so far.  The two charts on the right show the probabilities
       we're interested in.  The first one is the probability of the <span class="hearts">Hearts</span> Party winning exactly 
       that number of seats, and the one on the bottom is the <em>cumulative probability</em> of the <span class="hearts">Hearts</span> Party 
@@ -217,6 +217,23 @@
       <div id="histogram2-2"></div>
       <p>Probability of <em>at least</em> $k$ <span class="hearts">&hearts;</span> seats</p>
     </div>
+
+
+
+    <p>
+      Again, this does pretty well, though not always perfectly.  One reason for this is that ten rounds of 
+      150 steps is not all that many samples, compared to the total universe of plans. Additionally, instead 
+      of simply winning a district by having the majority of its voters be <span class="hearts">Hearts</span>, 
+      we care about <em>how many</em> <span class="hearts">Hearts</span> voters are in each district.  To put it 
+      more concretely, in the old model, there was no difference between having a $\frac{5}{7}$ <span class="hearts">Hearts</span> 
+      and a $\frac{7}{7}$ <span class="hearts">Hearts</span> district and two $\frac{6}{7}$ <span class="hearts">Hearts</span> 
+      districts, but now we care about this distinction.
+    </p>
+    <p>
+      What we've done here is demonstrate that the tools for <em>detecting</em> gerrymandering can also be repurposed to 
+      <em>do</em> gerrymandering.  It is critically important that those who develop and work with these tools understand 
+      the breadth of application.
+    </p>
 
   </main>
 
