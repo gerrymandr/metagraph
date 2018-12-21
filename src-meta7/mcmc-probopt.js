@@ -1,11 +1,11 @@
 var distfills = [
-  "#7bc8f6",
-  "#6fc276",
-  "#0343df",
-  "#bbf90f",
-  "#6a79f7",
-  "#475f94",
-  "#13eac9"
+"#7bc8f6",
+"#6fc276",
+"#0343df",
+"#bbf90f",
+"#6a79f7",
+"#475f94",
+"#13eac9"
 ];
 
 
@@ -19,55 +19,55 @@ red_this = 0;
 var cur_plan_str = "4455511445551144566114376661337766233772223377222";
 
 cell_cols = [
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
 ];
 
 var r_win_i = [0, 0, 0, 0, 0, 0];
@@ -79,15 +79,15 @@ var bwin = 0;
 var can_chain = true;
 
 var elecfill = [
-  "#0000ff",
-  "#5934df",
-  "#7250c0",
-  "#7d69a0",
-  "#808080",
-  "#aa7264",
-  "#ca6048",
-  "#e6462a",
-  "#ff0000"
+"#0000ff",
+"#5934df",
+"#7250c0",
+"#7d69a0",
+"#808080",
+"#aa7264",
+"#ca6048",
+"#e6462a",
+"#ff0000"
 ];
 
 elecfill[0] = "#fca336";
@@ -111,108 +111,108 @@ function shuffle(a) {
 }
 
 party_init = [
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1,
-  1,
-  -1
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1,
+1,
+-1
 ];
 party_init = shuffle(party_init);
 
@@ -221,10 +221,10 @@ var parties = [-1, 1];
 var gap = 2;
 
 var grd = d3
-  .select("#current-delta")
-  .append("svg")
-  .attr("width", (square7 + gap) * 7 + gap)
-  .attr("height", (square7 + gap) * 7 + gap);
+.select("#current-delta")
+.append("svg")
+.attr("width", (square7 + gap) * 7 + gap)
+.attr("height", (square7 + gap) * 7 + gap);
 
 var chk = "";
 var dist1 = 0;
@@ -241,126 +241,126 @@ var pinit = [];
 for (let n = 0; n < square7sColumn; n++) {
   // create each set of rows
   var rows = grd
-    .selectAll("text" + " .row-" + (n + 1))
-    .data(d3.range(square7sRow))
-    .enter()
-    .append("text")
+  .selectAll("text" + " .row-" + (n + 1))
+  .data(d3.range(square7sRow))
+  .enter()
+  .append("text")
 
-    .attr("class", function(d, i) {
-      return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square7)
-    .attr("height", square7)
-    .attr("x", function(d, i) {
-      return (square7 + gap) * i + square7 / 2 + gap;
-    })
-    .attr("y", (square7 + gap) * n + square7 / 2 + gap)
+  .attr("class", function(d, i) {
+    return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
+  })
+  .attr("id", function(d, i) {
+    return "s-" + (n + 1) + (i + 1);
+  })
+  .attr("width", square7)
+  .attr("height", square7)
+  .attr("x", function(d, i) {
+    return (square7 + gap) * i + square7 / 2 + gap;
+  })
+  .attr("y", (square7 + gap) * n + square7 / 2 + gap)
 
-    .attr("party", function(d, i) {
-      return party_init[4 * n + i];
-    })
-    .style("fill", function(d) {
-      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-    })
+  .attr("party", function(d, i) {
+    return party_init[4 * n + i];
+  })
+  .style("fill", function(d) {
+    return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+  })
 
-    .text(function(d) {
-      return simp_char[1 + parseInt(d3.select(this).attr("party"))];
-    })
-    .attr("text-anchor", "middle")
-    .attr("dy", ".35em")
-    .style("font-size", function(d) {
-      return square7 - 7 + "px";
-    });
+  .text(function(d) {
+    return simp_char[1 + parseInt(d3.select(this).attr("party"))];
+  })
+  .attr("text-anchor", "middle")
+  .attr("dy", ".35em")
+  .style("font-size", function(d) {
+    return square7 - 7 + "px";
+  });
 }
 
 // loop over number of columns
 for (let n = 0; n < square7sColumn; n++) {
   // create each set of rows
   var rows = grd
-    .selectAll("rect" + " .row-" + (n + 1))
-    .data(d3.range(square7sRow))
-    .enter()
-    .append("rect")
+  .selectAll("rect" + " .row-" + (n + 1))
+  .data(d3.range(square7sRow))
+  .enter()
+  .append("rect")
 
-    .attr("class", function(d, i) {
-      return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square7)
-    .attr("height", square7)
-    .attr("x", function(d, i) {
-      return (square7 + gap) * i + gap;
-    })
-    .attr("y", (square7 + gap) * n + gap)
+  .attr("class", function(d, i) {
+    return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
+  })
+  .attr("id", function(d, i) {
+    return "s-" + (n + 1) + (i + 1);
+  })
+  .attr("width", square7)
+  .attr("height", square7)
+  .attr("x", function(d, i) {
+    return (square7 + gap) * i + gap;
+  })
+  .attr("y", (square7 + gap) * n + gap)
 
-    .attr("party", function(d, i) {
-      return party_init[4 * n + i];
-    })
-    .style("fill", function(d) {
-      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-    })
-    .style("stroke", "#555")
-    .style("stroke-width", 1)
+  .attr("party", function(d, i) {
+    return party_init[4 * n + i];
+  })
+  .style("fill", function(d) {
+    return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+  })
+  .style("stroke", "#555")
+  .style("stroke-width", 1)
 
-    .on("mouseover", function(d) {
-      d3.select(this).style("stroke", "#000");
-      d3.select(this).style("stroke-width", "3");
-    })
+  .on("mouseover", function(d) {
+    d3.select(this).style("stroke", "#000");
+    d3.select(this).style("stroke-width", "3");
+  })
 
-    .on("mouseout", function(d) {
-      d3.select(this).style("stroke", "#555");
-      d3.select(this).style("stroke-width", "1");
-    })
+  .on("mouseout", function(d) {
+    d3.select(this).style("stroke", "#555");
+    d3.select(this).style("stroke-width", "1");
+  })
 
-    .on("click", function(d) {
-      clsq = true;
-      do_update(this);
+  .on("click", function(d) {
+    clsq = true;
+    do_update(this);
 
       //update_textboxes();
     });
 }
 var grd2 = d3
-  .select("#current-d")
-  .append("svg")
-  .attr("width", (square7 + gap) * 7 + gap)
-  .attr("height", (square7 + gap) * 7 + gap);
+.select("#current-d")
+.append("svg")
+.attr("width", (square7 + gap) * 7 + gap)
+.attr("height", (square7 + gap) * 7 + gap);
 
 // loop over number of columns
 for (let n = 0; n < square7sColumn; n++) {
   // create each set of rows
   var rows = grd2
-    .selectAll("rect" + " .row-" + (n + 1))
-    .data(d3.range(square7sRow))
-    .enter()
-    .append("rect")
+  .selectAll("rect" + " .row-" + (n + 1))
+  .data(d3.range(square7sRow))
+  .enter()
+  .append("rect")
 
-    .attr("class", function(d, i) {
-      return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
-    })
-    .attr("id", function(d, i) {
-      return "s-" + (n + 1) + (i + 1);
-    })
-    .attr("width", square7sm)
-    .attr("height", square7sm)
-    .attr("x", function(d, i) {
-      return (square7 + gap) * i + gap;
-    })
-    .attr("y", (square7 + gap) * n + gap)
-    .attr("district", function(d, i) {
-      return cur_plan_str[7 * n + i];
-    })
-    .style("fill", function(d, i) {
-      return distfills[cur_plan_str[7 * n + i] - 1];
-    })
-    .style("stroke", "#555")
-    .style("stroke-width", 1)
-    .style("stroke-opacity",.3)
-    .style("fill-opacity",.3);
+  .attr("class", function(d, i) {
+    return "square7 row-" + (n + 1) + " " + "col-" + (i + 1);
+  })
+  .attr("id", function(d, i) {
+    return "s-" + (n + 1) + (i + 1);
+  })
+  .attr("width", square7sm)
+  .attr("height", square7sm)
+  .attr("x", function(d, i) {
+    return (square7 + gap) * i + gap;
+  })
+  .attr("y", (square7 + gap) * n + gap)
+  .attr("district", function(d, i) {
+    return cur_plan_str[7 * n + i];
+  })
+  .style("fill", function(d, i) {
+    return distfills[cur_plan_str[7 * n + i] - 1];
+  })
+  .style("stroke", "#555")
+  .style("stroke-width", 1)
+  .style("stroke-opacity",.3)
+  .style("fill-opacity",.3);
 }
 
 
@@ -452,28 +452,28 @@ function grid_borders() {
       var cr = d3.select(this);
       if (nm[2] == 1) {
         grd
-          .append("line")
-          .attr("x1", parseFloat(cr.attr("x") - 1))
-          .attr(
-            "x2",
-            square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+        .append("line")
+        .attr("x1", parseFloat(cr.attr("x") - 1))
+        .attr(
+          "x2",
+          square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
           )
-          .attr("y1", parseFloat(cr.attr("y")))
-          .attr("y2", parseFloat(cr.attr("y")))
-          .style("stroke-width", 2)
-          .attr("stroke", "#333");
+        .attr("y1", parseFloat(cr.attr("y")))
+        .attr("y2", parseFloat(cr.attr("y")))
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
       } else if (nm[2] == 7) {
         grd
-          .append("line")
-          .attr("x1", parseFloat(cr.attr("x") - 1))
-          .attr(
-            "x2",
-            square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+        .append("line")
+        .attr("x1", parseFloat(cr.attr("x") - 1))
+        .attr(
+          "x2",
+          square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
           )
-          .attr("y1", square7 + parseFloat(cr.attr("y")))
-          .attr("y2", square7 + parseFloat(cr.attr("y")))
-          .style("stroke-width", 2)
-          .attr("stroke", "#333");
+        .attr("y1", square7 + parseFloat(cr.attr("y")))
+        .attr("y2", square7 + parseFloat(cr.attr("y")))
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
       } else {
         var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
         var checkcell_up = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
@@ -481,56 +481,56 @@ function grid_borders() {
 
         if (cellchar != checkcell_up) {
           grd
-            .append("line")
-            .attr("x1", parseFloat(cr.attr("x") - 1))
-            .attr(
-              "x2",
-              square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+          .append("line")
+          .attr("x1", parseFloat(cr.attr("x") - 1))
+          .attr(
+            "x2",
+            square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
             )
-            .attr("y1", parseFloat(cr.attr("y") - 1))
-            .attr("y2", parseFloat(cr.attr("y") - 1))
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
+          .attr("y1", parseFloat(cr.attr("y") - 1))
+          .attr("y2", parseFloat(cr.attr("y") - 1))
+          .style("stroke-width", 2)
+          .attr("stroke", "#333");
         }
         if (cellchar != checkcell_dn && nm[2] == 6) {
           grd
-            .append("line")
-            .attr("x1", parseFloat(cr.attr("x") - 1))
-            .attr(
-              "x2",
-              square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+          .append("line")
+          .attr("x1", parseFloat(cr.attr("x") - 1))
+          .attr(
+            "x2",
+            square7 + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
             )
-            .attr("y1", square7 + (parseFloat(cr.attr("y")) + 1))
-            .attr("y2", square7 + (parseFloat(cr.attr("y")) + 1))
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
+          .attr("y1", square7 + (parseFloat(cr.attr("y")) + 1))
+          .attr("y2", square7 + (parseFloat(cr.attr("y")) + 1))
+          .style("stroke-width", 2)
+          .attr("stroke", "#333");
         }
       }
 
       if (nm[3] == 1) {
         grd
-          .append("line")
-          .attr("x1", parseFloat(cr.attr("x")))
-          .attr("x2", parseFloat(cr.attr("x")))
-          .attr("y1", parseFloat(cr.attr("y") - 1))
-          .attr(
-            "y2",
-            square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+        .append("line")
+        .attr("x1", parseFloat(cr.attr("x")))
+        .attr("x2", parseFloat(cr.attr("x")))
+        .attr("y1", parseFloat(cr.attr("y") - 1))
+        .attr(
+          "y2",
+          square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
           )
-          .style("stroke-width", 2)
-          .attr("stroke", "#333");
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
       } else if (nm[3] == 7) {
         grd
-          .append("line")
-          .attr("x1", square7 + parseFloat(cr.attr("x")))
-          .attr("x2", square7 + parseFloat(cr.attr("x")))
-          .attr("y1", parseFloat(cr.attr("y")) - 1)
-          .attr(
-            "y2",
-            square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+        .append("line")
+        .attr("x1", square7 + parseFloat(cr.attr("x")))
+        .attr("x2", square7 + parseFloat(cr.attr("x")))
+        .attr("y1", parseFloat(cr.attr("y")) - 1)
+        .attr(
+          "y2",
+          square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
           )
-          .style("stroke-width", 2)
-          .attr("stroke", "#333");
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
       } else {
         var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
         var checkcell_lf = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
@@ -538,164 +538,164 @@ function grid_borders() {
 
         if (cellchar != checkcell_lf) {
           grd
-            .append("line")
-            .attr("x1", parseFloat(cr.attr("x") - 1))
-            .attr("x2", parseFloat(cr.attr("x") - 1))
-            .attr("y1", parseFloat(cr.attr("y") - 1))
-            .attr(
-              "y2",
-              square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
-            )
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
-        }
-        if (cellchar != checkcell_rt && nm[3] == 6) {
-          grd
-            .append("line")
-            .attr("x1", square7 + (parseFloat(cr.attr("x")) + 1.7))
-            .attr("x2", square7 + (parseFloat(cr.attr("x")) + 1.7))
-            .attr("y1", parseFloat(cr.attr("y")) - 1)
-            .attr(
-              "y2",
-              square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
-            )
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
-        }
-      }
-    }
-  });
-
-  grd2.selectAll("line").remove();
-
-  grd2.selectAll("rect").each(function() {
-    var nm = d3.select(this).attr("id");
-    var cr = d3.select(this);
-    if (nm != null) {
-      if (nm[2] == 1) {
-        grd2
           .append("line")
           .attr("x1", parseFloat(cr.attr("x") - 1))
-          .attr(
-            "x2",
-            square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
-          )
-          .attr("y1", parseFloat(cr.attr("y")))
-          .attr("y2", parseFloat(cr.attr("y")))
-          .style("stroke-width", 2)
-          .attr("stroke", "#333");
-      } else if (nm[2] == 7) {
-        grd2
-          .append("line")
-          .attr("x1", parseFloat(cr.attr("x") - 1))
-          .attr(
-            "x2",
-            square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
-          )
-          .attr("y1", square7sm + parseFloat(cr.attr("y")))
-          .attr("y2", square7sm + parseFloat(cr.attr("y")))
-          .style("stroke-width", 2)
-          .attr("stroke", "#333");
-      } else {
-        var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
-        var checkcell_up = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
-        var checkcell_dn = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 7];
-
-        if (cellchar != checkcell_up) {
-          grd2
-            .append("line")
-            .attr("x1", parseFloat(cr.attr("x") - 1))
-            .attr(
-              "x2",
-              square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
-            )
-            .attr("y1", parseFloat(cr.attr("y") - 1))
-            .attr("y2", parseFloat(cr.attr("y") - 1))
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
-        }
-        if (cellchar != checkcell_dn && nm[2] == 6) {
-          grd2
-            .append("line")
-            .attr("x1", parseFloat(cr.attr("x") - 1))
-            .attr(
-              "x2",
-              square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
-            )
-            .attr("y1", square7sm + (parseFloat(cr.attr("y")) + 1))
-            .attr("y2", square7sm + (parseFloat(cr.attr("y")) + 1))
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
-        }
-      }
-
-      if (nm[3] == 1) {
-        grd2
-          .append("line")
-          .attr("x1", parseFloat(cr.attr("x")))
-          .attr("x2", parseFloat(cr.attr("x")))
+          .attr("x2", parseFloat(cr.attr("x") - 1))
           .attr("y1", parseFloat(cr.attr("y") - 1))
           .attr(
             "y2",
-            square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
-          )
+            square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+            )
           .style("stroke-width", 2)
           .attr("stroke", "#333");
-      } else if (nm[3] == 7) {
-        grd2
+        }
+        if (cellchar != checkcell_rt && nm[3] == 6) {
+          grd
           .append("line")
-          .attr("x1", square7sm + parseFloat(cr.attr("x")))
-          .attr("x2", square7sm + parseFloat(cr.attr("x")))
+          .attr("x1", square7 + (parseFloat(cr.attr("x")) + 1.7))
+          .attr("x2", square7 + (parseFloat(cr.attr("x")) + 1.7))
           .attr("y1", parseFloat(cr.attr("y")) - 1)
           .attr(
             "y2",
-            square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
-          )
+            square7 + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+            )
           .style("stroke-width", 2)
           .attr("stroke", "#333");
-      } else {
-        var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
-        var checkcell_lf = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
-        var checkcell_rt = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 1];
-
-        if (cellchar != checkcell_lf) {
-          grd2
-            .append("line")
-            .attr("x1", parseFloat(cr.attr("x") - 1))
-            .attr("x2", parseFloat(cr.attr("x") - 1))
-            .attr("y1", parseFloat(cr.attr("y") - 1))
-            .attr(
-              "y2",
-              square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
-            )
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
-        }
-        if (cellchar != checkcell_rt && nm[3] == 6) {
-          grd2
-            .append("line")
-            .attr("x1", square7sm + (parseFloat(cr.attr("x")) + 1.7))
-            .attr("x2", square7sm + (parseFloat(cr.attr("x")) + 1.7))
-            .attr("y1", parseFloat(cr.attr("y")) - 1)
-            .attr(
-              "y2",
-              square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
-            )
-            .style("stroke-width", 2)
-            .attr("stroke", "#333");
         }
       }
     }
   });
 
-  grd
-    .selectAll("line")
-    .style("stroke", "#000")
-    .style("stroke-width", 3);
-  grd2
-    .selectAll("line")
-    .style("stroke", "#000")
-    .style("stroke-width", 3);
+grd2.selectAll("line").remove();
+
+grd2.selectAll("rect").each(function() {
+  var nm = d3.select(this).attr("id");
+  var cr = d3.select(this);
+  if (nm != null) {
+    if (nm[2] == 1) {
+      grd2
+      .append("line")
+      .attr("x1", parseFloat(cr.attr("x") - 1))
+      .attr(
+        "x2",
+        square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+        )
+      .attr("y1", parseFloat(cr.attr("y")))
+      .attr("y2", parseFloat(cr.attr("y")))
+      .style("stroke-width", 2)
+      .attr("stroke", "#333");
+    } else if (nm[2] == 7) {
+      grd2
+      .append("line")
+      .attr("x1", parseFloat(cr.attr("x") - 1))
+      .attr(
+        "x2",
+        square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+        )
+      .attr("y1", square7sm + parseFloat(cr.attr("y")))
+      .attr("y2", square7sm + parseFloat(cr.attr("y")))
+      .style("stroke-width", 2)
+      .attr("stroke", "#333");
+    } else {
+      var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
+      var checkcell_up = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
+      var checkcell_dn = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 7];
+
+      if (cellchar != checkcell_up) {
+        grd2
+        .append("line")
+        .attr("x1", parseFloat(cr.attr("x") - 1))
+        .attr(
+          "x2",
+          square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+          )
+        .attr("y1", parseFloat(cr.attr("y") - 1))
+        .attr("y2", parseFloat(cr.attr("y") - 1))
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
+      }
+      if (cellchar != checkcell_dn && nm[2] == 6) {
+        grd2
+        .append("line")
+        .attr("x1", parseFloat(cr.attr("x") - 1))
+        .attr(
+          "x2",
+          square7sm + (parseFloat(cr.attr("x")) + 1 + (nm[3] == 7 ? 0 : 1))
+          )
+        .attr("y1", square7sm + (parseFloat(cr.attr("y")) + 1))
+        .attr("y2", square7sm + (parseFloat(cr.attr("y")) + 1))
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
+      }
+    }
+
+    if (nm[3] == 1) {
+      grd2
+      .append("line")
+      .attr("x1", parseFloat(cr.attr("x")))
+      .attr("x2", parseFloat(cr.attr("x")))
+      .attr("y1", parseFloat(cr.attr("y") - 1))
+      .attr(
+        "y2",
+        square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+        )
+      .style("stroke-width", 2)
+      .attr("stroke", "#333");
+    } else if (nm[3] == 7) {
+      grd2
+      .append("line")
+      .attr("x1", square7sm + parseFloat(cr.attr("x")))
+      .attr("x2", square7sm + parseFloat(cr.attr("x")))
+      .attr("y1", parseFloat(cr.attr("y")) - 1)
+      .attr(
+        "y2",
+        square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+        )
+      .style("stroke-width", 2)
+      .attr("stroke", "#333");
+    } else {
+      var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
+      var checkcell_lf = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
+      var checkcell_rt = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 1];
+
+      if (cellchar != checkcell_lf) {
+        grd2
+        .append("line")
+        .attr("x1", parseFloat(cr.attr("x") - 1))
+        .attr("x2", parseFloat(cr.attr("x") - 1))
+        .attr("y1", parseFloat(cr.attr("y") - 1))
+        .attr(
+          "y2",
+          square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+          )
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
+      }
+      if (cellchar != checkcell_rt && nm[3] == 6) {
+        grd2
+        .append("line")
+        .attr("x1", square7sm + (parseFloat(cr.attr("x")) + 1.7))
+        .attr("x2", square7sm + (parseFloat(cr.attr("x")) + 1.7))
+        .attr("y1", parseFloat(cr.attr("y")) - 1)
+        .attr(
+          "y2",
+          square7sm + (parseFloat(cr.attr("y")) + 1 + (nm[2] == 7 ? 0 : 1))
+          )
+        .style("stroke-width", 2)
+        .attr("stroke", "#333");
+      }
+    }
+  }
+});
+
+grd
+.selectAll("line")
+.style("stroke", "#000")
+.style("stroke-width", 3);
+grd2
+.selectAll("line")
+.style("stroke", "#000")
+.style("stroke-width", 3);
 }
 
 function do_update(r) {
@@ -735,9 +735,9 @@ function do_update(r) {
   grd.selectAll("rect").each(function(d) {
     if (d3.select(this).attr("button") == null) {
       var idnum =
-        7 * (parseInt(d3.select(this).attr("id")[2]) - 1) +
-        parseInt(d3.select(this).attr("id")[3]) -
-        1;
+      7 * (parseInt(d3.select(this).attr("id")[2]) - 1) +
+      parseInt(d3.select(this).attr("id")[3]) -
+      1;
       if (d3.select(this).attr("party") == 0) {
         d3.select(this).style("fill", simp_fill[1]);
         cell_cols[idnum] = 0;
@@ -767,8 +767,8 @@ function update_dists() {
     var nm = d3.select(this).attr("id");
     if (nm != null) {
       var ix =
-        parseInt(cur_plan_str[7 * parseInt(nm[2] - 1) + parseInt(nm[3]) - 1]) -
-        1;
+      parseInt(cur_plan_str[7 * parseInt(nm[2] - 1) + parseInt(nm[3]) - 1]) -
+      1;
       d3.select(this).style("fill", function() {
         return distfills[ix];
       });
@@ -854,18 +854,18 @@ function swap_cells(s) {
 let histogram = createHistogram(
   d3.select("#histogram"),
   [
-    { label: "0 Seats", count: 0 },
-    { label: "1 Seat", count: 0 },
-    { label: "2 Seats", count: 0 },
-    { label: "3 Seats", count: 0 },
-    { label: "4 Seats", count: 0 },
-    { label: "5 Seats", count: 0 },
-    { label: "6 Seats", count: 0 },
-    { label: "7 Seats", count: 0 }
+  { label: "0 Seats", count: 0 },
+  { label: "1 Seat", count: 0 },
+  { label: "2 Seats", count: 0 },
+  { label: "3 Seats", count: 0 },
+  { label: "4 Seats", count: 0 },
+  { label: "5 Seats", count: 0 },
+  { label: "6 Seats", count: 0 },
+  { label: "7 Seats", count: 0 }
   ],
   500,
   220
-);
+  );
 
 function update_histo(newhist) {
   console.log(red_this);
@@ -902,66 +902,66 @@ randomDeltaButton.on("click", function(d) {
     if (
       d3.select(this).attr("button") == null &&
       d3.select(this).attr("id") != null
-    ) {
+      ) {
       var nm = d3.select(this).attr("id");
-      var n = nm[2] - 1;
-      var k = nm[3] - 1;
+    var n = nm[2] - 1;
+    var k = nm[3] - 1;
 
-      d3.select(this).attr("party", function(d) {
-        return party_init[7 * n + k];
-      });
-      d3.select(this).style("fill", function(d) {
-        return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
-      });
+    d3.select(this).attr("party", function(d) {
+      return party_init[7 * n + k];
+    });
+    d3.select(this).style("fill", function(d) {
+      return simp_fill[1 + parseInt(d3.select(this).attr("party"))];
+    });
 
-      do_update(-1);
-    }
-  });
+    do_update(-1);
+  }
+});
 });
 
 
 var t4 = grd2.append("text")
-        .attr("x",.75*square7)
-        .attr("y",2*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",.75*square7)
+.attr("y",2*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 var t5 = grd2.append("text")
-        .attr("x",3.35*square7)
-        .attr("y",1.5*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",3.35*square7)
+.attr("y",1.5*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 var t1 = grd2.append("text")
-        .attr("x",6.05*square7)
-        .attr("y",2*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",6.05*square7)
+.attr("y",2*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 var t3 = grd2.append("text")
-        .attr("x",.75*square7)
-        .attr("y",5.75*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",.75*square7)
+.attr("y",5.75*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 var t7 = grd2.append("text")
-        .attr("x",2.85*square7)
-        .attr("y",5.75*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",2.85*square7)
+.attr("y",5.75*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 var t6 = grd2.append("text")
-        .attr("x",4.35*square7)
-        .attr("y",4*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",4.35*square7)
+.attr("y",4*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 var t2 = grd2.append("text")
-        .attr("x",5.5*square7)
-        .attr("y",6.5*square7)
-        .attr("width",100)
-        .attr("height",100)
-        .text("TEST");
+.attr("x",5.5*square7)
+.attr("y",6.5*square7)
+.attr("width",100)
+.attr("height",100)
+.text("TEST");
 
 
 var dist_prob_list = [t1,t2,t3,t4,t5,t6,t7];
