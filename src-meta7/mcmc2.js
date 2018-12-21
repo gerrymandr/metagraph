@@ -1,6 +1,6 @@
 var cur_plan_str3 = "4455511445551144566114376661337766233772223377222";
 
-cell_cols2 = [
+cell_cols3 = [
   0,
   0,
   0,
@@ -52,8 +52,6 @@ cell_cols2 = [
   0
 ];
 
-var mcmcsteps = 1500;
-var mcmcreset = 150;
 
 var grd4 = d3
   .select("#optspace")
@@ -263,7 +261,7 @@ var go_btn2 = go_button_g2
       temph = [0, 0, 0, 0, 0, 0, 0];
       var c = 0;
       for (var i = 0; i < 49; i++) {
-        temph[parseInt(cand[i]) - 1] += parseInt(cell_cols2[i]);
+        temph[parseInt(cand[i]) - 1] += parseInt(cell_cols3[i]);
       }
       for (var i = 0; i < 7; i++) {
         if (temph[i] > 0) {
@@ -278,7 +276,7 @@ var go_btn2 = go_button_g2
     }
 
     cur_plan_str3 = (" " + best_so_far).slice(1);
-    update_dists2();
+    update_dists3();
     res_txt.text("This plan has: " + best_val + " Hearts seats");
   });
 
@@ -310,7 +308,7 @@ var go_btn3 = go_button_g2
       temph = [0, 0, 0, 0, 0, 0, 0];
       var c = 0;
       for (var i = 0; i < 49; i++) {
-        temph[parseInt(cand[i]) - 1] += parseInt(cell_cols2[i]);
+        temph[parseInt(cand[i]) - 1] += parseInt(cell_cols3[i]);
         console;
       }
       for (var i = 0; i < 7; i++) {
@@ -326,11 +324,11 @@ var go_btn3 = go_button_g2
     }
 
     cur_plan_str3 = (" " + best_so_far).slice(1);
-    update_dists2();
+    update_dists3();
     res_txt.text("This plan has: " + best_val + " Clubs seats");
   });
 
-function grid_borders2() {
+function grid_borders3() {
   grd4.selectAll("line").remove();
 
   grd4.selectAll("rect").each(function() {
@@ -628,17 +626,17 @@ function do_update4(r) {
       if (d3.select(this).attr("party") == 0) {
         d3.select(this).style("fill", simp_fill[1]);
         d3.select(this).style("fill-opacity", 1);
-        cell_cols2[idnum] = 0;
+        cell_cols3[idnum] = 0;
       }
       if (d3.select(this).attr("party") == 1) {
         d3.select(this).style("fill", simp_fill[2]);
         d3.select(this).style("fill-opacity", opacity_red);
-        cell_cols2[idnum] = 1;
+        cell_cols3[idnum] = 1;
       }
       if (d3.select(this).attr("party") == -1) {
         d3.select(this).style("fill", simp_fill[0]);
         d3.select(this).style("fill-opacity", opacity_blk);
-        cell_cols2[idnum] = -1;
+        cell_cols3[idnum] = -1;
       }
     }
   });
@@ -650,7 +648,7 @@ function do_update4(r) {
   //compute_hists();
 }
 
-function update_dists2() {
+function update_dists3() {
   grd3.selectAll("rect").each(function(d) {
     var nm = d3.select(this).attr("id");
     if (nm != null) {
@@ -662,7 +660,7 @@ function update_dists2() {
     }
   });
 
-  grid_borders2();
+  grid_borders3();
 }
 
 var helptxt = grd4
@@ -756,5 +754,5 @@ helptxt
 
 grid_borders();
 do_update2();
-grid_borders2();
+grid_borders3();
 do_update4(-1);

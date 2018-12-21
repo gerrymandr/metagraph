@@ -1,7 +1,11 @@
 
+var cur_plan_str2 = "4455511445551144566114376661337766233772223377222";
 
+var last_clicked = -1;
 
-cell_cols = [
+var mcmcsteps = 1500;
+var mcmcreset = 150;
+var cell_cols2 = [
   0,
   0,
   0,
@@ -186,10 +190,10 @@ for (let n = 0; n < square7sColumn; n++) {
     })
     .attr("y", (square7 + gap) * n + gap)
     .attr("district", function(d, i) {
-      return cur_plan_str[7 * n + i];
+      return cur_plan_str2[7 * n + i];
     })
     .style("fill", function(d, i) {
-      return distfills[cur_plan_str[7 * n + i] - 1];
+      return distfills[cur_plan_str2[7 * n + i] - 1];
     })
     .style("stroke", "#555")
     .style("stroke-width", 1)
@@ -201,59 +205,7 @@ for (let n = 0; n < square7sColumn; n++) {
 
 
 
-var go_btn = d3.select("#go-button2").on("click", function(d) {
-  if (!can_chain) {
-    return;
-  }
-  var oldsv = (" " + cur_plan_str).slice(1);
-  var samples = [];
-  var histo = [0, 0, 0, 0, 0, 0, 0, 0];
 
-  temph = [0, 0, 0, 0, 0, 0, 0];
-  var c = 0;
-  for (var i = 0; i < 49; i++) {
-    temph[parseInt(cur_plan_str[i]) - 1] += parseInt(cell_cols[i]);
-  }
-  for (var i = 0; i < 7; i++) {
-    if (temph[i] > 0) {
-      c += 1;
-    }
-  }
-  red_this = c;
-
-  while (samples.length < 1000) {
-    cur_plan_str = swap_cells(cur_plan_str);
-
-    if (samples.length % 100 == 0) {
-    }
-
-    var already = false;
-    for (var i = 0; i < samples.length; i++) {
-      if (samples[i] == cur_plan_str) {
-        already = true;
-      }
-    }
-    if (!already) {
-      temph = [0, 0, 0, 0, 0, 0, 0];
-      var c = 0;
-      for (var i = 0; i < 49; i++) {
-        temph[parseInt(cur_plan_str[i]) - 1] += parseInt(cell_cols[i]);
-      }
-      for (var i = 0; i < 7; i++) {
-        if (temph[i] > 0) {
-          c += 1;
-        }
-      }
-      histo[c] += 1;
-
-      samples.push((" " + cur_plan_str).slice(1));
-    }
-  }
-
-  cur_plan_str = (" " + oldsv).slice(1);
-  update_dists2();
-  update_histo2(histo);
-});
 
 function grid_borders2() {
   grd_pty_cdf.selectAll("line").remove();
@@ -287,9 +239,9 @@ function grid_borders2() {
           .style("stroke-width", 2)
           .attr("stroke", "#333");
       } else {
-        var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
-        var checkcell_up = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
-        var checkcell_dn = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 7];
+        var cellchar = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1)];
+        var checkcell_up = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
+        var checkcell_dn = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) + 7];
 
         if (cellchar != checkcell_up) {
           grd_pty_cdf
@@ -344,9 +296,9 @@ function grid_borders2() {
           .style("stroke-width", 2)
           .attr("stroke", "#333");
       } else {
-        var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
-        var checkcell_lf = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
-        var checkcell_rt = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 1];
+        var cellchar = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1)];
+        var checkcell_lf = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
+        var checkcell_rt = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) + 1];
 
         if (cellchar != checkcell_lf) {
           grd_pty_cdf
@@ -409,9 +361,9 @@ function grid_borders2() {
           .style("stroke-width", 2)
           .attr("stroke", "#333");
       } else {
-        var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
-        var checkcell_up = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
-        var checkcell_dn = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 7];
+        var cellchar = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1)];
+        var checkcell_up = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) - 7];
+        var checkcell_dn = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) + 7];
 
         if (cellchar != checkcell_up) {
           grd_dist_cdf
@@ -466,9 +418,9 @@ function grid_borders2() {
           .style("stroke-width", 2)
           .attr("stroke", "#333");
       } else {
-        var cellchar = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1)];
-        var checkcell_lf = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
-        var checkcell_rt = cur_plan_str[7 * (nm[2] - 1) + (nm[3] - 1) + 1];
+        var cellchar = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1)];
+        var checkcell_lf = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) - 1];
+        var checkcell_rt = cur_plan_str2[7 * (nm[2] - 1) + (nm[3] - 1) + 1];
 
         if (cellchar != checkcell_lf) {
           grd_dist_cdf
@@ -552,17 +504,17 @@ function do_update2(r) {
         1;
       if (d3.select(this).attr("party") == 0) {
         d3.select(this).style("fill", simp_fill[1]);
-        cell_cols[idnum] = 0;
+        cell_cols2[idnum] = 0;
       }
       if (d3.select(this).attr("party") == 1) {
         d3.select(this).style("fill", simp_fill[2]);
         d3.select(this).style("fill-opacity", opacity_red);
-        cell_cols[idnum] = 1;
+        cell_cols2[idnum] = 1;
       }
       if (d3.select(this).attr("party") == -1) {
         d3.select(this).style("fill", simp_fill[0]);
         d3.select(this).style("fill-opacity", opacity_blk);
-        cell_cols[idnum] = -1;
+        cell_cols2[idnum] = -1;
       }
     }
   });
@@ -575,11 +527,12 @@ function do_update2(r) {
 }
 
 function update_dists2() {
+  console.log(cur_plan_str2);
   grd_dist_cdf.selectAll("rect").each(function(d) {
     var nm = d3.select(this).attr("id");
     if (nm != null) {
       var ix =
-        parseInt(cur_plan_str[7 * parseInt(nm[2] - 1) + parseInt(nm[3]) - 1]) -
+        parseInt(cur_plan_str2[7 * parseInt(nm[2] - 1) + parseInt(nm[3]) - 1]) -
         1;
       d3.select(this).style("fill", function() {
         return distfills[ix];
@@ -626,11 +579,10 @@ let histogram22 = createHistogram(
 
 
 function update_histo2(newhist) {
-  console.log(red_this);
   let data = newhist.map((count, i) => ({
     label: i == 1 ? "1 Seat" : i + " Seats",
     count,
-    currentPlan: false,
+    currentPlan: last_clicked > 0 ? last_clicked <= i : false,
     percents: true
   }));
 
@@ -643,7 +595,7 @@ function update_histo2(newhist) {
   let data2 = cdf.map((count, i) => ({
     label: i == 1 ? "1 Seat" : i + " Seats",
     count,
-    currentPlan: false,
+    currentPlan: last_clicked > 0 ? last_clicked == i : false,
     percents: true
   }));
   updateHistogram(histogram21, data, "#66ABFF", 500, 220);
@@ -698,49 +650,52 @@ var v4 = grd_dist_cdf.append("text")
         .attr("y",2*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 var v5 = grd_dist_cdf.append("text")
         .attr("x",3*square7)
         .attr("y",1.5*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 var v1 = grd_dist_cdf.append("text")
         .attr("x",5.8*square7)
         .attr("y",2*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 var v3 = grd_dist_cdf.append("text")
         .attr("x",square7/2)
         .attr("y",5.75*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 var v7 = grd_dist_cdf.append("text")
         .attr("x",2.65*square7)
         .attr("y",5.75*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 var v6 = grd_dist_cdf.append("text")
         .attr("x",4.25*square7)
         .attr("y",4*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 var v2 = grd_dist_cdf.append("text")
         .attr("x",5.25*square7)
         .attr("y",6.5*square7)
         .attr("width",100)
         .attr("height",100)
-        .text("TEST");
+        .text("");
 
 
 var dist_prob_list2 = [v1,v2,v3,v4,v5,v6,v7];
 
-function update_prob_texts2() {
 
+
+
+function update_prob_texts2() {
+  return;
   var newcounts = [0,0,0,0,0,0,0];
 
   grd_pty_cdf.selectAll("rect").each(function(d) {
@@ -750,7 +705,7 @@ function update_prob_texts2() {
       var k = nm[3] - 1;
 
 
-      var thisdist = parseInt(cur_plan_str[7 * n + k])-1
+      var thisdist = parseInt(cur_plan_str2[7 * n + k])-1
       if (d3.select(this).attr("party") == 1){
         newcounts[thisdist]+=1;
       }
@@ -773,8 +728,68 @@ function update_prob_texts2() {
 
 
 
+ function mcmc_cdf(num) {
+    var best_so_far = (" " + cur_plan_str2).slice(1);
+    var best_val = 0;
+    var cand = (" " + cur_plan_str2).slice(1);
+
+    for (var stp = 0; stp < mcmcsteps; stp++) {
+      if (stp % mcmcreset == 0) {
+        cand = (" " + best_so_far).slice(1);
+      } else {
+        cand = swap_cells(cand);
+      }
+
+      temph = [0, 0, 0, 0, 0, 0, 0];
+      var c = 0;
+      for (var i = 0; i < 49; i++) {
+        temph[parseInt(cand[i]) - 1] += (parseInt(cell_cols2[i]) == 1 ? 1 : 0);
+        
+      }
+      temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
+      var cdf = [100,0,0,0,0,0,0,0]
+      for (var i=0; i<8; i++){
+        for (var j=i;j>0;j--){
+          cdf[j] += temph[i]
+        }
+      }
+      c = cdf[num]
+      if (c > best_val) {cell_cols2
+        best_val = c;
+        best_so_far = (" " + cand).slice(1);
+      }
+
+      if (c == 100){
+
+        cur_plan_str2 = (" " + best_so_far).slice(1);
+        last_clicked = num;
+        update_dists2();
+        update_histo2(temph);
+        do_update2(-1);
+        return;
 
 
+      }
+    }
+
+    cur_plan_str2 = (" " + best_so_far).slice(1);
+    console.log(cur_plan_str2);
+    last_clicked = num;
+    update_dists2();
+    update_histo2(temph);
+    do_update2(-1);
+    //res_txt.text("This plan has: " + best_val + " Clubs seats");
+  };
+
+
+
+//d3.select("#go-button-1").on("click", mcmc_cdf(1));
+// d3.select("#go-button-2").on("click", mcmc_cdf(2));
+// d3.select("#go-button-3").on("click", mcmc_cdf(3));
+// d3.select("#go-button-4").on("click", mcmc_cdf(4));
+// d3.select("#go-button-5").on("click", mcmc_cdf(5));
+// d3.select("#go-button-6").on("click", mcmc_cdf(6));
+// d3.select("#go-button-7").on("click", mcmc_cdf(7));
 
 
 grid_borders2()

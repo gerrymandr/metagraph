@@ -206,9 +206,9 @@
           <div id="current-d2" class="grid"></div>
      </div>
       </div>
-      <h4>Search with MCMC to find the plan which maximizes the probability of the <span class="hearts">Hearts</span> Party winning at least $k$ seats.</h4>
+      <h4>Search with MCMC to find the plan which maximizes the probability of the <span class="hearts">Hearts</span> Party winning at least a certain number of seats.</h4>
       <p>
-      <button-sm id="go-button-1">1</button-sm><button-sm id="go-button-2">2</button-sm><button-sm id="go-button-3">3</button-sm><button-sm id="go-button-4">4</button-sm><button-sm id="go-button-5">5</button-sm><button-sm id="go-button-6">6</button-sm><button-sm id="go-button-7">7</button-sm>
+      <button-sm id="go-button-1" onclick="mcmc_cdf(1)">1</button-sm><button-sm id="go-button-2" onclick="mcmc_cdf(2)">2</button-sm><button-sm id="go-button-3" onclick="mcmc_cdf(3)">3</button-sm><button-sm id="go-button-4" onclick="mcmc_cdf(4)">4</button-sm><button-sm id="go-button-5" onclick="mcmc_cdf(5)">5</button-sm><button-sm id="go-button-6" onclick="mcmc_cdf(6)">6</button-sm><button-sm id="go-button-7" onclick="mcmc_cdf(7)">7</button-sm>
     </p>
     <p>
     </p>
@@ -253,9 +253,10 @@
   <script src="src-meta5/histograms-lib.js"></script>
   <script src="src-meta7/data/problookup.js"></script>
   <script src="src-meta7/mcmc-probopt.js"></script>
+
   <script src="src-meta7/mcmc-cdf.js"></script>
-  <script src="src-meta7/randwalk.js"></script>
-  <script src="src-meta7/mcmc2.js"></script>
+      <script src="src-meta7/mcmc2.js"></script>
+
 
 </body>
 
