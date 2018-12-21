@@ -527,7 +527,6 @@ function do_update2(r) {
 }
 
 function update_dists2() {
-  console.log(cur_plan_str2);
   grd_dist_cdf.selectAll("rect").each(function(d) {
     var nm = d3.select(this).attr("id");
     if (nm != null) {
@@ -743,7 +742,7 @@ function mcmc_cdf(num) {
     var c = 0;
     for (var i = 0; i < 49; i++) {
       temph[parseInt(cand[i]) - 1] += (parseInt(cell_cols2[i]) == 1 ? 1 : 0);
-      
+
     }
 
     temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
@@ -777,7 +776,6 @@ function mcmc_cdf(num) {
   }
 
   cur_plan_str2 = (" " + best_so_far).slice(1);
-  console.log(cur_plan_str2);
   last_clicked = num;
   update_dists2();
   update_histo2(temph);
