@@ -3,8 +3,8 @@ var cur_plan_str2 = "4455511445551144566114376661337766233772223377222";
 
 var last_clicked = -1;
 
-var mcmcsteps = 1500;
-var mcmcreset = 150;
+var mcmcsteps = 2000;
+var mcmcreset = 200;
 var cell_cols2 = [
   0,
   0,
