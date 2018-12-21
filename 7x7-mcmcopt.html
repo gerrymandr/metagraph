@@ -185,9 +185,13 @@
       in the middle to perform the MCMC search, again doing short bursts of 150 steps.  The algorithm is the same as before, where it performs a random walk and 
       occasionally restarts, keeping track of the best one it found so far.  The two charts on the right show the probabilities
       we're interested in.  The first one is the probability of the <span class="hearts">Hearts</span> Party winning exactly 
-      that number of seats, and the one on the bottom is the <em>cumulative probability</em> of the <span class="hearts">Hearts</span> Party 
-      winning <em>at least</em> that number of seats.
+      that number of seats, called the <em>probability density</em>, and the one on the bottom is the probability of the <span class="hearts">Hearts</span> Party 
+      winning <em>at least</em> that number of seats, called the <em>cumulative density</em>.  Whichever number you click, we'll color the corresponding bar 
+      in the cumulative density histogram and the bars greater than or equal to that number in the probability density histogram.  The sum of the probabilitties 
+      at all the colored bars in the first histogram will be equal to the sum of the colored bar in the second.
+      bars 
     </p>
+
     <center><summary>
       DEMO IS UNDER CONSTRUCTION
     </summary></center>
