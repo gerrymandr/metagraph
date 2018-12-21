@@ -695,7 +695,6 @@ var dist_prob_list2 = [v1,v2,v3,v4,v5,v6,v7];
 
 
 function update_prob_texts2() {
-  return;
   var newcounts = [0,0,0,0,0,0,0];
 
   grd_pty_cdf.selectAll("rect").each(function(d) {
@@ -713,7 +712,7 @@ function update_prob_texts2() {
   });
 
   for (var i=0;i<7;i++){
-    dist_prob_list2[i].text(newcounts[i]+"/7");
+    i;//dist_prob_list2[i].text(newcounts[i]+"/7");
   }
 
 
