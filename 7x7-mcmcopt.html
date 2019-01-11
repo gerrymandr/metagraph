@@ -69,7 +69,7 @@
           The first thing we'll do is use the MCMC <a href="https://mggg.org/metagraph/7x7.html"> sampler we built in the last demo </a>, 
           but instead of using it
           to generate an ensemble of plans to compare against, we'll use it to hunt for plans which award a high
-          number of seats for one of the parties.  We've slightly modified the code to look for extreme outcomes. 
+          number of seats to one of the parties.  We've slightly modified the code to look for extreme outcomes. 
           Once you pick your distribution and click to search, the algorithm will run
           for 1,500 steps in short bursts of 150. Every 150 steps, it restarts its walk from the most extreme plan
           it has found so far, and at the end it displays the best one found overall.
@@ -93,7 +93,8 @@
           districts. This is for two reasons -- first, that there is only one plan which has seven <span class="hearts">Hearts</span>-favoring
           districts (seven vertical strips), and the second is that this plan has very low degree in the metagraph, so it's
           hard for the random walk to find it. It's remarkable that it can even find a plan with six <span class="hearts">Hearts</span>-favoring
-          districts. If you plug that distribution into the sampling tool above and look at the histograms, you'll see that
+          districts. If you plug that distribution into the sampling tool on the <a href="https://mggg.org/metagraph/7x7.html"> previous page </a> 
+          and look at the histograms, you'll see that
           the vast majority of plans have four <span class="hearts">Hearts</span> seats, with a small handful
           of plans with five. Very rarely will it even find a six-<span class="hearts">Hearts</span>-seat plan,
           which demonstrates the effectiveness of the restarting mechanism.
@@ -106,8 +107,12 @@
           it will be extremely easy for us to use the same MCMC algorithm to show that the plan is an extreme outlier.  
           
         </p>
+
+
+
+        <h3>Elections aren't a sure thing</h3>
         <p>
-          Of course in real life gerrymanders are harder to detect than this because of the uncertainty in elections.  
+          Of course in real life, gerrymanders are harder to detect than this because of the uncertainty in elections.  
           If there is some randomness in the outcomes and the <span class="hearts">Hearts</span> Party wins six of the 
           seven seats, is that because the <span class="clubs">Clubs</span> Party is structurally disadvantaged by the 
           districting plan or were they just unlucky this time? We'll incorporate this into our model and show how we 
