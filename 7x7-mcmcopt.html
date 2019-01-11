@@ -104,7 +104,7 @@
           This is using the same MCMC algorithm as before, it just remembers the most extreme plan it's seen so far.  
           If we step back for a second, this is a pretty ineffective way of constructing a gerrymander.  If someone 
           decides to pick an unfair map by clicking the MCMC button which generates the most extreme map possible, then 
-          it will be extremely easy for us to use the same MCMC algorithm to show that the plan is an extreme outlier.  
+          it will be very easy for us to use the same MCMC algorithm to show that the plan is an extreme outlier.
           
         </p>
 
@@ -182,7 +182,7 @@
          any particular number of seats.  Since we only have two parties, this also tells us the same information 
          for the <span class="clubs">Clubs</span> Party's prospects, since, for example, the probability that the 
          <span class="hearts">Hearts</span> Party wins three seats is exactly the same as the probability that the 
-         <span class="clubs">Clubs</span> Party wins four seats.
+         <span class="clubs">Clubs</span> Party wins four seats.  
        </p>
 
        <center><summary>
@@ -207,15 +207,15 @@
       </div>
 
       <p>
-       From the perspective of whoever is drawing the districts, these probabilities are incredibly
-       important.  Notice that if you make each district have four <span class="hearts">Hearts</span> voters and 
+       When examining a districting plan, these probabilities are extremely important. 
+       Notice that if you make each district have four <span class="hearts">Hearts</span> voters and 
        three <span class="clubs">Clubs</span> voters, then there is still a small probability of 
        the <span class="clubs">Clubs</span> Party winning a majority of seats,
        but if you have four districts with seven  <span class="hearts">Hearts</span> voters,  and 
        three with seven <span class="clubs">Clubs</span> voters, then the
-       <span class="clubs">Clubs</span> Party can never win a majority of the seats.  A
+       <span class="clubs">Clubs</span> Party can never win a majority of the seats.
      </p>
-     <p>
+<!--      <p>
        Now, thinking like a gerrymanderer, the key problem to consider is <em>supposing we want at 
       least a certain number of the districts to be 
       won by the <span class="hearts">Hearts</span> Party with a certain probability, how should we
@@ -242,7 +242,7 @@
       <span class="hearts">Hearts</span> Party wins theirs, but that doesn't seem like quite enough when 
       we're working in this richer probabilistic model.  Fortunately for us, the MCMC algorithm from 
       before is well-equipped to perform this search.
-    </p>
+    </p> -->
     <p>
       Use the demo below to explore this concept. As before, you can arrange the voters on the left and use the buttons 
       in the middle to perform the MCMC search, again doing short bursts of 150 steps.  The algorithm is the same as before, where it performs a random walk and 
