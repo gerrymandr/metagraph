@@ -316,10 +316,10 @@
   true fraction of <span class="hearts">Hearts</span> voters.
 </p>
 <p>
-  <em>Competitiveness</em> is a little more subtle.  First, we'll call a district "competitive" if it's close to having equal 
-  numbers of <span class="hearts">Hearts</span> and <span class="clubs">Clubs</span> voters.  In 7x7 Gridlandia, the competitive 
-  districts are the ones which have three voters from one party and four from the other. We can then measure the <em>competitiveness</em> 
-  of a plan by taking the average over all of the districts.  With respect to the histograms, competitveness describes how spread out 
+  <em>Competitiveness</em> is a little more subtle.  First, we'll call a district "competitive" if it's close to having an equal 
+  chance of being won by <span class="hearts">Hearts</span> or <span class="clubs">Clubs</span>. Formally, we'll measure it by the difference between $50\%$ and the percent chance that the <span class="hearts">Hearts</span> Party wins it (remember, since the probabilities are symmetric we could just as well choose to measure against the <span class="clubs">Clubs</span> Party's chances). 
+  In 7x7 Gridlandia, the competitive districts are the ones which have three voters from one party and four from the other. We can then measure the <em>competitiveness</em> 
+  of a plan by taking the total over all of the districts. A perfectly competitive plan (which doesn't exist here, because of odd numbers) gets a score of zero.  With respect to the histograms, competitveness describes how spread out 
   the bars are.  A more competitive plan allows for a wider variety of outcomes, so the histogram bars will be spread out more, and 
   a less competitive plan will have a narrow, spiked histogram.
 

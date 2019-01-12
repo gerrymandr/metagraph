@@ -721,7 +721,7 @@ function mcmc_rep() {
 
 
 
-
+var complookup = {0:0, 1:0, 2:.1, 3:1.0/3, 4:2.0/3, 5:.9, 6:1, 7:1}
 
 
 function mcmc_comp() {
@@ -750,7 +750,7 @@ function mcmc_comp() {
     
     for (var i=0; i<7; i++){
 
-      c += (temph[i] - 3.5)**2
+      c += Math.abs((complookup[temph[i]] - .5))
     }
 
     if (c < best_val) {cell_colscomp
