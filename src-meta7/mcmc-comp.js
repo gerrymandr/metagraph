@@ -576,7 +576,7 @@ function update_histocomp(newhist) {
   let data = newhist.map((count, i) => ({
     label: i == 1 ? "1 Seat" : i + " Seats",
     count,
-    currentPlan: last_clicked > 0 ? last_clicked <= i : false,
+    //currentPlan: last_clicked > 0 ? last_clicked <= i : false,
     percents: true
   }));
 
@@ -748,10 +748,10 @@ function mcmc_comp() {
     }
     //temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
     
-    for (var i=0; i<8; i++){
+    for (var i=0; i<7; i++){
+
       c += (temph[i] - 3.5)**2
     }
-
 
     if (c < best_val) {cell_colscomp
       best_val = c;
