@@ -667,9 +667,13 @@ function mcmc_rep() {
     }
     temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
     c = 0
+    
+
     for (var i=0; i<8; i++){
       c += temph[i]*((numhearts/49.0) - i)**2 
     }
+
+
     if (c < best_val) {cell_colscomp
       best_val = c;
       best_so_far = (" " + cand).slice(1);
@@ -742,11 +746,13 @@ function mcmc_comp() {
       temph[parseInt(cand[i]) - 1] += (parseInt(cell_colscomp[i]) == 1 ? 1 : 0);
 
     }
-    temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
+    //temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
     
     for (var i=0; i<8; i++){
-      c += (8.0/100 - temph[i])**2 
+      c += (temph[i] - 3.5)**2
     }
+
+
     if (c < best_val) {cell_colscomp
       best_val = c;
       best_so_far = (" " + cand).slice(1);
