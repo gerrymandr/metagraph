@@ -308,7 +308,7 @@ for (let n = 0; n < square7sColumn; n++) {
   .style("stroke-width", 1)
 
   .on("mouseover", function(d) {
-    d3.select(this).style("stroke", "#000");
+    //d3.select(this).style("stroke", "#000");
     d3.select(this).style("stroke-width", "3");
   })
 
@@ -760,6 +760,13 @@ function do_update(r) {
   n_win_i = [0, 0, 0, 0, 0, 0];
 
   update_prob_texts();
+
+
+    var numhearts = 0;
+  for (var i = 0; i < 49; i++) {
+    numhearts += (parseInt(cell_cols[i]) == 1 ? 1 : 0)
+  }
+  document.getElementById("numhts").innerHTML = parseInt(numhearts)
 }
 
 function update_dists() {
@@ -868,7 +875,6 @@ let histogram = createHistogram(
   );
 
 function update_histo(newhist) {
-  console.log(red_this);
   let data = newhist.map((count, i) => ({
     label: i == 1 ? "1 Seat" : i + " Seats",
     count,

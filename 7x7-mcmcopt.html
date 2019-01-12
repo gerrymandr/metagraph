@@ -201,6 +201,9 @@
             <div id="current-d" class="grid"></div>
           </div>
         </div>
+              <p>
+        There are <span id="numhts"></span> (of 49) <span class="hearts">Hearts</span> voters.
+      </p>
         <h4>How likely is it for the <span class="hearts">Hearts</span> Party to win $k$ seats?</h4>
         <div id="histogram"></div>
         <p>Probability of <em>exactly</em> $k$ <span class="hearts">&hearts;</span> seats</p>
@@ -274,6 +277,9 @@
           <div id="current-d2" class="grid"></div>
         </div>
       </div>
+            <p>
+        There are <span id="numhts2"></span> (of 49) <span class="hearts">Hearts</span> voters.
+      </p>
       <h4>Search with MCMC to find the plan which maximizes the probability of the <span class="hearts">Hearts</span> Party winning at least a certain number of seats.</h4><br />
       <p>
         <button-sm id="go-button-1" onclick="mcmc_cdf(1)">1</button-sm><button-sm id="go-button-2" onclick="mcmc_cdf(2)">2</button-sm><button-sm id="go-button-3" onclick="mcmc_cdf(3)">3</button-sm><button-sm id="go-button-4" onclick="mcmc_cdf(4)">4</button-sm><button-sm id="go-button-5" onclick="mcmc_cdf(5)">5</button-sm><button-sm id="go-button-6" onclick="mcmc_cdf(6)">6</button-sm><button-sm id="go-button-7" onclick="mcmc_cdf(7)">7</button-sm>
@@ -359,6 +365,9 @@
         </div>
       </div>
       <h4>Search with MCMC to find the most competitive or representative plan.</h4><br />
+      <p>
+        There are <span id="numhts3"></span> (of 49) <span class="hearts">Hearts</span> voters.
+      </p>
      <p>
         <button id="btn-max-comp" onclick="mcmc_comp()">Most Competitive</button>
         <button id="btn-max-rep" onclick="mcmc_rep()">Most Representative</button>

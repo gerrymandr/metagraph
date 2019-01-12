@@ -306,7 +306,7 @@ for (let n = 0; n < square7sColumn; n++) {
     .style("stroke-width", 1)
 
     .on("mouseover", function(d) {
-      d3.select(this).style("stroke", "#000");
+      //d3.select(this).style("stroke", "#000");
       d3.select(this).style("stroke-width", "3");
     })
 
@@ -414,7 +414,7 @@ for (let n = 0; n < square7sColumn; n++) {
       }
     })
     .on("mouseover", function(d) {
-      d3.select(this).style("stroke", "#000");
+      //d3.select(this).style("stroke", "#000");
       d3.select(this).style("stroke-width", "3");
     })
 
@@ -821,6 +821,7 @@ function do_update2(r) {
   n_win_i = [0, 0, 0, 0, 0, 0];
 
   //compute_hists();
+
 }
 
 function update_dists() {

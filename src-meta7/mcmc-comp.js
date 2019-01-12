@@ -142,7 +142,7 @@ for (let n = 0; n < square7sColumn; n++) {
   .style("stroke-width", 1)
 
   .on("mouseover", function(d) {
-    d3.select(this).style("stroke", "#000");
+    ////d3.select(this).style("stroke", "#000");
     d3.select(this).style("stroke-width", "3");
   })
 
@@ -459,6 +459,9 @@ grd_dist_comp
 }
 
 function do_updatecomp(r) {
+
+
+
   if (d3.event != null && r != -1) {
     var t = parseInt(d3.select(r).attr("party"));
     var tid = d3.select(r).attr("id");
@@ -518,7 +521,11 @@ function do_updatecomp(r) {
   r_win_i = [0, 0, 0, 0, 0, 0];
   b_win_i = [0, 0, 0, 0, 0, 0];
   n_win_i = [0, 0, 0, 0, 0, 0];
-
+  var numhearts = 0;
+  for (var i = 0; i < 49; i++) {
+    numhearts += (parseInt(cell_colscomp[i]) == 1 ? 1 : 0)
+  }
+  document.getElementById("numhts3").innerHTML = parseInt(numhearts)
 }
 
 function update_distscomp() {
@@ -810,5 +817,12 @@ function mcmc_comp() {
 grid_borderscomp()
 do_updatecomp(-1)
 
+
+  
+  var numhearts = 0;
+  for (var i = 0; i < 49; i++) {
+    numhearts += (parseInt(cell_colscomp[i]) == 1 ? 1 : 0)
+  }
+  document.getElementById("numhts3").innerHTML = parseInt(numhearts);
 
 
