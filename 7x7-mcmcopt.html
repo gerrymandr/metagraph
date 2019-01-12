@@ -51,10 +51,10 @@
 
       <main>
 
-        <h3><em>Representative samples</em> versus <em>demonstration plans</em></h3>
+        <h3><em>Random samples</em> versus <em>demonstration plans</em></h3>
         <p>
           Up until now, we've focused on understanding a "normal range" for the parties among samples of 
-          districting plans that are drawn in a neutral way -- by an MCMC random walk. 
+          districting plans that are drawn in a neutral way &mdash; by an MCMC random walk. 
           Here, we wil shift the focus to instead find plans to <em> demonstrate what is possible </em>
           rather than <em> what is normal</em> For instance, we might want to know the largest number of 
           districts that can be drawn competitively in a plan without sacrificing other rules. 
@@ -90,7 +90,7 @@
           all <span class="clubs">Clubs</span> and the bottom four all <span class="hearts">Hearts</span>,
           if you try a few times, the algorithm will probably find a plan that lets the <span class="hearts">Hearts</span>
           Party win six seats, but almost certainly not one with seven <span class="hearts">Hearts</span>
-          districts. This is for two reasons -- first, that there is only one plan which has seven <span class="hearts">Hearts</span>-favoring
+          districts. This is for two reasons &mdash; first, that there is only one plan which has seven <span class="hearts">Hearts</span>-favoring
           districts (seven vertical strips), and the second is that this plan has very low degree in the metagraph, so it's
           hard for the random walk to find it. It's remarkable that it can even find a plan with six <span class="hearts">Hearts</span>-favoring
           districts. If you plug that distribution into the sampling tool on the <a href="https://mggg.org/metagraph/7x7.html"> previous page </a> 
@@ -215,6 +215,19 @@
        three with seven <span class="clubs">Clubs</span> voters, then the
        <span class="clubs">Clubs</span> Party can never win a majority of the seats.
      </p>
+
+
+     <p>
+      This next demo is the enahnced version of the first one on this page.  Since elections are random things 
+      now, we can't just look at the plans which have the "most" <span class="hearts">Hearts</span> or 
+      <span class="clubs">Clubs</span> seats.  Instead, we need to talk about the <em> probability distribution 
+      induced by a districting plan</em> over all the outcomes.  Below, you can adjust the arrangement of the voters 
+      as before and click the buttons with the numbers.  Picking a number $k$ finds the plan which <em> maximizes the 
+        probability of <span class="hearts">Hearts</span> winning at least $k$ districts</em>.
+     </p>
+
+
+
 <!--      <p>
        Now, thinking like a gerrymanderer, the key problem to consider is <em>supposing we want at 
       least a certain number of the districts to be 
@@ -243,17 +256,7 @@
       we're working in this richer probabilistic model.  Fortunately for us, the MCMC algorithm from 
       before is well-equipped to perform this search.
     </p> -->
-    <p>
-      Use the demo below to explore this concept. As before, you can arrange the voters on the left and use the buttons 
-      in the middle to perform the MCMC search, again doing short bursts of 150 steps.  The algorithm is the same as before, where it performs a random walk and 
-      occasionally restarts, keeping track of the best one it found so far.  The two charts on the right show the probabilities
-      we're interested in.  The first one is the probability of the <span class="hearts">Hearts</span> Party winning exactly 
-      that number of seats, called the <em>probability density</em>, and the one on the bottom is the probability of the <span class="hearts">Hearts</span> Party 
-      winning <em>at least</em> that number of seats, called the <em>cumulative density</em>.  Whichever number you click, we'll color the corresponding bar 
-      in the cumulative density histogram and the bars greater than or equal to that number in the probability density histogram.  The sum of the probabilitties 
-      at all the colored bars in the first histogram will be equal to the sum of the colored bar in the second.  You can adjust the arrangement of voters 
-      to see how that affects the likelihood of different outcomes.
-    </p>
+
 
     <center><summary>
       DEMO IS UNDER CONSTRUCTION
@@ -292,19 +295,81 @@
       outcomes. 
     </p>
     <p>
-      Going back to thinking like statisticians, what can we do if we want to detect this kind of gerrymander? We can definitely 
-      do the same thing as before, where we run our own MCMC search to help us flag the plan as suspicious if it produces 
-      an outcome that is unusual.  For example, if the enacted plan gives a high probability for  the <span class="hearts">Hearts</span> 
-      Party to win five seats, but most other plans have only a 1 or 2 percent chance of this occurring, we should raise our eyebrows.  
-      The issue now is that it's not as clear as it was before when a plan's election outcome is an outlier.  Before, for example, 
-      if the enacted plan had six <span class="hearts">Hearts</span> seats but almost every other plan we saw with MCMC had 
-      four <span class="hearts">Hearts</span> seats, we could confidently say that the enacted plan was an outlier.  Now that the 
-      space of outcomes is richer, so is the <em> space of hypotheses about the objective of the gerrymanderer </em>.  This is what 
-      makes MCMC sampling such a powerful tool.  For any property of a plan which we might think is concerning, we can compare it to 
-      an ensemble of thousands or millions of other plans, and use statistical methods to determine whether the plan really is an outlier 
-      with respect to that measure.
-
+      You'll also notice that, in general, as you pick larger numbers, the histogram spreads out more.  This is because, as long 
+      as there isn't an overwhelming majority of <span class="hearts">Hearts</span> voters, a plan which gives <span class="hearts">Hearts</span> 
+       a shot at six or seven seats 
+      needs to have the <span class="hearts">Hearts</span> voters spread out across many districts, whereas plans which only need to secure 
+      one or two seats can safely pack many <span class="hearts">Hearts</span> voters into a few districts.  The natural context in which to 
+      analyze this tradeoff is to look at the <em>competitiveness</em> and <em>representativeness</em> of plans.  
     </p>
+
+<h3> Demonstrating Representativeness and Competitiveness</h3>
+
+<p> 
+  We first need to articulate definitions of these concepts before analyzing any plans.  The <em>representativeness</em> 
+  of a plan measures how close the final division of seats matches the proportions of <span class="hearts">Hearts</span> 
+  and <span class="clubs">Clubs</span> voters in the population.  A plan in which the voters are approximately 
+  half <span class="hearts">Hearts</span> and half <span class="clubs">Clubs</span> but very rarely awards more than two 
+  <span class="hearts">Hearts</span> seats is far from representative, whereas a plan which almost always has either three or four 
+  <span class="hearts">Hearts</span> seats is highly representative.  In terms of the histograms, from the previous two demos, 
+  we can think of representativeness as how tightly the bars are clustered around the value of $k$ which is closest to the 
+  true fraction of <span class="hearts">Hearts</span> voters.
+</p>
+<p>
+  <em>Competitiveness</em> is a little more subtle.  First, we'll call a district "competitive" if it's close to having equal 
+  numbers of <span class="hearts">Hearts</span> and <span class="clubs">Clubs</span> voters.  In 7x7 Gridlandia, the competitive 
+  districts are the ones which have three voters from one party and four from the other. We can then measure the <em>competitiveness</em> 
+  of a plan by taking the average over all of the districts.  With respect to the histograms, competitveness describes how spread out 
+  the bars are.  A more competitive plan allows for a wider variety of outcomes, so the histogram bars will be spread out more, and 
+  a less competitive plan will have a narrow, spiked histogram.
+
+</p>
+<p>
+  This should immediately raise an alarm. <em>Representativeness</em> and <em>competitiveness</em> both sound like good things, 
+  but they also sound like they're incompatible with each other.  If there are 14 <span class="hearts">Hearts</span> voters all 
+  in two districts and 35 <span class="clubs">Clubs</span> voters all in the remaining five, then the outcome of the election 
+  will always be perfectly representative and perfectly non-competitive.  Using the same numbers of voters, we could draw 
+  every district with two <span class="hearts">Hearts</span> voters, resulting in a plan which is a little more competitive, 
+  but much less representative.  But, this is all in the abstract, as whether such a plan even can be drawn depends on where the 
+  <span class="hearts">Hearts</span> voters are actually located in Gridlandia.  If they aren't arranged in a suitable way, 
+  either of these kind of plans might be impossible to find.
+  Given an arrangement of voters, we might be interested in what the most competitive or representative 
+  plan is, and using MCMC to find demonstration plans is a perfect way to find such things.
+</p>
+
+
+<p>
+  In the next demo, you can once again choose the arrangement of voters and use the buttons to have the 
+  MCMC algorithm search for the most representative or competitive plan it can find.  
+</p>
+    <center><summary>
+      DEMO IS UNDER CONSTRUCTION
+    </summary></center>
+    <div id="gridspace3" class="chart rows">
+      <div style="display: flex; flex-direction: row; flex-wrap: row; align-items: flex-start; margin-bottom: 2rem;">
+        <div class="grid-container" style="margin: 0 2rem">
+          <h4>Design a distribution $\Delta$</h4>
+          <div id="current-delta3" class="grid"></div>
+          <button id="random-delta3">Randomize $\Delta$</button>
+          <p>Click cells to toggle</p>
+        </div>
+        <div class="grid-container3" style="margin: 0 2rem">
+          <h4>Districting Plan $\mathcal D$</h4>
+          <div id="current-d3" class="grid"></div>
+        </div>
+      </div>
+      <h4>Search with MCMC to find the plan which maximizes the probability of the <span class="hearts">Hearts</span> Party winning at least a certain number of seats.</h4><br />
+     
+        <button id="btn-max-comp" onclick="">1</button><button id="btn-max-rep" onclick="">2</button>
+      <div id="histogram3-1"></div>
+      <p>Probability of <em>exactly</em> $k$ <span class="hearts">&hearts;</span> seats</p>
+    </div>
+
+
+
+
+
+
 </main>
   <nav>
     <div class="previous">
