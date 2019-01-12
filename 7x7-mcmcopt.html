@@ -358,9 +358,11 @@
           <div id="current-d3" class="grid"></div>
         </div>
       </div>
-      <h4>Search with MCMC to find the plan which maximizes the probability of the <span class="hearts">Hearts</span> Party winning at least a certain number of seats.</h4><br />
-     
-        <button id="btn-max-comp" onclick="">1</button><button id="btn-max-rep" onclick="">2</button>
+      <h4>Search with MCMC to find the most competitive or representative plan.</h4><br />
+     <p>
+        <button id="btn-max-comp" onclick="mcmc_comp()">Most Competitive</button>
+        <button id="btn-max-rep" onclick="mcmc_rep()">Most Representative</button>
+      </p>
       <div id="histogram3-1"></div>
       <p>Probability of <em>exactly</em> $k$ <span class="hearts">&hearts;</span> seats</p>
     </div>
@@ -406,6 +408,8 @@
   <script src="src-meta7/mcmc-probopt.js"></script>
 
   <script src="src-meta7/mcmc-cdf.js"></script>
+  <script src="src-meta7/mcmc-comp.js"></script>
+
   <script src="src-meta7/mcmc2.js"></script>
 
 
