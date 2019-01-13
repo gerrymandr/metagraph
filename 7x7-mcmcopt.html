@@ -60,11 +60,12 @@
           districts that can be drawn competitively in a plan without sacrificing other rules. 
           Or if we are checking compliance with the Voting Rights Act, we might want to know how many 
           districts can be simultaneously drawn with a certain group in the majority. We'll consider how to 
-          make demonstration plans of different kinds on the 7x7 grid.
+          make demonstration plans of different kinds on the 7x7 grid.  We'll begin by making our model 
+          of elections a little richer.
         </p>
 
 
-        <h3>Finding extremes</h3>
+<!--         <h3>Finding extremes</h3>
         <p>
           The first thing we'll do is use the MCMC <a href="https://mggg.org/metagraph/7x7.html"> sampler we built in the last demo </a>, 
           but instead of using it
@@ -111,8 +112,10 @@
 
 
         <h3>Elections aren't a sure thing</h3>
+ -->
+
         <p>
-          Of course in real life, gerrymanders are harder to detect than this because of the uncertainty in elections.  
+          In real life, gerrymanders are hard to detect because of the uncertainty in elections.  
           If there is some randomness in the outcomes and the <span class="hearts">Hearts</span> Party wins six of the 
           seven seats, is that because the <span class="clubs">Clubs</span> Party is structurally disadvantaged by the 
           districting plan or were they just unlucky this time? We'll incorporate this into our model and show how we 
@@ -122,7 +125,7 @@
 
         <h3>Electoral uncertainty</h3> 
         <p>
-         Before we move forward, we need an additional piece of machinery from probability theory.  Up until now, we've
+         We need an additional piece of machinery from probability theory.  Up until now, we've
          treated elections as <em>deterministic</em>, meaning that a party will surely win a seat if at least half of the
          squares in the corresponding district are of that color.  Now, we'll introduce a little bit of uncertainty.  To 
          keep the math simple, we'll now say that the <em>probability</em> that a party wins a seat depends on the 
@@ -220,15 +223,20 @@
      </p>
 
 
-     <p>
-      This next demo is the enahnced version of the first one on this page.  Since elections are random things 
+<!--      <p>
+      This next demo is the enahnced version of the first one on this page.  
+     </p> -->
+<p>
+  The next demo helps us find demonstration plans of the kind referenced above, where we want to see whether 
+  or not it's possible for the <span class="hearts">Hearts</span> Party to win a certain number of seats with 
+  some probability.  Since elections are random things 
       now, we can't just look at the plans which have the "most" <span class="hearts">Hearts</span> or 
       <span class="clubs">Clubs</span> seats.  Instead, we need to talk about the <em> probability distribution 
       induced by a districting plan</em> over all the outcomes.  Below, you can adjust the arrangement of the voters 
       as before and click the buttons with the numbers.  Picking a number $k$ finds the plan which <em> maximizes the 
         probability of <span class="hearts">Hearts</span> winning at least $k$ districts</em>.
-     </p>
 
+</p>
 
 
 <!--      <p>
@@ -290,7 +298,7 @@
       <p>Probability of <em>at least</em> $k$ <span class="hearts">&hearts;</span> seats</p>
     </div>
     <p>
-      Again, this does pretty well, though not always perfectly.  One reason for this is that ten rounds of 
+      You'll notice that this does well, though not always perfectly.  One reason for this is that ten rounds of 
       150 steps is not all that many samples, compared to the total universe of plans. Additionally, instead 
       of simply winning a district by having the majority of its voters be <span class="hearts">Hearts</span>, 
       we care about <em>how many</em> <span class="hearts">Hearts</span> voters are in each district.  To put it 
