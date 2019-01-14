@@ -407,11 +407,10 @@
 </p>
 <p>
   Over the last two chapters, we've introduced two facets of MCMC for redistricting which, even in the simple example 
-  of small grids, are incredibly powerful tools for the analysis of gerrymandering.  <a href="https://mggg.org/metagraph/7x7.html">Previously,</a> we looked at using MCMC for outlier analysis, where we let the MCMC algorithm generate a big sample of plans, called an <em>ensemble</em>, and then compared our plan of interest to the outcomes across the ensemble.  This provides us with <em>statistical evidence</em>, 
-  since we can detect if a plan yields outcomes which are too extreme relative to the ensemble.  Here, we've used MCMC to 
-  <em>search a plan meeting some criterion</em>, such as maximal representativeness or competitiveness.  But, we can notice that these two things aren't very different, we've just used a different method for crawling around on the metagraph.  Before, when we were looking for a random 
-  sample, we walked around randomly.  Here, since we're looking for something in particular, we modify the MCMC process to more directly 
-  move toward what want.  There are of course many other ways we could walk around the metagraph.  The scientific community, including MGGG, are thinking hard about these different ways of walking around the metagraph both in theory and in practice.  Since the metagraph for a real jurisdiction is so complex, it's useful to have more basic testbeds, like the 7x7 grid, to experiment with these concepts.
+  of small grids, are incredibly powerful tools for the analysis of gerrymandering.  <a href="https://mggg.org/metagraph/7x7.html">Previously,</a> we looked at using MCMC for outlier analysis, where we let the MCMC algorithm generate a big sample of plans, called an <em>ensemble</em>, and then compared our plan of interest to the outcomes across the ensemble.  Here, we've used MCMC to 
+  <em>search for a plan</em> meeting some criterion, such as maximal representativeness or competitiveness.  But, we can notice that these two things aren't very different, we've just used a different method for crawling around on the metagraph.  Before, when we were looking for a random 
+  sample, we walked around randomly and kept track of everything we saw.  Here, since we're looking for something in particular, we modify the MCMC process to more directly 
+  move toward what want, and only keep track of the best thing we see as we go.  There are of course many other ways we could walk around the metagraph.  The scientific community, including MGGG, are thinking hard about these different ways of walking around the metagraph both in theory and in practice.  Since the metagraph for a real jurisdiction is so complex, it's useful to have more basic testbeds, like the 7x7 grid, to experiment with these concepts.
 </p>
 
 
