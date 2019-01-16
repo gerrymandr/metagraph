@@ -526,6 +526,30 @@ function do_updatecomp(r) {
     numhearts += (parseInt(cell_colscomp[i]) == 1 ? 1 : 0)
   }
   document.getElementById("numhts3").innerHTML = parseInt(numhearts)
+
+  document.getElementById("prophts3").innerHTML = Math.floor(parseInt(numhearts)/7.0) == Math.ceil(parseInt(numhearts)/7.0) ? Math.floor(parseInt(numhearts)/7.0): Math.floor(parseInt(numhearts)/7.0) + " to " + Math.ceil(parseInt(numhearts)/7.0);
+
+  numhearts = [0,0,0,0,0,0,0]
+  for (var i=0; i<49;i++){
+
+    if (parseInt(cell_colscomp[i]) == 1){
+      numhearts[parseInt(cur_plan_strcomp[i])-1] +=1
+    }
+
+
+
+
+  }
+
+for (var i=0; i < 7; i++){
+
+  document.getElementById("district3"+(i+1)).innerHTML = numhearts[i] + "<span class='hearts'> Hearts </span> voters";
+
+
+}
+
+
+
 }
 
 function update_distscomp() {
@@ -733,7 +757,7 @@ var complookup = {0:0, 1:0, 2:.1, 3:1.0/3, 4:2.0/3, 5:.9, 6:1, 7:1}
 
 function mcmc_comp() {
   var best_so_far = (" " + cur_plan_strcomp).slice(1);
-  var best_val = 100000000000000;
+  var best_val = -100000000000000;
   var cand = (" " + cur_plan_strcomp).slice(1);
 
   var numhearts = 0;
@@ -754,18 +778,18 @@ function mcmc_comp() {
 
     }
     //temph = (problookup[temph.sort().join(",")]).split(",").map(Number);
-    
     for (var i=0; i<7; i++){
 
-      c += Math.abs((complookup[temph[i]] - .5))
-    }
+      c +=  temph[i] == 3 ? 1:0 //Math.abs((complookup[temph[i]] - .5))
+        c +=  temph[i] == 4 ? 1:0 //Math.abs((complookup[temph[i]] - .5))
 
-    if (c < best_val) {cell_colscomp
+    }
+    if (c > best_val) {cell_colscomp
       best_val = c;
       best_so_far = (" " + cand).slice(1);
     }
 
-    if (c == 0){
+    if (c == 7){
 
 
     cur_plan_strcomp = (" " + best_so_far).slice(1);

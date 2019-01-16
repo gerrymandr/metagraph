@@ -2,7 +2,7 @@
   <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Metagraph 7x7 -- MCMC for Demonstration Plans</title>
+    <title>Metagraph 7x7 &mdash; MCMC for Demonstration Plans</title>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -284,11 +284,54 @@
           <h4>Districting Plan $\mathcal D$</h4>
           <div id="current-d2" class="grid"></div>
         </div>
+         <div style="font-size:1.25rem;line-height: 2rem;margin-top:1.2rem">
+        <table>
+        <tbody>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(187,249,15);">&FilledSmallSquare;</td>
+        <td align="center" id="district24"></td>
+        </tr>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(106,121,247);">&FilledSmallSquare; </td>
+        <td align="center" id="district25"></td>
+        </tr>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(71,95,148);">&FilledSmallSquare;</td>
+        <td align="center" id="district26"></td>
+        </tr>
+
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(123,200,246);">&FilledSmallSquare;</td>
+        <td align="center" id="district21"></td>
+        </tr>
+
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(3,67,223);">&FilledSmallSquare; </td>
+        <td align="center" id="district23"></td>
+        </tr>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(19,234,201);">&FilledSmallSquare; </td>
+        <td align="center" id="district27"></td>
+        </tr>
+
+
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(111,194,118);">&FilledSmallSquare;</td>
+        <td align="center" id="district22"></td>
+        </tr>
+
+
+
+
+
+        </tbody>
+        </table>
+        </div>       
       </div>
             <p>
-        There are <span id="numhts2"></span> (of 49) <span class="hearts">Hearts</span> voters.
+        There are <span id="numhts2"></span> (of 49) <span class="hearts">Hearts</span> voters.  A proportional outcome would have <span id = "prophts2"></span> <span class="hearts">Hearts</span> seats.
       </p>
-      <h4>Search with MCMC to find the plan which maximizes the probability of the <span class="hearts">Hearts</span> Party winning at least a certain number of seats.</h4><br />
+      <h4>Search with MCMC to find a plan which has a high probability of the <span class="hearts">Hearts</span> Party winning at least a certain number of seats.</h4><br />
       <p>
         <button-sm id="go-button-1" onclick="mcmc_cdf(1)">1</button-sm><button-sm id="go-button-2" onclick="mcmc_cdf(2)">2</button-sm><button-sm id="go-button-3" onclick="mcmc_cdf(3)">3</button-sm><button-sm id="go-button-4" onclick="mcmc_cdf(4)">4</button-sm><button-sm id="go-button-5" onclick="mcmc_cdf(5)">5</button-sm><button-sm id="go-button-6" onclick="mcmc_cdf(6)">6</button-sm><button-sm id="go-button-7" onclick="mcmc_cdf(7)">7</button-sm>
       </p>
@@ -314,19 +357,19 @@
        a shot at six or seven seats 
       needs to have the <span class="hearts">Hearts</span> voters spread out across many districts, whereas plans which only need to secure 
       one or two seats can safely pack many <span class="hearts">Hearts</span> voters into a few districts.  The natural context in which to 
-      analyze this tradeoff is to look at the <em>competitiveness</em> and <em>representativeness</em> of plans.  
+      analyze this tradeoff is to look at the <em>competitiveness</em> and <em>proportionality</em> of plans.  
     </p>
 
-<h3> Demonstrating Representativeness and Competitiveness</h3>
+<h3> Demonstrating Proportionality and Competitiveness</h3>
 
 <p> 
-  We first need to articulate definitions of these concepts before analyzing any plans.  The <em>representativeness</em> 
+  We first need to articulate definitions of these concepts before analyzing any plans.  The <em>proportionality</em> 
   of a plan measures how close the final division of seats matches the proportions of <span class="hearts">Hearts</span> 
   and <span class="clubs">Clubs</span> voters in the population.  A plan in which the voters are approximately 
   half <span class="hearts">Hearts</span> and half <span class="clubs">Clubs</span> but very rarely awards more than two 
-  <span class="hearts">Hearts</span> seats is far from representative, whereas a plan which almost always has either three or four 
-  <span class="hearts">Hearts</span> seats is highly representative.  In terms of the histograms, from the previous two demos, 
-  we can think of representativeness as how tightly the bars are clustered around the value of $k$ which is closest to the 
+  <span class="hearts">Hearts</span> seats is far from proportional, whereas a plan which almost always has either three or four 
+  <span class="hearts">Hearts</span> seats is highly proportional.  In terms of the histograms, from the previous two demos, 
+  we can think of proportionality as how tightly the bars are clustered around the value of $k$ which is closest to the 
   true fraction of <span class="hearts">Hearts</span> voters.
 </p>
 <p>
@@ -339,22 +382,22 @@
 
 </p>
 <p>
-  This should immediately raise an alarm. <em>Representativeness</em> and <em>competitiveness</em> both sound like good things, 
+  This should immediately raise an alarm. <em>Proportionality</em> and <em>competitiveness</em> both sound like good things, 
   but they also sound like they're incompatible with each other.  If there are 14 <span class="hearts">Hearts</span> voters all 
   in two districts and 35 <span class="clubs">Clubs</span> voters all in the remaining five, then the outcome of the election 
-  will always be perfectly representative and extremely non-competitive.  Using the same numbers of voters, we could draw 
+  will always be perfectly proportional and extremely non-competitive.  Using the same numbers of voters, we could draw 
   every district with two <span class="hearts">Hearts</span> voters, resulting in a plan which is a little more competitive, 
-  but much less representative.  But, this is all in the abstract, as whether such a plan even can be drawn depends on where the 
+  but much less proportional.  But, this is all in the abstract, as whether such a plan even can be drawn depends on where the 
   <span class="hearts">Hearts</span> voters are actually located in Gridlandia.  If they aren't arranged in a suitable way, 
   either of these kind of plans might be impossible to find.  
-  Given an arrangement of voters, we might be interested in what the most competitive or representative 
+  Given an arrangement of voters, we might be interested in what the most competitive or proportional 
   plan is, and using MCMC to find demonstration plans is a great way to find such things.
 </p>
 
 
 <p>
   In the next demo, you can once again choose the arrangement of voters and use the buttons to have the 
-  MCMC algorithm search for the most representative or competitive plan it can find.  
+  MCMC algorithm search for the most proportional or competitive plan it can find.  
 </p>
     <center><summary>
       DEMO IS UNDER CONSTRUCTION
@@ -371,14 +414,57 @@
           <h4>Districting Plan $\mathcal D$</h4>
           <div id="current-d3" class="grid"></div>
         </div>
+        <div style="font-size:1.25rem;line-height: 2rem;margin-top:1.2rem">
+        <table>
+        <tbody>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(187,249,15);">&FilledSmallSquare;</td>
+        <td align="center" id="district34"></td>
+        </tr>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(106,121,247);">&FilledSmallSquare; </td>
+        <td align="center" id="district35"></td>
+        </tr>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(71,95,148);">&FilledSmallSquare;</td>
+        <td align="center" id="district36"></td>
+        </tr>
+
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(123,200,246);">&FilledSmallSquare;</td>
+        <td align="center" id="district31"></td>
+        </tr>
+
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(3,67,223);">&FilledSmallSquare; </td>
+        <td align="center" id="district33"></td>
+        </tr>
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(19,234,201);">&FilledSmallSquare; </td>
+        <td align="center" id="district37"></td>
+        </tr>
+
+
+        <tr>
+        <td align="center" style="font-size:2.75rem;color:rgb(111,194,118);">&FilledSmallSquare;</td>
+        <td align="center" id="district32"></td>
+        </tr>
+
+
+
+
+
+        </tbody>
+        </table>
+        </div>
       </div>
-      <h4>Search with MCMC to find the most competitive or representative plan.</h4><br />
+      <h4>Gear your MCMC search to prioritize either <em>competitiveness</em> or <em>proportionality</em>.</h4><br />
       <p>
-        There are <span id="numhts3"></span> (of 49) <span class="hearts">Hearts</span> voters.
+        There are <span id="numhts3"></span> (of 49) <span class="hearts">Hearts</span> voters. A proportional outcome would have <span id = "prophts3"></span> <span class="hearts">Hearts</span> seats.
       </p>
      <p>
-        <button id="btn-max-comp" onclick="mcmc_comp()">Most Competitive</button>
-        <button id="btn-max-rep" onclick="mcmc_rep()">Most Representative</button>
+        <button id="btn-max-comp" onclick="mcmc_comp()">Competitive</button>
+        <button id="btn-max-rep" onclick="mcmc_rep()">Proportional</button>
       </p>
       <div id="histogram3-1"></div>
       <p>Probability of <em>exactly</em> $k$ <span class="hearts">&hearts;</span> seats</p>
@@ -389,9 +475,9 @@
   Try keeping the number of  <span class="clubs">Clubs</span> and  <span class="hearts">Hearts</span> voters 
   fixed while playing around with their geographic concentration.  How segregated do all of the  <span class="hearts">Hearts</span> and 
   <span class="clubs">Clubs</span> voters need to be in order for the MCMC algorithm to 
-  find an extremely representative plan, i.e. one with a very small probability of not 
+  find an extremely proportional plan, i.e. one with a very small probability of not 
   matching the relative proportions of voters in the   population?  How randomly 
-  intersperse do they have to be before the most competitive and most representative 
+  intersperse do they have to be before the most competitive and most proportional 
   plans are basically the same?  Certainly in theory this could happen if it's impossible to find  
   a districting plan that doens't have three  <span class="hearts">Hearts</span> and four  <span class="clubs">Clubs</span> 
   voters in every district, but for which arrangements of voters does this theoretical plan actually exist?
@@ -408,7 +494,7 @@
 <p>
   Over the last two chapters, we've introduced two facets of MCMC for redistricting which, even in the simple example 
   of small grids, are incredibly powerful tools for the analysis of gerrymandering.  <a href="https://mggg.org/metagraph/7x7.html">Previously,</a> we looked at using MCMC for outlier analysis, where we let the MCMC algorithm generate a big sample of plans, called an <em>ensemble</em>, and then compared our plan of interest to the outcomes across the ensemble.  Here, we've used MCMC to 
-  <em>search for a plan</em> meeting some criterion, such as maximal representativeness or competitiveness.  But, we can notice that these two things aren't very different, we've just used a different method for crawling around on the metagraph.  Before, when we were looking for a random 
+  <em>search for a plan</em> meeting some criterion, such as maximal proportionality or competitiveness.  But, we can notice that these two things aren't very different, we've just used a different method for crawling around on the metagraph.  Before, when we were looking for a random 
   sample, we walked around randomly and kept track of everything we saw.  Here, since we're looking for something in particular, we modify the MCMC process to more directly 
   move toward what want, and only keep track of the best thing we see as we go.  There are of course many other ways we could walk around the metagraph.  The scientific community, including MGGG, are thinking hard about these different ways of walking around the metagraph both in theory and in practice.  Since the metagraph for a real jurisdiction is so complex, it's useful to have more basic testbeds, like the 7x7 grid, to experiment with these concepts.
 </p>
@@ -459,3 +545,6 @@
 </body>
 
 </html> 
+
+
+

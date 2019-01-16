@@ -534,8 +534,25 @@ function do_update2(r) {
     numhearts += (parseInt(cell_cols2[i]) == 1 ? 1 : 0)
   }
   document.getElementById("numhts2").innerHTML = parseInt(numhearts);
+document.getElementById("prophts2").innerHTML = Math.floor(parseInt(numhearts)/7.0) == Math.ceil(parseInt(numhearts)/7.0) ? Math.floor(parseInt(numhearts)/7.0): Math.floor(parseInt(numhearts)/7.0) + " to " + Math.ceil(parseInt(numhearts)/7.0);
+    numhearts = [0,0,0,0,0,0,0]
+  for (var i=0; i<49;i++){
 
-  
+    if (parseInt(cell_cols2[i]) == 1){
+      numhearts[parseInt(cur_plan_str2[i])-1] +=1
+    }
+
+
+
+
+  }
+
+for (var i=0; i < 7; i++){
+
+  document.getElementById("district2"+(i+1)).innerHTML = numhearts[i] + "<span class='hearts'> Hearts </span> voters";
+
+
+}
 }
 
 function update_dists2() {
