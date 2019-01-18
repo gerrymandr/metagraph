@@ -48,10 +48,10 @@ function updateHistogram(container, data, accentColor, w, h) {
     .attr("width", barWidth)
     .merge(bars)
     .attr("y", function(d) {
-      return height - height * (d.count / totalCount) - gap;
+      return Math.max(15,height - height * (d.count / totalCount) - gap);
     })
     .attr("height", function(d) {
-      return height * (d.count / totalCount);
+      return Math.min(height * (d.count / totalCount), height-20);
     })
     .style("fill-opacity", 1)
     .style("stroke", "black")
@@ -72,13 +72,13 @@ function updateHistogram(container, data, accentColor, w, h) {
     .style("font-size", "12px")
     .merge(labels)
     .text(function(d) {
-      return numberWithCommas(d.count);
+      return d.percents ? numberWithCommas(d.count) + "%" : numberWithCommas(d.count);
     })
     .attr("x", function(d, i) {
       return (barWidth + gap) * i + gap + barWidth / 2;
     })
     .attr("y", function(d) {
-      return height - height * (d.count / totalCount) - labelHeight;
+      return Math.max(10,height - height * (d.count / totalCount) - labelHeight);
     });
 
   labels.exit().remove();
