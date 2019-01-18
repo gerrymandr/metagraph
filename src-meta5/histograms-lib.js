@@ -78,7 +78,7 @@ function updateHistogram(container, data, accentColor, w, h) {
       return (barWidth + gap) * i + gap + barWidth / 2;
     })
     .attr("y", function(d) {
-      return height - height * (d.count / totalCount) - labelHeight + d.count == 0 ? 0 : 20;
+      return height - height * (d.count / totalCount) - labelHeight + ((d.count == 0) ? 0 : 20);
     });
 
   labels.exit().remove();
