@@ -48,10 +48,10 @@ function updateHistogram(container, data, accentColor, w, h) {
     .attr("width", barWidth)
     .merge(bars)
     .attr("y", function(d) {
-      return height - height * (d.count / totalCount) - gap;
+      return height - height * (d.count / totalCount) - gap+ 20;
     })
     .attr("height", function(d) {
-      return height * (d.count / totalCount);
+      return Math.max(0,height * (d.count / totalCount) - 20);
     })
     .style("fill-opacity", 1)
     .style("stroke", "black")
@@ -78,7 +78,7 @@ function updateHistogram(container, data, accentColor, w, h) {
       return (barWidth + gap) * i + gap + barWidth / 2;
     })
     .attr("y", function(d) {
-      return height - height * (d.count / totalCount) - labelHeight;
+      return height - height * (d.count / totalCount) - labelHeight + 20;
     });
 
   labels.exit().remove();
